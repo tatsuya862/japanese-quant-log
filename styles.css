@@ -217,6 +217,13 @@ main {
   gap: 1rem;
 }
 
+.media-buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .media-card h3 {
   margin-top: 0;
   color: #f7f0ea;
