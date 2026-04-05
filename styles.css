@@ -14,6 +14,8 @@ body {
   margin: 0;
   background: #030305;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .site-header {
@@ -26,7 +28,6 @@ body {
   background: rgba(3, 3, 5, 0.95);
   border-bottom: 1px solid rgba(212, 164, 63, 0.35);
   z-index: 10;
-
 }
 
 .menu-toggle {
@@ -119,6 +120,7 @@ main {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 1.5rem 4rem;
+  flex: 1; /* コンテンツが少なくてもフッターを下に押し下げる */
 }
 
 .hero {
@@ -333,13 +335,19 @@ main {
   text-align: center;
 }
 
+/* ===============================
+   フッター修正版（画面下部固定・中央配置）
+   =============================== */
 .site-footer {
+  width: 100%;
+  box-sizing: border-box;
   border-top: 1px solid rgba(212, 164, 63, 0.35);
-  padding: 2rem;
+  padding: 2rem 1.5rem;
   text-align: center;
   color: rgba(247, 240, 234, 0.7);
 }
 
+/* プロフィール・カード周り */
 .profile {
   margin: 3rem 0;
   display: flex;
@@ -415,4 +423,4 @@ main {
   .hero-copy {
     padding: 0 0.5rem;
   }
-}
+}  
