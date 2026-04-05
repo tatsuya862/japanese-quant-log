@@ -23,12 +23,13 @@ body {
 }
 
 .page-wrapper {
+  position: relative;
   max-width: 1100px;
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  padding-bottom: 4rem;
+  padding-bottom: 6rem;
 }
 
 .hero {
@@ -319,16 +320,16 @@ button[type='submit']:hover {
 }
 
 .sample-footer {
-  margin-top: 2rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
   padding: 1.5rem 0;
   text-align: center;
   font-size: 0.83rem;
   color: rgba(255, 255, 255, 0.65);
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  background: rgba(9, 6, 3, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .sample-note {
