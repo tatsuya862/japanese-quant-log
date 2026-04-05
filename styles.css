@@ -65,6 +65,12 @@ body.menu-open .menu-toggle span:nth-child(3) {
   letter-spacing: 0.3em;
 }
 
+.brand-logo {
+  height: 50px;
+  width: auto;
+  display: block;
+}
+
 .site-header nav {
   display: flex;
   gap: 1.2rem;
