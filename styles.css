@@ -26,6 +26,38 @@ body {
   background: rgba(3, 3, 5, 0.95);
   border-bottom: 1px solid rgba(212, 164, 63, 0.35);
   z-index: 10;
+
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 32px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 2px;
+  background: #f7f0ea;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+body.menu-open .menu-toggle span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+body.menu-open .menu-toggle span:nth-child(2) {
+  opacity: 0;
+}
+
+body.menu-open .menu-toggle span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
 }
 
 .brand {
@@ -37,6 +69,32 @@ body {
   display: flex;
   gap: 1.2rem;
   flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .site-header nav {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    background: rgba(3, 3, 5, 0.98);
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    display: none;
+  }
+
+  body.menu-open .site-header nav {
+    display: flex;
+  }
+
+  body.menu-open main {
+    padding-top: 1rem;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
 }
 
 .site-header a {
