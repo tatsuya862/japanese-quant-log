@@ -9,6 +9,11 @@
 <body>
   <header class="site-header">
     <div class="brand">量から質</div>
+    <button class="menu-toggle" aria-expanded="false" aria-label="メニューを開く">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <nav>
       <a href="#philosophy">哲学</a>
       <a href="#services">サービス</a>
@@ -157,7 +162,15 @@
       </div>
     </section>
   <footer class="site-footer">
-    <p>© 2025 Quant-Log by Tatsuya</p>
+    <p>© 2026 量から質 | AIクリエイティブ</p>
   </footer>
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    toggle?.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      document.body.classList.toggle('menu-open');
+    });
+  </script>
 </body>
 </html>
