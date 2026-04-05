@@ -336,6 +336,8 @@ main {
 
 .profile {
   margin: 3rem 0;
+  display: flex;
+  justify-content: center;
 }
 
 .profile-card {
@@ -344,17 +346,20 @@ main {
   border-radius: 1.25rem;
   padding: 1.5rem;
   display: grid;
-  grid-template-columns: 120px 1fr;
+  grid-template-columns: 90px 1fr;
   gap: 1.25rem;
   align-items: center;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  max-width: 900px;
+  width: 100%;
 }
 
 .profile-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 1rem;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
   border: 1px solid rgba(247, 240, 234, 0.2);
+  object-fit: cover;
 }
 
 .profile-card p {
@@ -365,11 +370,17 @@ main {
 
 .profile-card .eyebrow {
   margin: 0;
+  text-align: left;
 }
 
 @media (max-width: 768px) {
   .profile-card {
     grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .profile-card img {
+    margin: 0 auto;
   }
 }
 
