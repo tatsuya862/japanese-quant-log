@@ -324,6 +324,12 @@ button[type='submit']:hover {
   text-align: center;
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.65);
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(8, 8, 12, 0.9);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .sample-note {
