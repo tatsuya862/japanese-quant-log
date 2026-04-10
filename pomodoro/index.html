@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FXトレーダー向け集中タイマー</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header>
+      <p class="eyebrow">FXトレーダー向けタイムボックス</p>
+      <h1>ディール前の集中タイマー</h1>
+      <p class="subtitle">25分集中／5分休憩を繰り返して、疲れをためずに相場と向き合う</p>
+    </header>
+
+    <section class="timer-card">
+      <div class="timer-state" data-mode>集中モード</div>
+      <div class="timer-display" data-minute>25</div>
+      <div class="timer-display" data-seconds>:00</div>
+      <div class="timer-controls">
+        <button id="start-pause">開始</button>
+        <button id="reset">リセット</button>
+      </div>
+      <div class="timer-meta">
+        <span>サイクル: <strong data-cycle>0</strong></span>
+        <span>次の切り替え: <strong data-next>25:00</strong></span>
+      </div>
+    </section>
+
+    <section class="notes">
+      <h2>使い方</h2>
+      <ol>
+        <li>「開始」で25分にカウントダウンスタート。</li>
+        <li>集中が終わったら自動で5分休憩モードに移行。</li>
+        <li>「停止/再開」で中断、すぐに再開できます。</li>
+        <li>「リセット」で最初の集中25分に戻ります。</li>
+      </ol>
+    </section>
+  </main>
+  <script src="timer.js"></script>
+</body>
+</html>
