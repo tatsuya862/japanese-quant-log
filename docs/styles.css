@@ -318,6 +318,13 @@ main {
   margin-top: 1rem;
 }
 
+.tool-card:nth-child(1) .btn,
+.tool-card:nth-child(2) .btn {
+  background: radial-gradient(circle, #d4a43f, #a3731d);
+  color: #030305;
+  border-color: transparent;
+}
+
 .media-buttons {
   display: flex;
   gap: 0.75rem;
