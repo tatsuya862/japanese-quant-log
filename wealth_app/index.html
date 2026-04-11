@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ウェルス家計配分チェッカー</title>
+    <meta
+      name="description"
+      content="固定収入に応じた貯金・住宅・食費・娯楽の内訳を割合に沿って一画面で表示するシンプル専用アプリです。"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <p class="eyebrow">富裕層向け・固定収入特化</p>
+        <h1>入金額を入れるだけで、使途の枠が自動表示</h1>
+        <p class="lede">
+          割合は変更せず固定。貯金20%以上、住宅25%以下、食費15%以下、娯楽10%以下のルールに
+          従い、月々の「使える金額」を即座に算出します。
+        </p>
+      </section>
+
+      <section class="calculator">
+        <label for="income" class="form-label">固定収入（円）</label>
+        <div class="input-row">
+          <input
+            id="income"
+            name="income"
+            type="number"
+            min="0"
+            step="1000"
+            placeholder="例：800000"
+            aria-describedby="income-note"
+          />
+          <button id="calculateBtn" type="button">入力完了</button>
+        </div>
+        <p id="income-note" class="note">
+          入力後に「入力完了」を押すと、下段にカテゴリ別の金額が表示されます。
+        </p>
+        <p id="message" class="message" aria-live="polite"></p>
+      </section>
+
+      <section id="resultPanel" class="results hidden">
+        <p class="result-title">自動算出された内訳</p>
+        <div class="result-grid">
+          <article class="result-card">
+            <p class="result-label">貯金</p>
+            <p class="result-amount" data-target="savings">0円</p>
+            <p class="result-sub">20%以上</p>
+          </article>
+          <article class="result-card">
+            <p class="result-label">住宅費</p>
+            <p class="result-amount" data-target="housing">0円</p>
+            <p class="result-sub">25%以下</p>
+          </article>
+          <article class="result-card">
+            <p class="result-label">食費</p>
+            <p class="result-amount" data-target="food">0円</p>
+            <p class="result-sub">15%以下</p>
+          </article>
+          <article class="result-card">
+            <p class="result-label">娯楽費</p>
+            <p class="result-amount" data-target="entertainment">0円</p>
+            <p class="result-sub">10%以下</p>
+          </article>
+        </div>
+        <div class="summary-row">
+          <div>
+            <p class="summary-label">合計（使途枠）</p>
+            <p class="summary-value" id="totalAllocated">0円</p>
+            <p class="summary-note">70%分の合計</p>
+          </div>
+          <div>
+            <p class="summary-label">残りの自由枠</p>
+            <p class="summary-value" id="remainingMoney">0円</p>
+            <p class="summary-note">30%分をそのまま自由に使えます</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const formatCurrency = (value) =>
+        new Intl.NumberFormat("ja-JP", {
+          style: "currency",
+          currency: "JPY",
+          maximumFractionDigits: 0,
+        }).format(value);
+
+      const categories = [
+        { id: "savings", ratio: 0.2 },
+        { id: "housing", ratio: 0.25 },
+        { id: "food", ratio: 0.15 },
+        { id: "entertainment", ratio: 0.1 },
+      ];
+
+      const resultPanel = document.getElementById("resultPanel");
+      const messageEl = document.getElementById("message");
+
+      const renderResults = (income) => {
+        let allocated = 0;
+        categories.forEach((category) => {
+          const amount = Math.round(income * category.ratio);
+          allocated += amount;
+          const targetEl = document.querySelector(
+            `[data-target="${category.id}"]`
+          );
+          if (targetEl) {
+            targetEl.textContent = formatCurrency(amount);
+          }
+        });
+
+        document.getElementById("totalAllocated").textContent =
+          formatCurrency(allocated);
+        document.getElementById("remainingMoney").textContent = formatCurrency(
+          Math.max(0, income - allocated)
+        );
+        resultPanel.classList.remove("hidden");
+      };
+
+      const handleCalculation = () => {
+        const rawIncome = document.getElementById("income").value;
+        const income = Number(rawIncome);
+        if (!rawIncome || Number.isNaN(income) || income <= 0) {
+          messageEl.textContent = "有効な金額（0より大きい数値）を入力してください。";
+          resultPanel.classList.add("hidden");
+          return;
+        }
+        messageEl.textContent = "";
+        renderResults(income);
+      };
+
+      document
+        .getElementById("calculateBtn")
+        .addEventListener("click", handleCalculation);
+    </script>
+  </body>
+</html>
