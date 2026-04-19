@@ -1,3 +1,8 @@
+---
+tags:
+  - #開発
+  - #Webサイト
+---
 # LP Project Rules
 
 - UTF-8固定
