@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101417">
+  <title>Quant Log Drive Study</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <a class="back-link" href="../index.html" aria-label="Quant Logへ戻る">←</a>
+    <div>
+      <p class="eyebrow">Offline Audio Learning</p>
+      <h1>Quant Log Drive Study</h1>
+    </div>
+    <div class="status-pill" id="connectionStatus" aria-live="polite">確認中</div>
+  </header>
+
+  <main class="app-shell">
+    <section class="control-band" aria-label="学習操作">
+      <div class="mode-toggle" role="tablist" aria-label="学習モード">
+        <button class="mode-button is-active" type="button" data-mode="audio" role="tab" aria-selected="true">音声</button>
+        <button class="mode-button" type="button" data-mode="text" role="tab" aria-selected="false">文章</button>
+      </div>
+      <button class="cache-button" type="button" id="cacheButton">オフライン保存</button>
+    </section>
+
+    <section class="now-panel" aria-label="現在の教材">
+      <div class="episode-meta">
+        <span id="episodeSeries">Failure x Finance</span>
+        <span id="episodeDuration">10-20 min</span>
+      </div>
+      <h2 id="episodeTitle">教材を読み込み中</h2>
+      <p id="episodeLead"></p>
+
+      <div class="audio-area" id="audioArea">
+        <audio id="audioPlayer" controls preload="metadata"></audio>
+        <p class="audio-note" id="audioNote">音声ファイルを読み込み中です。</p>
+      </div>
+
+      <article class="reader is-hidden" id="reader" tabindex="0" aria-label="本文"></article>
+    </section>
+
+    <section class="lesson-list" aria-label="教材一覧">
+      <div class="section-title">
+        <h2>渋滞用プレイリスト</h2>
+        <span id="lessonCount">0本</span>
+      </div>
+      <div class="episode-list" id="episodeList"></div>
+    </section>
+  </main>
+
+  <template id="episodeTemplate">
+    <button class="episode-card" type="button">
+      <span class="episode-card__tag"></span>
+      <strong></strong>
+      <span class="episode-card__desc"></span>
+      <span class="episode-card__time"></span>
+    </button>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

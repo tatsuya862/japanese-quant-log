@@ -1,0 +1,265 @@
+:root {
+  color: #f4efe5;
+  background: #101417;
+  font-family: "Noto Sans JP", "Yu Gothic", system-ui, -apple-system, sans-serif;
+  line-height: 1.65;
+  font-weight: 500;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    linear-gradient(180deg, rgba(16, 20, 23, 0.88), rgba(16, 20, 23, 0.98)),
+    url("../assets/ai-generated.jpg") center / cover fixed;
+}
+
+button,
+audio {
+  font: inherit;
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  gap: 0.85rem;
+  align-items: center;
+  padding: 0.85rem clamp(1rem, 3vw, 2rem);
+  background: rgba(16, 20, 23, 0.94);
+  border-bottom: 1px solid rgba(239, 196, 104, 0.25);
+  backdrop-filter: blur(16px);
+}
+
+.back-link {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  color: #f4efe5;
+  text-decoration: none;
+  border: 1px solid rgba(244, 239, 229, 0.24);
+  border-radius: 8px;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #efc468;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0;
+  font-size: clamp(1.15rem, 2.8vw, 1.8rem);
+  line-height: 1.2;
+}
+
+.status-pill {
+  min-width: 82px;
+  padding: 0.45rem 0.7rem;
+  border-radius: 8px;
+  text-align: center;
+  color: #0f1417;
+  background: #efc468;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.status-pill.is-offline {
+  background: #72d6a1;
+}
+
+.app-shell {
+  width: min(1040px, 100%);
+  margin: 0 auto;
+  padding: 1rem clamp(1rem, 3vw, 2rem) 3rem;
+}
+
+.control-band {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 1rem;
+}
+
+.mode-toggle {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(92px, 1fr));
+  padding: 0.28rem;
+  border: 1px solid rgba(244, 239, 229, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.mode-button,
+.cache-button,
+.episode-card {
+  cursor: pointer;
+}
+
+.mode-button,
+.cache-button {
+  border: 0;
+  border-radius: 6px;
+  color: #f4efe5;
+  background: transparent;
+  min-height: 42px;
+  padding: 0.55rem 0.8rem;
+  font-weight: 800;
+}
+
+.mode-button.is-active,
+.cache-button {
+  color: #101417;
+  background: #efc468;
+}
+
+.now-panel,
+.lesson-list {
+  background: rgba(18, 24, 27, 0.92);
+  border: 1px solid rgba(244, 239, 229, 0.12);
+  border-radius: 8px;
+  padding: clamp(1rem, 3vw, 1.4rem);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+}
+
+.episode-meta,
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.85rem;
+  align-items: center;
+  color: rgba(244, 239, 229, 0.68);
+  font-size: 0.86rem;
+}
+
+.now-panel h2 {
+  margin: 0.35rem 0 0.7rem;
+  font-size: clamp(1.55rem, 4vw, 2.45rem);
+  line-height: 1.25;
+}
+
+#episodeLead {
+  max-width: 760px;
+  color: rgba(244, 239, 229, 0.78);
+}
+
+.audio-area {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+audio {
+  width: 100%;
+  min-height: 48px;
+}
+
+.audio-note {
+  color: rgba(244, 239, 229, 0.64);
+  font-size: 0.9rem;
+}
+
+.reader {
+  max-height: min(52vh, 560px);
+  overflow: auto;
+  padding: 1rem 1.1rem;
+  color: #f8f1e8;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.reader h3 {
+  margin: 1.1rem 0 0.35rem;
+  color: #efc468;
+}
+
+.reader p {
+  margin-bottom: 0.85rem;
+}
+
+.is-hidden {
+  display: none;
+}
+
+.lesson-list {
+  margin-top: 1rem;
+}
+
+.section-title h2 {
+  margin-bottom: 0.2rem;
+  font-size: 1rem;
+}
+
+.episode-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 0.85rem;
+  margin-top: 0.85rem;
+}
+
+.episode-card {
+  display: grid;
+  gap: 0.35rem;
+  min-height: 168px;
+  padding: 1rem;
+  text-align: left;
+  color: #f4efe5;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(244, 239, 229, 0.14);
+  border-radius: 8px;
+}
+
+.episode-card.is-active {
+  border-color: #efc468;
+  background: rgba(239, 196, 104, 0.12);
+}
+
+.episode-card__tag,
+.episode-card__time {
+  color: #efc468;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.episode-card__desc {
+  color: rgba(244, 239, 229, 0.68);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 680px) {
+  .app-header {
+    grid-template-columns: 40px 1fr;
+  }
+
+  .status-pill {
+    grid-column: 1 / -1;
+    justify-self: stretch;
+  }
+
+  .control-band {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .episode-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
