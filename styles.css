@@ -209,6 +209,7 @@ main {
 .philosophy-grid article,
 .services-grid article,
 .media-card,
+.learning-card,
 .contact-form {
   background: #07070c;
   border-radius: 1rem;
@@ -226,10 +227,29 @@ main {
 .philosophy-grid article p,
 .services-grid article p,
 .media-card p,
+.learning-card p,
 .gallery-note,
 .contact-note,
 .contact-form label {
   color: rgba(247, 240, 234, 0.78);
+}
+
+.learning-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.learning-card h3 {
+  margin-top: 0;
+}
+
+@media (max-width: 680px) {
+  .learning-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }
 
 .services-grid {
