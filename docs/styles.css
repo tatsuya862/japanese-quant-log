@@ -209,6 +209,7 @@ main {
 .philosophy-grid article,
 .services-grid article,
 .media-card,
+.market-card,
 .prototype-card,
 .contact-form {
   background: #07070c;
@@ -227,6 +228,7 @@ main {
 .philosophy-grid article p,
 .services-grid article p,
 .media-card p,
+.market-card p,
 .prototype-card p,
 .gallery-note,
 .contact-note,
@@ -234,6 +236,7 @@ main {
   color: rgba(247, 240, 234, 0.78);
 }
 
+.market-card,
 .prototype-card {
   display: flex;
   align-items: center;
@@ -241,11 +244,17 @@ main {
   gap: 1rem;
 }
 
+.market {
+  margin: 4rem 0 0;
+}
+
+.market-card h3,
 .prototype-card h3 {
   margin-top: 0;
 }
 
 @media (max-width: 680px) {
+  .market-card,
   .prototype-card {
     align-items: flex-start;
     flex-direction: column;
@@ -359,6 +368,112 @@ main {
 
 .media-card a {
   align-self: center;
+}
+
+.market-page {
+  width: min(1080px, 100%);
+}
+
+.market-hero {
+  padding: 4rem 0 2rem;
+  border-bottom: 1px solid rgba(212, 164, 63, 0.25);
+}
+
+.market-hero h1 {
+  max-width: 820px;
+  margin: 0.4rem 0 0.9rem;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  line-height: 1.15;
+}
+
+.market-hero p {
+  max-width: 760px;
+  color: rgba(247, 240, 234, 0.78);
+}
+
+.market-layout {
+  display: grid;
+  grid-template-columns: 1.5fr 0.8fr;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.market-panel,
+.market-side,
+.market-update {
+  background: #07070c;
+  border: 1px solid rgba(212, 164, 63, 0.25);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55);
+}
+
+.market-update {
+  margin-top: 1.25rem;
+}
+
+.market-panel h2,
+.market-side h2,
+.market-update h2 {
+  margin-top: 0;
+}
+
+.market-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+}
+
+.market-table th,
+.market-table td {
+  padding: 0.85rem 0.65rem;
+  border-bottom: 1px solid rgba(247, 240, 234, 0.12);
+  text-align: left;
+  vertical-align: top;
+}
+
+.market-table th {
+  color: #d4a43f;
+  font-size: 0.86rem;
+}
+
+.market-note,
+.source-list,
+.guard-list {
+  color: rgba(247, 240, 234, 0.72);
+}
+
+.source-list,
+.guard-list {
+  padding-left: 1.1rem;
+}
+
+.source-list li,
+.guard-list li {
+  margin-bottom: 0.45rem;
+}
+
+.market-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid rgba(114, 214, 161, 0.5);
+  border-radius: 999px;
+  color: #72d6a1;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+@media (max-width: 820px) {
+  .market-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .market-table {
+    display: block;
+    overflow-x: auto;
+  }
 }
 
 .contact-form {
