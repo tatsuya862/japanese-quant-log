@@ -3,41 +3,44 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Quant Log Market Brief。株式、金利、指数、為替の公開データをもとにした金融市場メモ。">
-  <title>Quant Log Market Brief</title>
+  <title>Quant Log Market Brief | 毎日の金融マーケット情報</title>
   <link rel="icon" type="image/png" href="assets/favicon_16x16.png">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="index.html" aria-label="Quant Log">
-      <img src="assets/tatsuya-logo.png" alt="Quant Log" class="brand-logo">
-    </a>
+    <div class="brand">
+      <a href="index.html" aria-label="トップへ戻る">
+        <img src="assets/tatsuya-logo.png" alt="Tatsuya Logo" class="brand-logo">
+      </a>
+    </div>
     <button class="menu-toggle" aria-expanded="false" aria-label="メニューを開く">
-      <span></span><span></span><span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
     <nav>
-      <a href="index.html#philosophy">About</a>
-      <a href="index.html#services">Works</a>
+      <a href="index.html#philosophy">哲学</a>
+      <a href="index.html#services">サービス</a>
+      <a href="index.html#media">メディア</a>
       <a href="market.html">Market</a>
-      <a href="index.html#tools">Tools</a>
-      <a href="index.html#prototype">Drive Study</a>
-      <a href="index.html#contact">Contact</a>
+      <a href="index.html#prototype">Prototype</a>
+      <a href="index.html#contact">お問い合わせ</a>
     </nav>
   </header>
 
   <main class="market-page">
     <section class="market-hero">
       <p class="eyebrow">Quant Log Market Brief</p>
-      <h1>公開データで読む、毎日の市場メモ。</h1>
-      <p>株式、金利、指数、為替の動きを、売買推奨ではなく事実確認のために整理します。個人の運用指標、口座情報、ポジション情報は掲載しません。</p>
-      <span class="market-status">Updated: 2026/05/01</span>
+      <h1>毎日の金融マーケット情報</h1>
+      <p>日々のデイリーログから公開可能な観察だけを抽出し、株式、債券、金利、指数の事実データと照合して掲載します。投資判断ではなく、相場環境を構造的に読むための公開メモです。</p>
+      <span class="market-status">公開中: 2026/05/01 最新記事</span>
     </section>
 
     <section class="market-update">
       <p class="eyebrow">2026/05/01</p>
       <h2>円買い戻しとドル指数低下、ドル円は157円前後へ</h2>
-      <p class="market-note">基準は、米株・米10年金利・ドル指数が2026年4月30日のNY終値、為替が2026年5月1日東京午前、日経平均が同日の東京市場データです。</p>
+      <p class="market-note">基準時点は、米株・米10年金利・ドル指数が2026年4月30日のNYクローズ、為替が2026年5月1日東京朝、日経平均が2026年5月1日の東京市場序盤データです。デイリーログの個人運用指標は使用していません。</p>
       <table class="market-table">
         <thead>
           <tr>
@@ -50,37 +53,38 @@
           <tr>
             <td>米国株</td>
             <td>S&amp;P 500: 7,209.01 / Nasdaq: 24,892.31</td>
-            <td>主要指数は上昇。株式市場だけを見ると、リスク許容は改善しています。</td>
+            <td>4月30日のNY市場で主要株価指数は上昇。株式市場だけを見るとリスク許容は改善。</td>
           </tr>
           <tr>
             <td>金利</td>
             <td>米10年債利回り: 4.390%</td>
-            <td>前日の4.418%から小幅低下。金利面では、ドル買いを強く後押しする形ではありません。</td>
+            <td>前日の4.418%から小幅低下。金利面からはドル買いを強く後押しする形ではない。</td>
           </tr>
           <tr>
             <td>ドル</td>
             <td>ドル指数: 98.08</td>
-            <td>前日の98.92から低下。ユーロドルの反発とも整合しています。</td>
+            <td>前日の98.92から低下。ユーロドルの反発と方向は整合。</td>
           </tr>
           <tr>
             <td>為替</td>
-            <td>USD/JPY: 156.56付近 / EUR/USD: 1.1730台</td>
-            <td>ドル円は160円台を付けた後、156円台へ急落。ドル高は一旦調整入りしました。</td>
+            <td>USD/JPY: 東京朝156.56付近、午前に157円台前半 / EUR/USD: 1.1730台</td>
+            <td>ドル円は前日に160.70台をつけた後、156円台へ急落。ユーロドルは1.1730台へ戻した。</td>
           </tr>
           <tr>
             <td>日本株</td>
-            <td>日経平均: 始値59,379.12 / 高値59,702.91</td>
-            <td>東京市場は上昇。ただし直近高値60,903.95は更新していません。</td>
+            <td>日経平均: 始値59,379.12 / 序盤高値59,702.91</td>
+            <td>東京序盤は上昇。ただし直近高値60,903.95は更新していない。</td>
           </tr>
         </tbody>
       </table>
-      <h3>短評</h3>
-      <p class="market-note">5月1日は、米株高よりも円買い戻しとドル指数低下が目立ちました。ドル円の160円台は一旦確認された水準として扱い、方向は次のデータで確認します。</p>
+      <h3>今日の結論</h3>
+      <p class="market-note">5月1日の為替は、米株高よりも円買い戻しとドル指数低下の影響が目立ちました。Reutersは4月30日に日本当局が円買い介入を実施したと関係者情報として報じており、ドル円の160円台は一旦上値確認後に反落した水準として扱います。</p>
       <h3>整合性チェック</h3>
       <ul class="source-list">
-        <li>米10年金利とドル指数は低下しており、ドル買いの勢いは弱まりました。</li>
+        <li>米株上昇は円売り要因になりやすいものの、今回はドル円下落と同時にドル指数も低下しています。</li>
+        <li>米10年金利は小幅低下しており、ドル買いを強く支える材料ではありません。</li>
         <li>USD/JPY下落とEUR/USD反発は、ドル安方向として整合しています。</li>
-        <li>円買い介入は公表値ではなく、Reuters系報道として扱います。</li>
+        <li>円買い介入については、公式発表ではなくReutersの関係者報道として表記します。</li>
       </ul>
       <h3>出典</h3>
       <ul class="source-list">
@@ -91,14 +95,14 @@
         <li><a href="https://finance.yahoo.com/quote/JPY%3DX/history" target="_blank" rel="noreferrer">Yahoo Finance: USD/JPY</a></li>
         <li><a href="https://finance.yahoo.com/quote/EURUSD%3DX/history" target="_blank" rel="noreferrer">Yahoo Finance: EUR/USD</a></li>
         <li><a href="https://finance.yahoo.com/quote/%5EN225/history" target="_blank" rel="noreferrer">Yahoo Finance: Nikkei 225</a></li>
-        <li><a href="https://www.investing.com/news/economy-news/yen-trims-gains-against-dollar-after-japans-intervention-in-markets-4651833" target="_blank" rel="noreferrer">Reuters via Investing.com</a></li>
+        <li><a href="https://www.investing.com/news/economy-news/yen-trims-gains-against-dollar-after-japans-intervention-in-markets-4651833" target="_blank" rel="noreferrer">Reuters via Investing.com: Yen trims gains against dollar after Japan's intervention</a></li>
       </ul>
     </section>
 
     <section class="market-update">
       <p class="eyebrow">2026/04/30</p>
       <h2>金利上昇とドル高、円は160円台へ</h2>
-      <p class="market-note">基準は、米株・米10年金利・ドル指数が2026年4月29日のNY終値、為替と日経平均が2026年4月30日の東京市場データです。</p>
+      <p class="market-note">基準時点は、米株・米10年金利・ドル指数が2026年4月29日のNYクローズ、為替が2026年4月30日東京朝、日経平均が2026年4月30日の東京市場データです。デイリーログの個人運用指標は使用していません。</p>
       <table class="market-table">
         <thead>
           <tr>
@@ -111,38 +115,56 @@
           <tr>
             <td>米国株</td>
             <td>S&amp;P 500: 7,135.95 / Nasdaq: 24,673.24 / Dow: 48,861.81</td>
-            <td>S&amp;P 500とNasdaqは小幅上昇、Dowは下落。株式だけで強いリスクオンとは言い切れません。</td>
+            <td>S&amp;P 500は小幅安、Nasdaqは小幅高、Dowは下落。株式だけで強いリスクオンとは言いにくい。</td>
           </tr>
           <tr>
             <td>金利</td>
             <td>米10年債利回り: 4.418%</td>
-            <td>前日の4.354%から約6.4bp上昇。金利上昇はドル買い材料として確認できます。</td>
+            <td>前日の4.354%から約6.4bp上昇。金利上昇はドル買い・株式の重しとして解釈しやすい。</td>
           </tr>
           <tr>
             <td>ドル</td>
             <td>ドル指数: 98.92</td>
-            <td>前日の98.62から上昇。米金利上昇と方向が一致しました。</td>
+            <td>前日の98.62から上昇。米金利上昇とドル指数の上昇は方向が一致。</td>
           </tr>
           <tr>
             <td>為替</td>
-            <td>USD/JPY: 160.32付近 / EUR/USD: 1.1681付近</td>
-            <td>ドル円は160円台、ユーロドルは下落。ドル高方向として整合しています。</td>
+            <td>USD/JPY: 東京朝160.32付近 / EUR/USD: 東京朝1.1681付近</td>
+            <td>ドル円は160円台。ユーロドルは東京時間に1.1660台まで下落し、ドル高方向と整合。</td>
           </tr>
           <tr>
             <td>日本株</td>
             <td>日経平均: 始値59,484.71 / 取引中59,165付近</td>
-            <td>前営業日比で下落。米株まちまち、金利上昇、円安警戒が重なりました。</td>
+            <td>前営業日比で下落。米株のまちまち、金利上昇、円安水準の警戒が重なった形。</td>
           </tr>
         </tbody>
       </table>
-      <h3>短評</h3>
-      <p class="market-note">4月30日は、米10年金利とドル指数の上昇を背景にドル円が160円台へ進みました。ただし株式は全面的なリスクオンではなく、為替主導の動きとして整理します。</p>
+      <h3>今日の結論</h3>
+      <p class="market-note">4月30日の市場は、株式主導の全面リスクオンではなく、米10年金利上昇とドル指数上昇を背景にドルが支えられた地合いです。ドル円の160円台は、金利差・ドル高とは整合する一方、心理的節目として利益確定や政策警戒が出やすい水準です。</p>
+      <h3>整合性チェック</h3>
+      <ul class="source-list">
+        <li>米10年金利上昇とドル指数上昇は整合しています。</li>
+        <li>ドル円160円台とユーロドル下落は、ドル買い方向として整合しています。</li>
+        <li>米株はまちまちで、株高だけを理由にした円売りとは整理しません。</li>
+        <li>日経平均の59,163付近は東京開始時点ではなく、取引中または終盤の水準として扱います。</li>
+      </ul>
+      <h3>出典</h3>
+      <ul class="source-list">
+        <li><a href="https://finance.yahoo.com/quote/%5EGSPC/history" target="_blank" rel="noreferrer">Yahoo Finance: S&amp;P 500</a></li>
+        <li><a href="https://finance.yahoo.com/quote/%5EIXIC/history" target="_blank" rel="noreferrer">Yahoo Finance: Nasdaq Composite</a></li>
+        <li><a href="https://finance.yahoo.com/quote/%5EDJI/history" target="_blank" rel="noreferrer">Yahoo Finance: Dow Jones Industrial Average</a></li>
+        <li><a href="https://finance.yahoo.com/quote/%5ETNX/history" target="_blank" rel="noreferrer">Yahoo Finance: US 10 Year Treasury Yield</a></li>
+        <li><a href="https://finance.yahoo.com/quote/DX-Y.NYB/history" target="_blank" rel="noreferrer">Yahoo Finance: US Dollar Index</a></li>
+        <li><a href="https://finance.yahoo.com/quote/JPY%3DX/history" target="_blank" rel="noreferrer">Yahoo Finance: USD/JPY</a></li>
+        <li><a href="https://finance.yahoo.com/quote/EURUSD%3DX/history" target="_blank" rel="noreferrer">Yahoo Finance: EUR/USD</a></li>
+        <li><a href="https://finance.yahoo.com/quote/%5EN225/history" target="_blank" rel="noreferrer">Yahoo Finance: Nikkei 225</a></li>
+      </ul>
     </section>
 
     <section class="market-update">
       <p class="eyebrow">Archive</p>
-      <h2>過去メモ</h2>
-      <p class="market-note">4月20日以降の公開可能な市場観察を、要点だけ残しています。</p>
+      <h2>過去マーケットブリーフ</h2>
+      <p class="market-note">以下は4月30日以前のFXデイリーログから、公開可能な市場観察だけを抽出し、Yahoo Financeの履歴データで再確認したものです。個人運用に関わる非公開情報は掲載していません。</p>
       <table class="market-table">
         <thead>
           <tr>
@@ -154,75 +176,86 @@
         <tbody>
           <tr>
             <td>2026/04/29</td>
-            <td>S&amp;P 500 7,138.80 / Nasdaq 24,663.80 / 米10年 4.354% / DXY 98.62 / USDJPY 159.55付近</td>
-            <td>米株は反落、金利とドル指数は小幅上昇。ドル円は159円台半ばを維持しました。</td>
+            <td>S&amp;P 500 7,138.80 / Nasdaq 24,663.80 / 米10年 4.354% / DXY 98.62 / USDJPY 東京朝159.55付近</td>
+            <td>米株は前日比で反落した一方、米10年金利とドル指数は小幅上昇。ドル円は159円台半ばを維持しており、株安だけで円買い優勢とは言い切れない地合い。</td>
           </tr>
           <tr>
             <td>2026/04/28</td>
             <td>S&amp;P 500 7,173.91 / Nasdaq 24,887.10 / 米10年 4.336% / DXY 98.48 / 日経平均 始値60,531.78</td>
-            <td>米株と日経平均は高値圏。ただしドル指数は98台半ばで、為替は方向確認の局面です。</td>
+            <td>米株と日経平均は高値圏。ただしドル指数は98台半ばで伸びが限定的。株高と金利水準だけでドル高継続と断定せず、為替は一旦方向確認の局面として扱う。</td>
           </tr>
           <tr>
             <td>2026/04/27</td>
             <td>S&amp;P 500 7,165.08 / Nasdaq 24,836.60 / 米10年 4.310% / DXY 98.51 / 日経平均 高値60,903.95</td>
-            <td>株式は高値圏。ドル指数は前週末比で強く伸びた形ではなく、株高と円安を分けて確認します。</td>
+            <td>株式は高値圏で、日経平均も大きく上昇。一方でドル指数は前週末比で強く伸びた形ではないため、ドル全面高ではなく、株高による円売りとドル円の底堅さを分けて見る。</td>
           </tr>
           <tr>
             <td>2026/04/24</td>
-            <td>S&amp;P 500 7,108.40 / Nasdaq 24,438.50 / 米10年 4.323% / DXY 98.80 / USDJPY 159.74付近</td>
-            <td>米株は上昇、金利とドル指数も高水準。ドル円は159円台後半で推移しました。</td>
+            <td>S&amp;P 500 7,108.40 / Nasdaq 24,438.50 / 米10年 4.323% / DXY 98.80 / USDJPY 東京朝159.74付近</td>
+            <td>米株は一服したが、米10年金利とドル指数は上向き。ドル円は159円台後半で、株安による円買いよりも金利・ドル指数の支えが目立つ日。</td>
           </tr>
           <tr>
             <td>2026/04/23</td>
             <td>S&amp;P 500 7,137.90 / Nasdaq 24,657.57 / 米10年 4.294% / DXY 98.59 / 日経平均 始値59,758.64</td>
-            <td>米株は反発。ドル円は159円台で推移し、方向は一段の確認が必要です。</td>
+            <td>米株は反発し、ドル指数も98台後半へ接近。ドル円は159円台で推移し、リスク許容と金利水準が下値を支える構図。ただし一方向の上昇断定ではなく、節目確認の局面。</td>
           </tr>
           <tr>
             <td>2026/04/22</td>
-            <td>S&amp;P 500 7,064.01 / Nasdaq 24,259.96 / 米10年 4.292% / DXY 98.41 / USDJPY 159.34付近</td>
-            <td>米株は反落後も、金利は4.29%台。ドル円は159円台を維持しました。</td>
+            <td>S&amp;P 500 7,064.01 / Nasdaq 24,259.96 / 米10年 4.292% / DXY 98.41 / USDJPY 東京朝159.34付近</td>
+            <td>米株は反落したが、米10年金利は4.29%台で高止まり。ドル円は159円台を維持しており、株安イコール円買いとは整理しない。市場は一旦調整入りの確認局面。</td>
           </tr>
           <tr>
             <td>2026/04/21</td>
-            <td>S&amp;P 500 7,109.14 / Nasdaq 24,404.39 / 米10年 4.250% / DXY 98.05 / USDJPY 158.85付近</td>
-            <td>米株は下落、ドル指数は98台前半。ドル円は158円台後半で推移しました。</td>
+            <td>S&amp;P 500 7,109.14 / Nasdaq 24,404.39 / 米10年 4.250% / DXY 98.05 / USDJPY 東京朝158.85付近</td>
+            <td>米株は前日比で下落し、ドル指数も98台前半。ドル円は158円台後半で、ドル全面高ではない。下落断定ではなく、株式の一服と為替の下値確認が同時に起きた日。</td>
           </tr>
           <tr>
             <td>2026/04/20</td>
-            <td>S&amp;P 500 7,126.06 / Nasdaq 24,468.48 / 米10年 4.246% / DXY 98.10 / USDJPY 159.15付近</td>
-            <td>米株は高値圏、ドル円は159円台。金利は小幅低下し、株式と為替を分けて見ます。</td>
+            <td>S&amp;P 500 7,126.06 / Nasdaq 24,468.48 / 米10年 4.246% / DXY 98.10 / USDJPY 東京朝159.15付近</td>
+            <td>米株は高値圏を維持し、ドル円は159円台。米10年金利は前日比で低下気味だったため、ドル金利要因だけでなく、株式の底堅さと円の弱さを分けて確認する日。</td>
           </tr>
         </tbody>
       </table>
+      <h3>言い回しの基準</h3>
+      <ul class="source-list">
+        <li>断定的な天井・底打ち表現ではなく、「一旦調整入り」「方向確認」「高値圏で一服」と表現します。</li>
+        <li>事実以上に強い印象を与える語は使いません。</li>
+        <li>投資判断ではなく、株式・金利・ドル指数・為替の整合性だけを扱います。</li>
+      </ul>
     </section>
 
     <section class="market-layout">
       <article class="market-panel">
         <h2>掲載フォーマット</h2>
-        <p class="market-note">毎回、数値の出所と基準時点を明記します。予測より、観測できる市場事実を優先します。</p>
+        <p class="market-note">毎回、数値の出所と基準時点を明記します。推測や売買判断ではなく、観測できる市場事実を中心にします。</p>
         <table class="market-table">
           <thead>
             <tr>
-              <th>分類</th>
+              <th>カテゴリ</th>
               <th>見るもの</th>
-              <th>公開内容</th>
+              <th>公開する内容</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>株式</td>
               <td>米国株、日本株、主要セクター</td>
-              <td>前日比、上昇/下落の背景、リスク許容の状態</td>
+              <td>前日比、上昇/下落の背景、リスクオン/オフの整理</td>
             </tr>
             <tr>
-              <td>金利</td>
+              <td>債券・金利</td>
               <td>米10年債、米2年債、日本10年債</td>
-              <td>利回り変化と、株式・為替への影響</td>
+              <td>利回り変化、債券価格との関係、株式・為替への影響</td>
+            </tr>
+            <tr>
+              <td>指数</td>
+              <td>S&P 500、Nasdaq、Dow、日経平均、TOPIX</td>
+              <td>終値、変化率、主要イベントとの接続</td>
             </tr>
             <tr>
               <td>為替</td>
               <td>ドル円、ユーロドル、ドル指数</td>
-              <td>価格変化と、金利・指数との整合性</td>
+              <td>公開データとしての価格変化と、金利・株式との整合性</td>
             </tr>
           </tbody>
         </table>
@@ -232,17 +265,63 @@
         <h2>非掲載ルール</h2>
         <ul class="guard-list">
           <li>個人運用指標は掲載しない</li>
-          <li>口座、残高、損益、ポジションは掲載しない</li>
-          <li>独自判断ルールや売買条件は掲載しない</li>
-          <li>日次ログ本文をそのまま転載しない</li>
+          <li>口座や取引に関わる非公開情報は掲載しない</li>
+          <li>独自判断ルール、感応度、執行ルールは掲載しない</li>
+          <li>デイリーログ本文をそのまま転載しない</li>
           <li>投資推奨、将来予測、煽り表現は使わない</li>
         </ul>
       </aside>
     </section>
+
+    <section class="market-update">
+      <h2>次回更新テンプレート</h2>
+      <p class="market-note">以下の形で、秘書リサーチ結果とデイリーログの公開可能部分を統合します。</p>
+      <table class="market-table">
+        <thead>
+          <tr>
+            <th>項目</th>
+            <th>内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>基準時点</td>
+            <td>YYYY/MM/DD 東京市場開始時点、またはNY終値ベース</td>
+          </tr>
+          <tr>
+            <td>今日の結論</td>
+            <td>株式、金利、為替、指数の整合性を1〜2文で整理</td>
+          </tr>
+          <tr>
+            <td>重要データ</td>
+            <td>主要指数、米10年債利回り、ドル円、ドル指数など</td>
+          </tr>
+          <tr>
+            <td>観察メモ</td>
+            <td>個人指標を除外した、公開可能な相場構造メモ</td>
+          </tr>
+          <tr>
+            <td>出典</td>
+            <td>取引所、中央銀行、財務省、主要金融メディアなど</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="market-update">
+      <h2>リサーチ依頼項目</h2>
+      <ul class="source-list">
+        <li>米国株: S&P 500、Nasdaq、Dow の終値と前日比</li>
+        <li>日本株: 日経平均、TOPIX の終値と前日比</li>
+        <li>金利: 米10年債、米2年債、日本10年債の利回り</li>
+        <li>為替: ドル円、ユーロドル、ドル指数の基準時点価格</li>
+        <li>イベント: FOMC、CPI、雇用統計、決算、地政学リスク</li>
+      </ul>
+    </section>
   </main>
 
   <footer class="site-footer">
-    <p>© 2026 Quant Log by Tatsuya</p>
+    <p>© 2025 Quant-Log by Tatsuya</p>
   </footer>
   <script>
     const toggle = document.querySelector('.menu-toggle');
