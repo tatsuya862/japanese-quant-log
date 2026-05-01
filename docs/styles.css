@@ -1,20 +1,21 @@
 :root {
   color-scheme: dark;
   --bg: #050505;
-  --surface: #0b0b0b;
-  --surface-2: #101010;
-  --line: rgba(183, 143, 69, 0.34);
-  --line-soft: rgba(238, 232, 218, 0.12);
-  --gold: #b78f45;
-  --gold-soft: #d1b06b;
-  --text: #f0ece3;
-  --muted: rgba(240, 236, 227, 0.68);
-  --faint: rgba(240, 236, 227, 0.48);
+  --surface: #080808;
+  --surface-2: #111;
+  --line: rgba(184, 134, 24, 0.42);
+  --line-soft: rgba(232, 224, 206, 0.11);
+  --gold: #b88618;
+  --gold-soft: #c99a2e;
+  --gold-deep: #6f4d0d;
+  --text: #f2f2f0;
+  --muted: rgba(242, 242, 240, 0.66);
+  --faint: rgba(242, 242, 240, 0.44);
   font-family: "Noto Sans JP", "Yu Gothic", "Hiragino Kaku Gothic ProN", system-ui, -apple-system, sans-serif;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.75;
-  font-weight: 400;
+  line-height: 1.78;
+  font-weight: 300;
   text-rendering: optimizeLegibility;
 }
 
@@ -31,7 +32,7 @@ body {
   min-height: 100vh;
   text-align: center;
   background:
-    linear-gradient(180deg, rgba(183, 143, 69, 0.08), transparent 260px),
+    linear-gradient(180deg, rgba(184, 134, 24, 0.1), transparent 220px),
     var(--bg);
 }
 
@@ -54,9 +55,9 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: 0.8rem clamp(1rem, 4vw, 2.5rem);
-  background: rgba(5, 5, 5, 0.9);
+  background: rgba(8, 8, 8, 0.94);
   border-bottom: 1px solid var(--line);
-  backdrop-filter: blur(14px);
+  backdrop-filter: blur(12px);
 }
 
 .brand {
@@ -81,7 +82,8 @@ a {
   color: var(--muted);
   text-decoration: none;
   font-size: 0.86rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
+  font-weight: 300;
 }
 
 .site-header nav a:hover {
@@ -94,7 +96,7 @@ a {
   height: 40px;
   padding: 0;
   border: 1px solid var(--line-soft);
-  border-radius: 6px;
+  border-radius: 2px;
   background: transparent;
 }
 
@@ -129,7 +131,8 @@ section {
   margin: 0 0 0.65rem;
   color: var(--gold-soft);
   font-size: 0.72rem;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
+  font-weight: 300;
   text-transform: uppercase;
 }
 
@@ -145,7 +148,7 @@ h2,
 h3 {
   letter-spacing: 0;
   line-height: 1.25;
-  font-weight: 600;
+  font-weight: 400;
   text-wrap: balance;
 }
 
@@ -180,11 +183,11 @@ h3 {
   min-width: 118px;
   padding: 0.58rem 1.05rem;
   border: 1px solid var(--gold);
-  border-radius: 6px;
+  border-radius: 2px;
   color: #090806;
   text-decoration: none;
   background: var(--gold-soft);
-  font-weight: 600;
+  font-weight: 400;
   font-size: 0.92rem;
   line-height: 1.2;
   cursor: pointer;
@@ -193,7 +196,7 @@ h3 {
 .btn:hover {
   border-color: #c39b4f;
   color: #090806;
-  background: #c39b4f;
+  background: #b88618;
 }
 
 .btn.primary {
@@ -204,7 +207,7 @@ h3 {
 
 .btn.primary:hover {
   color: #080806;
-  background: #c39b4f;
+  background: #b88618;
 }
 
 .section-heading {
@@ -247,6 +250,9 @@ h3 {
 
 .philosophy-grid article,
 .services-grid article,
+.media-card,
+.market-card,
+.prototype-card,
 .feature-row,
 .tool-card,
 .contact-form,
@@ -256,14 +262,17 @@ h3 {
 .market-update {
   background: rgba(12, 12, 12, 0.94);
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 2px;
   padding: clamp(1.1rem, 2.5vw, 1.5rem);
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.34);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
 }
 
 .philosophy-grid h3,
 .services-grid h3,
 .tool-card h3,
+.media-card h3,
+.market-card h3,
+.prototype-card h3,
 .feature-row h3 {
   margin-bottom: 0.45rem;
   font-size: 1.05rem;
@@ -272,6 +281,9 @@ h3 {
 .philosophy-grid p,
 .services-grid p,
 .tool-card p,
+.media-card p,
+.market-card p,
+.prototype-card p,
 .feature-row p,
 .profile-card p {
   color: var(--muted);
@@ -288,7 +300,7 @@ h3 {
   aspect-ratio: 4 / 3;
   object-fit: cover;
   border: 1px solid var(--line-soft);
-  border-radius: 8px;
+  border-radius: 2px;
   background: #000;
 }
 
@@ -299,6 +311,15 @@ h3 {
 }
 
 .feature-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.media-card,
+.market-card,
+.prototype-card {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -343,7 +364,7 @@ h3 {
 .contact-form textarea {
   width: 100%;
   border: 1px solid var(--line-soft);
-  border-radius: 6px;
+  border-radius: 2px;
   padding: 0.75rem 0.85rem;
   color: var(--text);
   background: #070707;
@@ -383,7 +404,7 @@ h3 {
   display: inline-flex;
   padding: 0.32rem 0.65rem;
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: 2px;
   color: var(--gold-soft);
   font-size: 0.82rem;
 }
@@ -429,7 +450,7 @@ h3 {
 .market-table th {
   color: var(--gold-soft);
   font-size: 0.84rem;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .market-table td {
@@ -462,6 +483,12 @@ h3 {
 
   .feature-row {
     align-items: center;
+    flex-direction: column;
+  }
+
+  .media-card,
+  .market-card,
+  .prototype-card {
     flex-direction: column;
   }
 
