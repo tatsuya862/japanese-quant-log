@@ -119,12 +119,29 @@ section {
 }
 
 .hero {
+  position: relative;
   min-height: 74vh;
   display: grid;
   align-content: center;
   justify-items: center;
   margin-top: 0;
   border-bottom: 1px solid var(--line);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url("assets/tatsuya-logo.png") center / clamp(14rem, 34vw, 25rem) no-repeat;
+  opacity: 0.14;
+  filter: drop-shadow(0 0 28px rgba(201, 154, 46, 0.28));
+}
+
+.hero > * {
+  position: relative;
 }
 
 .eyebrow {
@@ -531,6 +548,11 @@ h3 {
 
   .hero {
     min-height: 68vh;
+  }
+
+  .hero::before {
+    background-size: min(74vw, 18rem);
+    opacity: 0.12;
   }
 
   .profile-card {
