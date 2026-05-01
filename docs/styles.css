@@ -340,6 +340,7 @@ h3 {
 }
 
 .profile-card img {
+  justify-self: end;
   width: 88px;
   height: 88px;
   border-radius: 50%;
@@ -534,5 +535,9 @@ h3 {
 
   .profile-card {
     grid-template-columns: 1fr;
+  }
+
+  .profile-card img {
+    justify-self: center;
   }
 }
