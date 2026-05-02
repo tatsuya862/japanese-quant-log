@@ -3,14 +3,14 @@
   --bg: #050505;
   --surface: #080808;
   --surface-2: #111;
+  --surface-3: #151515;
   --line: rgba(184, 134, 24, 0.42);
-  --line-soft: rgba(232, 224, 206, 0.11);
+  --line-soft: rgba(232, 224, 206, 0.12);
   --gold: #b88618;
   --gold-soft: #c99a2e;
-  --gold-deep: #6f4d0d;
   --text: #f2f2f0;
-  --muted: rgba(242, 242, 240, 0.66);
-  --faint: rgba(242, 242, 240, 0.44);
+  --muted: rgba(242, 242, 240, 0.68);
+  --faint: rgba(242, 242, 240, 0.45);
   font-family: "Noto Sans JP", "Yu Gothic", "Hiragino Kaku Gothic ProN", system-ui, -apple-system, sans-serif;
   background: var(--bg);
   color: var(--text);
@@ -30,10 +30,12 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  text-align: center;
   background:
-    linear-gradient(180deg, rgba(184, 134, 24, 0.1), transparent 220px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
     var(--bg);
+  background-size: 96px 96px, 96px 96px, auto;
+  color: var(--text);
 }
 
 body,
@@ -55,9 +57,9 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: 0.8rem clamp(1rem, 4vw, 2.5rem);
-  background: rgba(8, 8, 8, 0.94);
-  border-bottom: 1px solid var(--line);
-  backdrop-filter: blur(12px);
+  background: rgba(5, 5, 5, 0.92);
+  border-bottom: 1px solid var(--line-soft);
+  backdrop-filter: blur(14px);
 }
 
 .brand {
@@ -75,14 +77,14 @@ a {
 .site-header nav {
   display: flex;
   align-items: center;
-  gap: clamp(0.85rem, 2vw, 1.35rem);
+  gap: clamp(0.85rem, 2vw, 1.45rem);
 }
 
 .site-header nav a {
   color: var(--muted);
   text-decoration: none;
-  font-size: 0.86rem;
-  letter-spacing: 0.02em;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
   font-weight: 300;
 }
 
@@ -96,7 +98,7 @@ a {
   height: 40px;
   padding: 0;
   border: 1px solid var(--line-soft);
-  border-radius: 2px;
+  border-radius: 0;
   background: transparent;
 }
 
@@ -109,22 +111,23 @@ a {
 }
 
 main {
-  width: min(1080px, 100%);
+  width: min(1180px, 100%);
   margin: 0 auto;
-  padding: 0 clamp(1rem, 4vw, 2rem) 4rem;
+  padding: 0 clamp(1rem, 4vw, 2.5rem) 5rem;
 }
 
 section {
-  margin-top: clamp(3rem, 7vw, 5.5rem);
+  margin-top: clamp(4rem, 8vw, 7rem);
 }
 
 .hero {
   position: relative;
-  min-height: 74vh;
+  min-height: calc(100vh - 70px);
   display: grid;
   align-content: center;
-  justify-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
   margin-top: 0;
+  padding: clamp(3rem, 7vw, 6rem) 0 clamp(2rem, 5vw, 4rem);
   border-bottom: 1px solid var(--line);
   overflow: hidden;
   isolation: isolate;
@@ -133,22 +136,31 @@ section {
 .hero::before {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: 12% 0 auto auto;
   z-index: -1;
-  background: url("assets/tatsuya-logo.png") center / clamp(14rem, 34vw, 25rem) no-repeat;
-  opacity: 0.14;
-  filter: drop-shadow(0 0 28px rgba(201, 154, 46, 0.28));
+  width: clamp(18rem, 38vw, 32rem);
+  height: clamp(18rem, 38vw, 32rem);
+  background: url("assets/tatsuya-logo.png") center / contain no-repeat;
+  opacity: 0.055;
+  filter: drop-shadow(0 0 28px rgba(201, 154, 46, 0.22));
 }
 
-.hero > * {
-  position: relative;
+.hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+}
+
+.hero-copy-block {
+  max-width: 780px;
 }
 
 .eyebrow {
-  margin: 0 0 0.65rem;
+  margin: 0 0 0.85rem;
   color: var(--gold-soft);
   font-size: 0.72rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   font-weight: 300;
   text-transform: uppercase;
 }
@@ -170,25 +182,24 @@ h3 {
 }
 
 .hero h1 {
-  max-width: 820px;
+  max-width: 860px;
   margin-bottom: 1rem;
-  font-size: clamp(2.4rem, 7vw, 5rem);
+  font-size: clamp(2.55rem, 7.2vw, 5.7rem);
 }
 
 .hero-copy {
   max-width: 720px;
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.9rem;
   color: var(--muted);
-  font-size: clamp(1rem, 2vw, 1.12rem);
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
   text-wrap: pretty;
 }
 
 .hero-cta,
-.media-buttons,
+.media-card,
 .tool-cta {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 0.75rem;
 }
 
@@ -200,61 +211,162 @@ h3 {
   min-width: 118px;
   padding: 0.58rem 1.05rem;
   border: 1px solid var(--gold);
-  border-radius: 2px;
-  color: #090806;
+  border-radius: 0;
+  color: #080806;
   text-decoration: none;
   background: var(--gold-soft);
   font-weight: 400;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   line-height: 1.2;
   cursor: pointer;
 }
 
 .btn:hover {
   border-color: #c39b4f;
-  color: #090806;
+  color: #080806;
   background: #b88618;
 }
 
-.btn.primary {
-  border-color: var(--gold);
+.btn.ghost {
+  color: var(--text);
+  background: transparent;
+}
+
+.btn.ghost:hover {
   color: #080806;
   background: var(--gold-soft);
 }
 
-.btn.primary:hover {
-  color: #080806;
-  background: #b88618;
+.prototype-lab,
+.market-card,
+.media-card,
+.profile-card,
+.contact-form,
+.principle-grid article,
+.services-grid article,
+.prototype-card,
+.market-panel,
+.market-side,
+.market-update {
+  background: rgba(8, 8, 8, 0.82);
+  border: 1px solid var(--line-soft);
+  border-radius: 0;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+}
+
+.prototype-lab {
+  padding: clamp(1.1rem, 2.5vw, 1.45rem);
+}
+
+.lab-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.lab-header .eyebrow {
+  margin: 0;
+}
+
+.lab-header span,
+.prototype-card span,
+.principle-grid span {
+  color: var(--faint);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.lab-row {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line-soft);
+  text-decoration: none;
+}
+
+.lab-row:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.lab-row span {
+  color: var(--text);
+  font-size: 0.98rem;
+}
+
+.lab-row small {
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.lab-row:hover span {
+  color: var(--gold-soft);
+}
+
+.market-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.market-strip span {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid var(--line-soft);
+  color: var(--faint);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.market-strip span:last-child {
+  border-right: 0;
 }
 
 .section-heading {
-  max-width: 700px;
-  margin: 0 auto 1.3rem;
+  max-width: 760px;
+  margin: 0 0 1.4rem;
 }
 
-.section-heading h2 {
+.section-heading h2,
+.market-card h2 {
   margin-bottom: 0.55rem;
-  font-size: clamp(1.6rem, 3.3vw, 2.5rem);
+  font-size: clamp(1.6rem, 3.3vw, 2.65rem);
 }
 
 .section-heading p,
+.market-card p,
 .market-note,
 .source-list,
 .guard-list {
   color: var(--muted);
 }
 
-.philosophy-grid,
+.principle-grid,
 .services-grid,
+.prototype-grid,
 .gallery-grid,
 .tool-grid {
   display: grid;
   gap: 1rem;
 }
 
-.philosophy-grid,
+.principle-grid,
 .services-grid {
   grid-template-columns: repeat(3, 1fr);
+}
+
+.prototype-grid {
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .gallery-grid {
@@ -265,94 +377,62 @@ h3 {
   grid-template-columns: repeat(2, 1fr);
 }
 
-.philosophy-grid article,
+.principle-grid article,
 .services-grid article,
+.prototype-card,
 .media-card,
 .market-card,
-.prototype-card,
-.feature-row,
-.tool-card,
 .contact-form,
-.profile-card,
-.market-panel,
-.market-side,
-.market-update {
-  background: rgba(12, 12, 12, 0.94);
-  border: 1px solid var(--line);
-  border-radius: 2px;
-  padding: clamp(1.1rem, 2.5vw, 1.5rem);
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+.profile-card {
+  padding: clamp(1.1rem, 2.5vw, 1.55rem);
 }
 
-.philosophy-grid h3,
-.services-grid h3,
-.tool-card h3,
-.media-card h3,
-.market-card h3,
+.prototype-card {
+  display: flex;
+  min-height: 238px;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+}
+
 .prototype-card h3,
-.feature-row h3 {
-  margin-bottom: 0.45rem;
-  font-size: 1.05rem;
+.principle-grid h3,
+.services-grid h3 {
+  margin: 0.9rem 0 0.45rem;
+  font-size: 1.03rem;
 }
 
-.philosophy-grid p,
-.services-grid p,
-.tool-card p,
-.media-card p,
-.market-card p,
 .prototype-card p,
-.feature-row p,
+.principle-grid p,
+.services-grid p,
 .profile-card p {
   color: var(--muted);
 }
 
-.gallery-grid figure {
-  margin: 0;
+.prototype-card:hover {
+  border-color: var(--line);
 }
 
-.gallery-grid img,
-.video-player {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border: 1px solid var(--line-soft);
-  border-radius: 2px;
-  background: #000;
+.prototype-card:hover span,
+.prototype-card:hover h3 {
+  color: var(--gold-soft);
 }
 
-.gallery-grid figcaption {
-  margin-top: 0.55rem;
-  color: var(--faint);
-  font-size: 0.86rem;
-}
-
-.feature-row {
-  display: flex;
+.market-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: center;
-  gap: 1.25rem;
+  gap: 1.5rem;
 }
 
-.media-card,
-.market-card,
-.prototype-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.25rem;
-}
-
-.feature-row p,
-.tool-card p {
-  margin-bottom: 1rem;
+.media-card {
+  justify-content: flex-start;
 }
 
 .profile-card {
   display: grid;
-  grid-template-columns: 88px 1fr;
+  grid-template-columns: 88px minmax(0, 1fr);
   align-items: center;
-  justify-items: center;
   gap: 1.2rem;
 }
 
@@ -369,7 +449,6 @@ h3 {
   display: grid;
   gap: 1rem;
   max-width: 640px;
-  margin: 0 auto;
 }
 
 .contact-form label {
@@ -382,14 +461,14 @@ h3 {
 .contact-form textarea {
   width: 100%;
   border: 1px solid var(--line-soft);
-  border-radius: 2px;
+  border-radius: 0;
   padding: 0.75rem 0.85rem;
   color: var(--text);
   background: #070707;
 }
 
 .site-footer {
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--line-soft);
   padding: 1.5rem;
   color: var(--faint);
   text-align: center;
@@ -405,6 +484,7 @@ h3 {
   border-bottom: 1px solid var(--line);
   display: grid;
   justify-items: center;
+  text-align: center;
 }
 
 .market-hero h1 {
@@ -422,7 +502,7 @@ h3 {
   display: inline-flex;
   padding: 0.32rem 0.65rem;
   border: 1px solid var(--line);
-  border-radius: 2px;
+  border-radius: 0;
   color: var(--gold-soft);
   font-size: 0.82rem;
 }
@@ -437,6 +517,12 @@ h3 {
 .market-update,
 .market-layout {
   margin-top: 1rem;
+}
+
+.market-update,
+.market-panel,
+.market-side {
+  padding: clamp(1.1rem, 2.5vw, 1.55rem);
 }
 
 .market-update h2,
@@ -478,6 +564,7 @@ h3 {
 .source-list,
 .guard-list {
   padding-left: 0;
+  color: var(--muted);
   list-style-position: inside;
 }
 
@@ -490,24 +577,24 @@ h3 {
   color: var(--gold-soft);
 }
 
+@media (max-width: 980px) {
+  .hero-layout,
+  .market-card {
+    grid-template-columns: 1fr;
+  }
+
+  .prototype-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 860px) {
-  .philosophy-grid,
+  .principle-grid,
   .services-grid,
   .gallery-grid,
   .tool-grid,
   .market-layout {
     grid-template-columns: 1fr;
-  }
-
-  .feature-row {
-    align-items: center;
-    flex-direction: column;
-  }
-
-  .media-card,
-  .market-card,
-  .prototype-card {
-    flex-direction: column;
   }
 
   .market-table {
@@ -535,7 +622,7 @@ h3 {
     align-items: center;
     padding: 0.75rem 1rem 1rem;
     background: rgba(5, 5, 5, 0.98);
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid var(--line-soft);
   }
 
   .site-header nav a {
@@ -547,12 +634,38 @@ h3 {
   }
 
   .hero {
-    min-height: 68vh;
+    min-height: auto;
   }
 
   .hero::before {
-    background-size: min(74vw, 18rem);
-    opacity: 0.12;
+    inset: 6rem auto auto 50%;
+    width: min(74vw, 18rem);
+    height: min(74vw, 18rem);
+    transform: translateX(-50%);
+    opacity: 0.045;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.3rem, 12vw, 4rem);
+  }
+
+  .market-strip,
+  .prototype-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .market-strip span {
+    border-right: 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .market-strip span:last-child {
+    border-bottom: 0;
+  }
+
+  .lab-row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
   }
 
   .profile-card {
@@ -560,6 +673,6 @@ h3 {
   }
 
   .profile-card img {
-    justify-self: center;
+    justify-self: start;
   }
 }
