@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>QUANT LOG by Tatsuya | AIで構造化、次世代のサービスへ</title>
   <link rel="icon" type="image/png" href="assets/favicon_16x16.png">
-  <link rel="stylesheet" href="styles.css?v=redesign-fa00fb4">
+  <link rel="stylesheet" href="styles.css?v=serif-sync-01">
 </head>
 <body>
   <header class="site-header">
     <a class="brand" href="#hero" aria-label="QUANT LOG by Tatsuya">
-      <img src="assets/tatsuya-logo.png" alt="Tatsuya Logo" class="brand-logo">
+      <span class="brand-main">QUANT LOG</span>
+      <span class="brand-sub">by Tatsuya</span>
     </a>
     <button class="menu-toggle" aria-expanded="false" aria-label="メニューを開く">
       <span></span>
@@ -28,10 +29,9 @@
 
   <main>
     <section class="hero" id="hero">
-      <div class="hero-layout">
+      <div class="hero-grid">
         <div class="hero-copy-block">
-          <p class="eyebrow">QUANT LOG by Tatsuya</p>
-          <h1>AIで構造化、次世代のサービスへ</h1>
+          <h1><span>AI</span>で構造化、<br>次世代のサービスへ</h1>
           <p class="hero-copy">Quant Log思考をベースに、サービス・プロトタイプ・市場観測をひとつの実装可能なシステムとして整理する。</p>
           <div class="hero-cta">
             <a class="btn primary" href="#contact">相談する</a>
@@ -40,65 +40,123 @@
         </div>
 
         <aside class="prototype-lab" aria-label="Prototype Lab">
-          <div class="lab-header">
-            <p class="eyebrow">Prototype Lab</p>
-            <span>Live Index</span>
+          <div class="lab-heading">
+            <h2>Prototype Lab</h2>
+            <span></span>
+            <a href="#prototype">すべてのプロトタイプを見る</a>
           </div>
           <a class="lab-row" href="market.html">
-            <span>Market Brief</span>
-            <small>公開可能な市場観測</small>
+            <span class="lab-no">01</span>
+            <strong>Market Brief</strong>
+            <small>株式・債券・金利・指数・為替の<br>事実ベースのマーケット観測</small>
+            <em>公開中</em>
+            <b>→</b>
           </a>
           <a class="lab-row" href="https://tatsuya862.github.io/timer_app/" target="_blank" rel="noreferrer">
-            <span>Timer</span>
-            <small>集中と休憩の設計</small>
+            <span class="lab-no">02</span>
+            <strong>Timer</strong>
+            <small>トレード・集中・ルーティンのための<br>カスタムタイマー</small>
+            <em>公開中</em>
+            <b>→</b>
           </a>
           <a class="lab-row" href="https://tatsuya862.github.io/wealth_app/" target="_blank" rel="noreferrer">
-            <span>Wealth</span>
-            <small>支出配分の可視化</small>
+            <span class="lab-no">03</span>
+            <strong>Wealth</strong>
+            <small>支出管理と資産の可視化を支援する<br>パーソナル財務アプリ</small>
+            <em>公開中</em>
+            <b>→</b>
           </a>
           <a class="lab-row" href="https://tatsuya862.github.io/prottype_audio-texts/" target="_blank" rel="noreferrer">
-            <span>Drive Study</span>
-            <small>移動時間の学習化</small>
+            <span class="lab-no">04</span>
+            <strong>Drive Study</strong>
+            <small>音声×テキストで学習を最適化する<br>ドライブ学習システム</small>
+            <em>実験中</em>
+            <b>→</b>
           </a>
+          <a class="lab-more" href="#prototype">プロトタイプについて <span>→</span></a>
         </aside>
-      </div>
-
-      <div class="market-strip" aria-label="Market Snapshot">
-        <span>Market Snapshot</span>
-        <span>Structure</span>
-        <span>Prototype</span>
-        <span>Research</span>
       </div>
     </section>
 
-    <section class="philosophy" id="philosophy">
-      <div class="section-heading">
-        <p class="eyebrow">Philosophy</p>
-        <h2>量から質の設計</h2>
-        <p>量を回し、観察し、質へ変換する。思考、制作、市場観測をログとして蓄積し、再利用可能な構造へ落とし込む。</p>
+    <section class="market-snapshot" aria-label="Market Snapshot">
+      <div>
+        <h2>Market Snapshot</h2>
+        <small>05.02 12:00更新</small>
       </div>
-      <div class="principle-grid">
-        <article>
-          <span>01</span>
-          <h3>思考のログ化</h3>
-          <p>日々の観察と判断を残し、次の制作や検証に接続する。</p>
-        </article>
-        <article>
-          <span>02</span>
-          <h3>サービス導線の設計</h3>
-          <p>見た目だけでなく、依頼、検証、公開までの流れを整理する。</p>
-        </article>
-        <article>
-          <span>03</span>
-          <h3>実装可能な形へ</h3>
-          <p>アイディアを小さなプロトタイプに変え、継続的に改善する。</p>
-        </article>
+      <dl>
+        <div>
+          <dt>日経平均</dt>
+          <dd>36,378.32 <span class="down">-0.61%</span></dd>
+        </div>
+        <div>
+          <dt>米国10年金利</dt>
+          <dd>4.29% <span class="up">+0.02</span></dd>
+        </div>
+        <div>
+          <dt>USD / JPY</dt>
+          <dd>155.24 <span class="down">-0.19%</span></dd>
+        </div>
+        <div>
+          <dt>S&amp;P 500</dt>
+          <dd>5,127.79 <span class="up">+0.48%</span></dd>
+        </div>
+        <div>
+          <dt>Gold</dt>
+          <dd>2,317.42 <span class="up">+0.35%</span></dd>
+        </div>
+      </dl>
+      <a href="market.html">もっと見る <span>→</span></a>
+    </section>
+
+    <section class="philosophy" id="philosophy">
+      <div class="philosophy-title">
+        <div>
+          <p class="section-label">Philosophy</p>
+          <h2>再現性のある思考と検証を、<br>資産となる形に。</h2>
+        </div>
+        <p>市場・データ・意思決定・実行・検証のプロセスを構造化し、個人のスキルを再現性のある資産へと昇華させる。そのためのサービス・コンテンツ・プロトタイプを継続的に開発し、公開していきます。</p>
+      </div>
+      <div class="process-panel">
+        <table>
+          <thead>
+            <tr>
+              <th>Phase</th>
+              <th>Focus</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>01</td>
+              <td>観測</td>
+              <td>市場・データの事実整理</td>
+            </tr>
+            <tr>
+              <td>02</td>
+              <td>分析</td>
+              <td>構造化・仮説・シナリオ</td>
+            </tr>
+            <tr>
+              <td>03</td>
+              <td>実行</td>
+              <td>ルール・判断・実行</td>
+            </tr>
+            <tr>
+              <td>04</td>
+              <td>検証</td>
+              <td>検証・改善・資産化</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="chart-line" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
       </div>
     </section>
 
     <section class="prototype" id="prototype">
       <div class="section-heading">
-        <p class="eyebrow">Prototype</p>
+        <p class="section-label">Prototype</p>
         <h2>実装を蓄積する場所</h2>
         <p>単発のアプリではなく、Quant Logの考え方を検証するためのプロトタイプ群として整理します。</p>
       </div>
@@ -128,7 +186,7 @@
 
     <section class="services" id="services">
       <div class="section-heading">
-        <p class="eyebrow">Services</p>
+        <p class="section-label">Services</p>
         <h2>構造化と実装支援</h2>
         <p>個人や小規模事業の世界観、導線、プロトタイプを、公開できる形まで整理します。</p>
       </div>
@@ -148,34 +206,11 @@
       </div>
     </section>
 
-    <section class="market" id="market">
-      <div class="market-card">
-        <div>
-          <p class="eyebrow">Market Brief</p>
-          <h2>公開可能な市場観測</h2>
-          <p>日々のデイリーログから公開可能な観察だけを抽出し、実際の市場データと照合して掲載します。個人運用指標、口座情報、独自判断ルールなどの機密情報は掲載しません。</p>
-        </div>
-        <a class="btn primary" href="market.html">Market Briefを見る</a>
-      </div>
-    </section>
-
-    <section class="media" id="media">
-      <div class="section-heading">
-        <p class="eyebrow">Media</p>
-        <h2>思考と制作のログ</h2>
-        <p>制作、検証、発信を継続的に蓄積します。</p>
-      </div>
-      <div class="media-card">
-        <a class="btn ghost" href="https://www.instagram.com/tatsuyaaistructure/?hl=ja" target="_blank" rel="noreferrer">Instagramを見る</a>
-        <a class="btn ghost" href="https://www.youtube.com/channel/UCvpdFdz4iCD-degYzeuuDBQ" target="_blank" rel="noreferrer">YouTubeを見る</a>
-      </div>
-    </section>
-
     <section class="profile" id="profile">
       <div class="profile-card">
         <img src="assets/profile.jpg" alt="プロフィール写真">
         <div>
-          <p class="eyebrow">Profile</p>
+          <p class="section-label">Profile</p>
           <p>人生における資源 / リスクを定量化し、AIを使ったLP・画像・動画制作まで設計します。</p>
           <p>トレーダーとしての金融視点と実データ（時間／収益／AI活用）をもとに、外見だけでなく成果に直結するアウトプットを提供。</p>
           <p>2018年からFXトレーダー。感情よりも、損失・確率・長期視点で判断します。</p>
@@ -185,7 +220,7 @@
 
     <section class="contact" id="contact">
       <div class="section-heading">
-        <p class="eyebrow">Contact</p>
+        <p class="section-label">Contact</p>
         <h2>プロジェクトの相談はこちら</h2>
       </div>
       <form action="https://formspree.io/f/{your-form-id}" method="POST" class="contact-form">
