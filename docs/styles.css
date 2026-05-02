@@ -476,30 +476,55 @@ h3 {
 .chart-line::before {
   content: "";
   position: absolute;
-  right: 2rem;
-  bottom: 2.2rem;
-  width: 70%;
-  height: 62%;
-  clip-path: polygon(0 82%, 12% 56%, 21% 55%, 33% 45%, 43% 38%, 55% 18%, 64% 32%, 75% 12%, 86% 2%, 100% 0, 100% 6%, 86% 8%, 75% 18%, 64% 38%, 55% 24%, 43% 44%, 33% 51%, 21% 61%, 12% 62%, 0 88%);
-  background: var(--gold);
+  right: 1.7rem;
+  bottom: 1.65rem;
+  left: 1.7rem;
+  height: 1px;
+  background: rgba(209, 161, 58, 0.32);
 }
 
 .chart-line i {
   position: absolute;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--gold-soft);
+  bottom: var(--low);
+  width: clamp(8px, 1.1vw, 12px);
+  height: calc(var(--high) - var(--low));
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, transparent 0 calc(var(--body-top) - 1px), rgba(209, 161, 58, 0.86) calc(var(--body-top) - 1px) calc(var(--body-bottom) + 1px), transparent calc(var(--body-bottom) + 1px));
 }
 
-.chart-line i:nth-child(1) { left: 23%; bottom: 26%; }
-.chart-line i:nth-child(2) { left: 29%; bottom: 41%; }
-.chart-line i:nth-child(3) { left: 40%; bottom: 48%; }
-.chart-line i:nth-child(4) { left: 50%; bottom: 62%; }
-.chart-line i:nth-child(5) { left: 60%; bottom: 49%; }
-.chart-line i:nth-child(6) { left: 70%; bottom: 67%; }
-.chart-line i:nth-child(7) { left: 80%; bottom: 79%; }
-.chart-line i:nth-child(8) { left: 91%; bottom: 87%; }
+.chart-line i::before,
+.chart-line i::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.chart-line i::before {
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(209, 161, 58, 0.92);
+}
+
+.chart-line i::after {
+  top: var(--body-top);
+  width: 100%;
+  height: calc(var(--body-bottom) - var(--body-top));
+  min-height: 12px;
+  border: 1px solid rgba(209, 161, 58, 0.98);
+  background: rgba(184, 134, 24, 0.68);
+  box-shadow: 0 0 18px rgba(184, 134, 24, 0.2);
+}
+
+.chart-line i:nth-child(1) { left: 18%; --low: 24%; --high: 54%; --body-top: 42%; --body-bottom: 76%; }
+.chart-line i:nth-child(2) { left: 28%; --low: 31%; --high: 68%; --body-top: 22%; --body-bottom: 56%; }
+.chart-line i:nth-child(3) { left: 38%; --low: 29%; --high: 60%; --body-top: 44%; --body-bottom: 78%; }
+.chart-line i:nth-child(4) { left: 48%; --low: 44%; --high: 79%; --body-top: 18%; --body-bottom: 50%; }
+.chart-line i:nth-child(5) { left: 58%; --low: 38%; --high: 73%; --body-top: 43%; --body-bottom: 74%; }
+.chart-line i:nth-child(6) { left: 68%; --low: 52%; --high: 86%; --body-top: 17%; --body-bottom: 48%; }
+.chart-line i:nth-child(7) { left: 78%; --low: 57%; --high: 90%; --body-top: 37%; --body-bottom: 69%; }
+.chart-line i:nth-child(8) { left: 88%; --low: 62%; --high: 94%; --body-top: 18%; --body-bottom: 52%; }
 
 .section-heading {
   max-width: 760px;
