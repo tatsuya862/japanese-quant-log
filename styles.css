@@ -670,10 +670,15 @@ h3 {
   border: 1px solid var(--line);
 }
 
-.contact-form {
+.contact-form,
+.contact-links {
   display: grid;
   gap: 1rem;
   max-width: 640px;
+}
+
+.contact-links {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .contact-form label {
@@ -949,6 +954,10 @@ h3 {
 
   .profile-card img {
     justify-self: start;
+  }
+
+  .contact-links {
+    grid-template-columns: 1fr;
   }
 
   .market-table {
