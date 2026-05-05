@@ -169,7 +169,7 @@ function autoPlaceWhiteSpaces(targetBlocks = blocks, targetSettings = settings) 
     if (hasRequiredWhiteSpace(day.key, nextBlocks)) return;
     const slot = findAvailableWhiteSpaceSlot(day.key, nextBlocks, targetSettings);
     if (!slot) {
-      failedDays.push(day.label);
+      failedDays.push(day.short);
       return;
     }
     nextBlocks.push(createBlock({
@@ -178,11 +178,11 @@ function autoPlaceWhiteSpaces(targetBlocks = blocks, targetSettings = settings) 
       endTime: slot.endTime,
       type: "white_space",
       purpose: "reflection",
-      memo: "自動配置"
+      memo: ""
     }));
   });
 
-  lastWarnings = failedDays.map((day) => `${day}に2時間の余白を自動配置できませんでした。`);
+  lastWarnings = failedDays.map((day) => `${day}: 配置不可`);
   return nextBlocks;
 }
 
@@ -240,37 +240,37 @@ function getFormData(form) {
 
 function validateTimeOrder(block) {
   if (timeToMinutes(block.endTime) <= timeToMinutes(block.startTime)) {
-    return "終了時刻は開始時刻より後にしてください。";
+    return "時刻が不正です。";
   }
   return "";
 }
 
 function validateBlock(block) {
   if (block.type !== "white_space" && !block.title.trim()) {
-    return "タイトルを入力してください。";
+    return "種類を選んでください。";
   }
 
   const timeOrderError = validateTimeOrder(block);
   if (timeOrderError) return timeOrderError;
 
   if (!isWithinWakeSleep(block.day, block.startTime, block.endTime, settings)) {
-    return "起床時刻から就寝時刻までの間に配置してください。";
+    return "時間帯の範囲外です。";
   }
 
   if (block.type === "white_space" && getDurationMinutes(block) !== 120) {
-    return "余白時間は必ず連続2時間で設定してください。";
+    return "余白は2時間です。";
   }
 
   if (block.type !== "fixed" && getCountableBlocksByDay(block.day).length >= 3) {
-    return "この日はすでに3ボックス使用しています。これ以上予定を追加できません。";
+    return "3枠使用済みです。";
   }
 
   if (block.type === "free" && getFreeBlocksByDay(block.day).length >= 2) {
-    return "自由予定は1日最大2つまでです。";
+    return "TOP3は残り0です。";
   }
 
   if (hasConflict(block, blocks)) {
-    return "この時間帯は既存の予定と重複しています。";
+    return "時間が重複しています。";
   }
 
   return "";
@@ -291,7 +291,7 @@ function addBlock(block, eventName) {
     day_of_week: block.day,
     action_type: "add"
   });
-  showMessage("予定を追加しました。", "success");
+  showMessage("追加しました。", "success");
   render();
 }
 
@@ -346,6 +346,7 @@ function renderHeader() {
   document.querySelector("[data-week-period]").textContent = getWeekPeriodLabel();
   document.querySelector("[data-white-space-rate]").textContent = `${summary.protectedDays}/7日`;
   document.querySelector("[data-box-summary]").textContent = `${summary.countableTotal}/${summary.capacityTotal}枠`;
+  document.querySelector("[data-warning-count]").textContent = `${summary.missingDays.length + lastWarnings.length}`;
 }
 
 function getWeekPeriodLabel() {
@@ -440,28 +441,28 @@ function getBlockTypeLabel(block) {
 function getBlockMeta(block) {
   if (block.type === "white_space") return PURPOSE_LABELS[block.purpose] || "内省";
   if (block.type === "free") return CATEGORY_LABELS[block.category] || "その他";
-  return block.memo || "拘束時間";
+  return "拘束";
 }
 
 function renderWarnings() {
   const warningBox = document.querySelector("[data-warning-list]");
-  const missingDays = getMissingWhiteSpaceDays().map(dayLabel);
+  const missingDays = getMissingWhiteSpaceDays().map((dayKey) => DAYS.find((day) => day.key === dayKey)?.short || dayKey);
   const warnings = [
-    ...missingDays.map((day) => `${day}に2時間の余白がありません。`),
+    ...missingDays.map((day) => `${day}: 余白なし`),
     ...lastWarnings
   ];
 
   warningBox.innerHTML = "";
 
   if (!warnings.length) {
-    warningBox.innerHTML = "<p>すべての日で2時間の余白が確保されています。</p>";
+    warningBox.innerHTML = "<p>警告なし</p>";
     warningBox.dataset.state = "ok";
     return;
   }
 
   warningBox.dataset.state = "warning";
   warningBox.innerHTML = `
-    <strong>余白未確保</strong>
+    <strong>警告</strong>
     <ul>${warnings.map((warning) => `<li>${warning}</li>`).join("")}</ul>
   `;
 }
@@ -491,10 +492,10 @@ function renderSummary() {
   categoryList.innerHTML = categoryRows.join("");
 
   const pressure = document.querySelector("[data-pressure-warning]");
-  const fullDays = DAYS.filter((day) => getCountableBlocksByDay(day.key).length >= 3).map((day) => day.label);
+  const fullDays = DAYS.filter((day) => getCountableBlocksByDay(day.key).length >= 3).map((day) => day.short);
   pressure.textContent = fullDays.length
-    ? `${fullDays.join("、")}は3枠使用済みです。予定を追加する前に、減らせる予定がないか確認してください。`
-    : "詰め込みすぎの警告はありません。";
+    ? `${fullDays.join("、")}: 3枠使用済み`
+    : "なし";
 }
 
 function renderSettings() {
@@ -529,7 +530,7 @@ function bindForms() {
       startTime: data.fixedStart,
       endTime: data.fixedEnd,
       type: "fixed",
-      memo: data.fixedMemo.trim()
+      memo: ""
     }), "fixed_block_add");
   });
 
@@ -544,7 +545,7 @@ function bindForms() {
       endTime: data.whiteEnd,
       type: "white_space",
       purpose: data.whitePurpose,
-      memo: data.whiteMemo.trim()
+      memo: ""
     }), "white_space_add");
   });
 
@@ -553,13 +554,13 @@ function bindForms() {
     clearMessage();
     const data = getFormData(event.currentTarget);
     addBlock(createBlock({
-      title: data.freeTitle.trim(),
+      title: CATEGORY_LABELS[data.freeCategory] || "その他",
       day: data.freeDay,
       startTime: data.freeStart,
       endTime: data.freeEnd,
       type: "free",
       category: data.freeCategory,
-      memo: data.freeMemo.trim()
+      memo: ""
     }), "free_block_add");
   });
 }
@@ -576,7 +577,7 @@ function bindActions() {
     blocks = autoPlaceWhiteSpaces(blocks, settings);
     saveState();
     trackPrototypeEvent("auto_place_white_space_click", { action_type: "auto_place" });
-    showMessage(lastWarnings.length ? "配置できない曜日があります。" : "未確保日の余白を自動配置しました。", lastWarnings.length ? "error" : "success");
+    showMessage(lastWarnings.length ? "配置不可あり" : "配置しました。", lastWarnings.length ? "error" : "success");
     render();
   });
 
@@ -587,7 +588,7 @@ function bindActions() {
     saveState();
     resetForms();
     trackPrototypeEvent("reset_white_space_calendar_click", { action_type: "reset" });
-    showMessage("初期状態に戻しました。", "success");
+    showMessage("リセットしました。", "success");
     render();
   });
 
@@ -595,12 +596,12 @@ function bindActions() {
     event.preventDefault();
     const data = getFormData(event.currentTarget);
     if (timeToMinutes(data.wakeTime) >= timeToMinutes(data.sleepTime)) {
-      showMessage("終了時刻は開始時刻より後にしてください。", "error");
+      showMessage("時刻が不正です。", "error");
       return;
     }
     settings = DAYS.map((day) => ({ day: day.key, wakeTime: data.wakeTime, sleepTime: data.sleepTime }));
     saveState();
-    showMessage("起床・就寝時刻を更新しました。", "success");
+    showMessage("更新しました。", "success");
     render();
   });
 }
