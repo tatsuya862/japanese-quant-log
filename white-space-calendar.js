@@ -3,13 +3,13 @@ const PROTOTYPE_NAME = "White Space Calendar";
 const STORAGE_KEY = "quant_log_white_space_calendar_v1";
 
 const DAYS = [
+  { key: "sunday", label: "日曜日", short: "日" },
   { key: "monday", label: "月曜日", short: "月" },
   { key: "tuesday", label: "火曜日", short: "火" },
   { key: "wednesday", label: "水曜日", short: "水" },
   { key: "thursday", label: "木曜日", short: "木" },
   { key: "friday", label: "金曜日", short: "金" },
-  { key: "saturday", label: "土曜日", short: "土" },
-  { key: "sunday", label: "日曜日", short: "日" }
+  { key: "saturday", label: "土曜日", short: "土" }
 ];
 
 const PURPOSE_LABELS = {
@@ -350,15 +350,30 @@ function renderHeader() {
 }
 
 function getWeekPeriodLabel() {
+  const { start, end } = getWeekRange();
+  return `${formatMonthDay(start)} - ${formatMonthDay(end)}`;
+}
+
+function getWeekRange() {
   const now = new Date();
-  const currentDay = now.getDay();
-  const mondayOffset = currentDay === 0 ? -6 : 1 - currentDay;
-  const monday = new Date(now);
-  monday.setDate(now.getDate() + mondayOffset);
-  const sunday = new Date(monday);
-  sunday.setDate(monday.getDate() + 6);
-  const format = (date) => `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, "0")}.${String(date.getDate()).padStart(2, "0")}`;
-  return `${format(monday)} - ${format(sunday)}`;
+  const start = new Date(now);
+  start.setDate(now.getDate() - now.getDay());
+  const end = new Date(start);
+  end.setDate(start.getDate() + 6);
+  return { start, end };
+}
+
+function getWeekDates() {
+  const { start } = getWeekRange();
+  return DAYS.map((_, index) => {
+    const date = new Date(start);
+    date.setDate(start.getDate() + index);
+    return date;
+  });
+}
+
+function formatMonthDay(date) {
+  return `${String(date.getMonth() + 1).padStart(2, "0")}/${String(date.getDate()).padStart(2, "0")}`;
 }
 
 function renderCalendar() {
@@ -372,6 +387,7 @@ function renderCalendar() {
   board.style.setProperty("--slot-count", slotCount);
   board.style.setProperty("--row-height", `${rowHeight}px`);
   board.style.gridTemplateRows = `52px repeat(${slotCount}, var(--row-height))`;
+  const weekDates = getWeekDates();
 
   const corner = document.createElement("div");
   corner.className = "wsc-calendar-corner";
@@ -381,28 +397,26 @@ function renderCalendar() {
   DAYS.forEach((day, index) => {
     const dayHeader = document.createElement("div");
     dayHeader.className = "wsc-day-header";
-    const countable = getCountableBlocksByDay(day.key).length;
-    const hasWhiteSpace = hasRequiredWhiteSpace(day.key);
     dayHeader.style.gridColumn = String(index + 2);
     dayHeader.innerHTML = `
       <strong>${day.short}</strong>
-      <span>${countable}/3枠</span>
-      <em>${hasWhiteSpace ? "余白確保済み" : "余白未確保"}</em>
+      <span>${formatMonthDay(weekDates[index])}</span>
     `;
     board.appendChild(dayHeader);
   });
 
   for (let i = 0; i < slotCount; i += 1) {
     const minutes = wakeStart + i * 30;
+    const isMajorRow = (minutes - wakeStart) % 120 === 0;
     const label = document.createElement("div");
-    label.className = "wsc-time-label";
+    label.className = `wsc-time-label${isMajorRow ? " wsc-major-row" : ""}`;
     label.style.gridRow = String(i + 2);
-    label.textContent = minutes % 60 === 0 ? minutesToTime(minutes) : "";
+    label.textContent = isMajorRow ? minutesToTime(minutes) : "";
     board.appendChild(label);
 
     DAYS.forEach((day, dayIndex) => {
       const cell = document.createElement("div");
-      cell.className = "wsc-calendar-cell";
+      cell.className = `wsc-calendar-cell${isMajorRow ? " wsc-major-row" : ""}`;
       cell.style.gridColumn = String(dayIndex + 2);
       cell.style.gridRow = String(i + 2);
       board.appendChild(cell);
@@ -419,29 +433,21 @@ function renderCalendar() {
     item.className = `wsc-block wsc-block-${block.type}`;
     item.style.gridColumn = String(dayIndex + 2);
     item.style.gridRow = `${2 + (start - wakeStart) / 30} / ${2 + (end - wakeStart) / 30}`;
+    const displayLabel = getBlockDisplayLabel(block);
     item.innerHTML = `
       <div>
-        <span>${getBlockTypeLabel(block)}</span>
-        <strong>${block.title}</strong>
-        <small>${block.startTime}-${block.endTime}</small>
-        <em>${getBlockMeta(block)}</em>
+        <strong>${displayLabel}</strong>
       </div>
-      <button type="button" data-delete-block="${block.id}" aria-label="${block.title}を削除">削除</button>
+      <button type="button" data-delete-block="${block.id}" aria-label="${displayLabel}を削除">×</button>
     `;
     board.appendChild(item);
   });
 }
 
-function getBlockTypeLabel(block) {
+function getBlockDisplayLabel(block) {
   if (block.type === "fixed") return "固定";
   if (block.type === "white_space") return "余白";
-  return "自由";
-}
-
-function getBlockMeta(block) {
-  if (block.type === "white_space") return PURPOSE_LABELS[block.purpose] || "内省";
-  if (block.type === "free") return CATEGORY_LABELS[block.category] || "その他";
-  return "拘束";
+  return CATEGORY_LABELS[block.category] || block.title || "TOP3";
 }
 
 function renderWarnings() {
@@ -476,20 +482,24 @@ function renderSummary() {
   document.querySelector("[data-missing-days]").textContent = missingDays.length ? missingDays.map(dayLabel).join("、") : "なし";
 
   const dayCounts = document.querySelector("[data-day-counts]");
-  dayCounts.innerHTML = DAYS.map((day) => {
-    const count = getCountableBlocksByDay(day.key).length;
-    const tone = count >= 3 ? "full" : count === 0 ? "empty" : "normal";
-    return `<li data-tone="${tone}"><span>${day.short}</span><strong>${count}/3</strong></li>`;
-  }).join("");
+  if (dayCounts) {
+    dayCounts.innerHTML = DAYS.map((day) => {
+      const count = getCountableBlocksByDay(day.key).length;
+      const tone = count >= 3 ? "full" : count === 0 ? "empty" : "normal";
+      return `<li data-tone="${tone}"><span>${day.short}</span><strong>${count}/3</strong></li>`;
+    }).join("");
+  }
 
   const categoryList = document.querySelector("[data-category-hours]");
-  const categoryRows = Object.entries(CATEGORY_LABELS).map(([category, label]) => {
-    const hours = blocks
-      .filter((block) => block.type === "free" && block.category === category)
-      .reduce((total, block) => total + getDurationHours(block), 0);
-    return `<li><span>${label}</span><strong>${hours.toFixed(1)}h</strong></li>`;
-  });
-  categoryList.innerHTML = categoryRows.join("");
+  if (categoryList) {
+    const categoryRows = Object.entries(CATEGORY_LABELS).map(([category, label]) => {
+      const hours = blocks
+        .filter((block) => block.type === "free" && block.category === category)
+        .reduce((total, block) => total + getDurationHours(block), 0);
+      return `<li><span>${label}</span><strong>${hours.toFixed(1)}h</strong></li>`;
+    });
+    categoryList.innerHTML = categoryRows.join("");
+  }
 
   const pressure = document.querySelector("[data-pressure-warning]");
   const fullDays = DAYS.filter((day) => getCountableBlocksByDay(day.key).length >= 3).map((day) => day.short);
@@ -514,9 +524,9 @@ function render() {
 
 function resetForms() {
   document.querySelectorAll("form[data-block-form]").forEach((form) => form.reset());
-  document.querySelector("[name='fixedDay']").value = "monday";
-  document.querySelector("[name='whiteDay']").value = "monday";
-  document.querySelector("[name='freeDay']").value = "monday";
+  document.querySelector("[name='fixedDay']").value = "sunday";
+  document.querySelector("[name='whiteDay']").value = "sunday";
+  document.querySelector("[name='freeDay']").value = "sunday";
 }
 
 function bindForms() {
@@ -538,13 +548,14 @@ function bindForms() {
     event.preventDefault();
     clearMessage();
     const data = getFormData(event.currentTarget);
+    const startMinutes = timeToMinutes(data.whiteStart);
     addBlock(createBlock({
       title: "余白時間",
       day: data.whiteDay,
       startTime: data.whiteStart,
-      endTime: data.whiteEnd,
+      endTime: minutesToTime(startMinutes + 120),
       type: "white_space",
-      purpose: data.whitePurpose,
+      purpose: "reflection",
       memo: ""
     }), "white_space_add");
   });

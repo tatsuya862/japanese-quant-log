@@ -892,7 +892,7 @@ h3 {
 
 .wsc-principles {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   border-bottom: 1px solid var(--line-soft);
 }
 
@@ -1005,6 +1005,10 @@ h3 {
   gap: 0.75rem;
 }
 
+.wsc-time-pair.compact-one {
+  grid-template-columns: 1fr;
+}
+
 .wsc-submit {
   min-height: 42px;
   border: 1px solid var(--line);
@@ -1090,9 +1094,7 @@ h3 {
 }
 
 .wsc-calendar-corner,
-.wsc-day-header,
-.wsc-time-label,
-.wsc-calendar-cell {
+.wsc-day-header {
   border-right: 1px solid var(--line-soft);
   border-bottom: 1px solid var(--line-soft);
 }
@@ -1156,17 +1158,28 @@ h3 {
   text-align: right;
   font-family: var(--sans);
   font-size: 0.72rem;
+  border-right: 1px solid var(--line-soft);
+  border-bottom: 1px solid transparent;
 }
 
 .wsc-calendar-cell {
   min-height: var(--row-height);
+  border-right: 1px solid var(--line-soft);
+  border-bottom: 1px solid transparent;
   background: rgba(255, 255, 255, 0.012);
+}
+
+.wsc-time-label.wsc-major-row,
+.wsc-calendar-cell.wsc-major-row {
+  border-top: 1px solid var(--line-soft);
+  border-bottom-color: var(--line-soft);
 }
 
 .wsc-block {
   z-index: 5;
   display: flex;
   min-height: 0;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 0.4rem;
   margin: 2px;
@@ -1200,7 +1213,7 @@ h3 {
   color: var(--text);
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   font-weight: 300;
   line-height: 1.25;
 }
