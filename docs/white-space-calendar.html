@@ -6,7 +6,7 @@
   <title>余白カレンダー | QUANT LOG by Tatsuya</title>
   <meta name="description" content="予定を詰めるためではなく、空白を守るための週間カレンダー。1日最大3ボックスに制限し、そのうち1つは必ず2時間の余白として確保します。">
   <link rel="icon" type="image/png" href="assets/favicon_16x16.png">
-  <link rel="stylesheet" href="styles.css?v=white-space-calendar-01">
+  <link rel="stylesheet" href="styles.css?v=white-space-calendar-02">
 </head>
 <body>
   <header class="site-header">
@@ -33,8 +33,8 @@
     <section class="wsc-hero">
       <div>
         <p class="section-label">White Space Calendar</p>
-        <h1>余白カレンダー</h1>
-        <p class="wsc-lead">空白は、先に確保する。</p>
+        <h1>余白支援アプリ</h1>
+        <p class="wsc-lead">人生の余白を取り戻す</p>
       </div>
       <dl class="wsc-hero-stats">
         <div>
@@ -55,7 +55,6 @@
     <section class="wsc-principles" aria-label="余白カレンダーの思想">
       <p>1日3枠。余白2時間は必須。</p>
       <p data-week-period>----</p>
-      <p>追加する前に、減らす。</p>
     </section>
 
     <section class="wsc-app-shell" aria-label="余白カレンダーアプリ">
@@ -83,7 +82,7 @@
         </section>
 
         <section class="wsc-panel">
-          <h2>固定</h2>
+          <h2>固定ブロック</h2>
           <form class="wsc-form" data-block-form data-fixed-form>
             <label>
               種類
@@ -99,13 +98,13 @@
             <label>
               曜日
               <select name="fixedDay">
+                <option value="sunday">日曜日</option>
                 <option value="monday">月曜日</option>
                 <option value="tuesday">火曜日</option>
                 <option value="wednesday">水曜日</option>
                 <option value="thursday">木曜日</option>
                 <option value="friday">金曜日</option>
                 <option value="saturday">土曜日</option>
-                <option value="sunday">日曜日</option>
               </select>
             </label>
             <div class="wsc-time-pair">
@@ -128,40 +127,27 @@
             <label>
               曜日
               <select name="whiteDay">
+                <option value="sunday">日曜日</option>
                 <option value="monday">月曜日</option>
                 <option value="tuesday">火曜日</option>
                 <option value="wednesday">水曜日</option>
                 <option value="thursday">木曜日</option>
                 <option value="friday">金曜日</option>
                 <option value="saturday">土曜日</option>
-                <option value="sunday">日曜日</option>
               </select>
             </label>
-            <div class="wsc-time-pair">
+            <div class="wsc-time-pair compact-one">
               <label>
                 開始
                 <input type="time" name="whiteStart" value="18:00" step="1800" required>
               </label>
-              <label>
-                終了
-                <input type="time" name="whiteEnd" value="20:00" step="1800" required>
-              </label>
             </div>
-            <label>
-              目的
-              <select name="whitePurpose">
-                <option value="recovery">回復</option>
-                <option value="thinking">思考</option>
-                <option value="creation">創造</option>
-                <option value="reflection">内省</option>
-              </select>
-            </label>
             <button class="wsc-submit" type="submit">追加</button>
           </form>
         </section>
 
         <section class="wsc-panel">
-          <h2>TOP3</h2>
+          <h2>TOP3アクション</h2>
           <form class="wsc-form" data-block-form data-free-form>
             <label>
               カテゴリ
@@ -180,13 +166,13 @@
             <label>
               曜日
               <select name="freeDay">
+                <option value="sunday">日曜日</option>
                 <option value="monday">月曜日</option>
                 <option value="tuesday">火曜日</option>
                 <option value="wednesday">水曜日</option>
                 <option value="thursday">木曜日</option>
                 <option value="friday">金曜日</option>
                 <option value="saturday">土曜日</option>
-                <option value="sunday">日曜日</option>
               </select>
             </label>
             <div class="wsc-time-pair">
@@ -207,7 +193,7 @@
       <section class="wsc-calendar-area">
         <div class="wsc-warning" data-warning-list aria-live="polite"></div>
         <div class="wsc-calendar-scroll">
-          <div class="wsc-calendar-board" data-calendar-board aria-label="月曜から日曜までの週間カレンダー"></div>
+          <div class="wsc-calendar-board" data-calendar-board aria-label="日曜から土曜までの週間カレンダー"></div>
         </div>
       </section>
     </section>
@@ -215,7 +201,7 @@
     <section class="wsc-summary" aria-label="週次サマリー">
       <div class="section-heading">
         <p class="section-label">Weekly Summary</p>
-        <h2>サマリー</h2>
+        <h2>ダッシュボード</h2>
       </div>
       <div class="wsc-summary-grid">
         <article>
@@ -243,14 +229,18 @@
           <h3>詰め込みすぎ警告</h3>
           <p data-pressure-warning>----</p>
         </section>
+        <!-- Future display candidate: daily used box counts.
         <section>
           <h3>各日の使用ボックス数</h3>
           <ul class="wsc-day-counts" data-day-counts></ul>
         </section>
+        -->
+        <!-- Future display candidate: category totals.
         <section>
           <h3>カテゴリ別の自由予定時間</h3>
           <ul class="wsc-category-hours" data-category-hours></ul>
         </section>
+        -->
       </div>
     </section>
   </main>
@@ -260,7 +250,7 @@
     <p>©2025 Quant-Log by Tatsuya</p>
   </footer>
 
-  <script src="white-space-calendar.js?v=white-space-calendar-01"></script>
+  <script src="white-space-calendar.js?v=white-space-calendar-02"></script>
   <script>
     const toggle = document.querySelector('.menu-toggle');
     toggle?.addEventListener('click', () => {
