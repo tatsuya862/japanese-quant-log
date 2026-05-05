@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>余白カレンダー | QUANT LOG by Tatsuya</title>
+  <meta name="description" content="予定を詰めるためではなく、空白を守るための週間カレンダー。1日最大3ボックスに制限し、そのうち1つは必ず2時間の余白として確保します。">
+  <link rel="icon" type="image/png" href="assets/favicon_16x16.png">
+  <link rel="stylesheet" href="styles.css?v=white-space-calendar-01">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html#hero" aria-label="QUANT LOG by Tatsuya">
+      <span class="brand-main">QUANT LOG</span>
+      <span class="brand-sub">by Tatsuya</span>
+    </a>
+    <button class="menu-toggle" aria-expanded="false" aria-label="メニューを開く">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav>
+      <a href="index.html#philosophy">Philosophy</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#media">Media</a>
+      <a href="market.html">Market</a>
+      <a href="index.html#prototype">Prototype</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="wsc-page">
+    <section class="wsc-hero">
+      <div>
+        <p class="section-label">Prototype / White Space Calendar</p>
+        <h1>余白カレンダー</h1>
+        <p class="wsc-lead">予定を詰めるためではなく、空白を守るための週間カレンダー。</p>
+        <p class="wsc-copy">1日3ボックスまで。そのうち1つは必ず2時間の余白。空白時間は、余ったら作るものではありません。先に確保するものです。</p>
+      </div>
+      <dl class="wsc-hero-stats">
+        <div>
+          <dt>今週</dt>
+          <dd data-week-period>----</dd>
+        </div>
+        <div>
+          <dt>余白確保率</dt>
+          <dd data-white-space-rate>0/7日</dd>
+        </div>
+        <div>
+          <dt>使用ボックス</dt>
+          <dd data-box-summary>0/21枠</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="wsc-principles" aria-label="余白カレンダーの思想">
+      <p>余白がない日は、未完成の日です。</p>
+      <p>予定を追加する前に、減らせる予定がないか確認してください。</p>
+      <p>時間管理ではなく、人生を立て直すための空白確保。</p>
+    </section>
+
+    <section class="wsc-app-shell" aria-label="余白カレンダーアプリ">
+      <aside class="wsc-control-panel">
+        <div class="wsc-action-row">
+          <button class="btn primary wsc-button" type="button" data-auto-place>余白を自動配置</button>
+          <button class="btn ghost wsc-button" type="button" data-reset>初期状態に戻す</button>
+        </div>
+
+        <p class="wsc-validation" data-validation-message aria-live="polite"></p>
+
+        <section class="wsc-panel">
+          <h2>起床・就寝時刻</h2>
+          <form class="wsc-form compact" data-settings-form>
+            <label>
+              起床
+              <input type="time" name="wakeTime" value="06:00" step="1800" required>
+            </label>
+            <label>
+              就寝
+              <input type="time" name="sleepTime" value="23:00" step="1800" required>
+            </label>
+            <button class="wsc-submit" type="submit">更新</button>
+          </form>
+        </section>
+
+        <section class="wsc-panel">
+          <h2>固定予定追加</h2>
+          <p>会社・通勤・睡眠などの拘束時間。3ボックス制限には含めません。</p>
+          <form class="wsc-form" data-block-form data-fixed-form>
+            <label>
+              タイトル
+              <input type="text" name="fixedTitle" value="会社" required>
+            </label>
+            <label>
+              曜日
+              <select name="fixedDay">
+                <option value="monday">月曜日</option>
+                <option value="tuesday">火曜日</option>
+                <option value="wednesday">水曜日</option>
+                <option value="thursday">木曜日</option>
+                <option value="friday">金曜日</option>
+                <option value="saturday">土曜日</option>
+                <option value="sunday">日曜日</option>
+              </select>
+            </label>
+            <div class="wsc-time-pair">
+              <label>
+                開始
+                <input type="time" name="fixedStart" value="08:00" step="1800" required>
+              </label>
+              <label>
+                終了
+                <input type="time" name="fixedEnd" value="17:00" step="1800" required>
+              </label>
+            </div>
+            <label>
+              メモ
+              <textarea name="fixedMemo" rows="2" placeholder="任意"></textarea>
+            </label>
+            <button class="wsc-submit" type="submit">固定予定を追加</button>
+          </form>
+        </section>
+
+        <section class="wsc-panel">
+          <h2>余白ボックス追加</h2>
+          <p>必ず連続2時間。副業、投資、学習、回復、創造のために先に守る時間です。</p>
+          <form class="wsc-form" data-block-form data-white-form>
+            <label>
+              曜日
+              <select name="whiteDay">
+                <option value="monday">月曜日</option>
+                <option value="tuesday">火曜日</option>
+                <option value="wednesday">水曜日</option>
+                <option value="thursday">木曜日</option>
+                <option value="friday">金曜日</option>
+                <option value="saturday">土曜日</option>
+                <option value="sunday">日曜日</option>
+              </select>
+            </label>
+            <div class="wsc-time-pair">
+              <label>
+                開始
+                <input type="time" name="whiteStart" value="18:00" step="1800" required>
+              </label>
+              <label>
+                終了
+                <input type="time" name="whiteEnd" value="20:00" step="1800" required>
+              </label>
+            </div>
+            <label>
+              目的
+              <select name="whitePurpose">
+                <option value="recovery">回復</option>
+                <option value="thinking">思考</option>
+                <option value="creation">創造</option>
+                <option value="reflection">内省</option>
+              </select>
+            </label>
+            <label>
+              メモ
+              <textarea name="whiteMemo" rows="2" placeholder="任意"></textarea>
+            </label>
+            <button class="wsc-submit" type="submit">余白を追加</button>
+          </form>
+        </section>
+
+        <section class="wsc-panel">
+          <h2>自由予定追加</h2>
+          <p>余白を除き1日最大2つまで。最重要TOP3アクションだけを残します。</p>
+          <form class="wsc-form" data-block-form data-free-form>
+            <label>
+              タイトル
+              <input type="text" name="freeTitle" value="副業" required>
+            </label>
+            <label>
+              カテゴリ
+              <select name="freeCategory">
+                <option value="side_business">副業</option>
+                <option value="investment_trading">投資・トレード</option>
+                <option value="learning">学習</option>
+                <option value="hobby">趣味</option>
+                <option value="dinner_meeting">会食</option>
+                <option value="family_life">家族・生活</option>
+                <option value="rest">休息</option>
+                <option value="chores">雑務</option>
+                <option value="other">その他</option>
+              </select>
+            </label>
+            <label>
+              曜日
+              <select name="freeDay">
+                <option value="monday">月曜日</option>
+                <option value="tuesday">火曜日</option>
+                <option value="wednesday">水曜日</option>
+                <option value="thursday">木曜日</option>
+                <option value="friday">金曜日</option>
+                <option value="saturday">土曜日</option>
+                <option value="sunday">日曜日</option>
+              </select>
+            </label>
+            <div class="wsc-time-pair">
+              <label>
+                開始
+                <input type="time" name="freeStart" value="20:00" step="1800" required>
+              </label>
+              <label>
+                終了
+                <input type="time" name="freeEnd" value="21:00" step="1800" required>
+              </label>
+            </div>
+            <label>
+              メモ
+              <textarea name="freeMemo" rows="2" placeholder="任意"></textarea>
+            </label>
+            <button class="wsc-submit" type="submit">自由予定を追加</button>
+          </form>
+        </section>
+      </aside>
+
+      <section class="wsc-calendar-area">
+        <div class="wsc-warning" data-warning-list aria-live="polite"></div>
+        <div class="wsc-calendar-scroll">
+          <div class="wsc-calendar-board" data-calendar-board aria-label="月曜から日曜までの週間カレンダー"></div>
+        </div>
+      </section>
+    </section>
+
+    <section class="wsc-summary" aria-label="週次サマリー">
+      <div class="section-heading">
+        <p class="section-label">Weekly Summary</p>
+        <h2>週次サマリー</h2>
+      </div>
+      <div class="wsc-summary-grid">
+        <article>
+          <span>固定予定</span>
+          <strong data-fixed-hours>0h</strong>
+          <p>会社など、生活上すでに存在する拘束時間。</p>
+        </article>
+        <article>
+          <span>余白時間</span>
+          <strong data-white-hours>0h</strong>
+          <p>改過自新のために、内省せざるを得ない時間。</p>
+        </article>
+        <article>
+          <span>自由予定</span>
+          <strong data-free-hours>0h</strong>
+          <p>残すべき最重要アクションだけに絞った時間。</p>
+        </article>
+        <article>
+          <span>余白確保済み</span>
+          <strong data-protected-days>0/7日</strong>
+          <p>余白がない日は、未完成の日です。</p>
+        </article>
+      </div>
+
+      <div class="wsc-summary-lists">
+        <section>
+          <h3>余白未確保の日</h3>
+          <p data-missing-days>なし</p>
+          <h3>詰め込みすぎ警告</h3>
+          <p data-pressure-warning>----</p>
+        </section>
+        <section>
+          <h3>各日の使用ボックス数</h3>
+          <ul class="wsc-day-counts" data-day-counts></ul>
+        </section>
+        <section>
+          <h3>カテゴリ別の自由予定時間</h3>
+          <ul class="wsc-category-hours" data-category-hours></ul>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <img src="assets/tatsuya-logo.png" alt="Tatsuya">
+    <p>©2025 Quant-Log by Tatsuya</p>
+  </footer>
+
+  <script src="white-space-calendar.js?v=white-space-calendar-01"></script>
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    toggle?.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      document.body.classList.toggle('menu-open');
+    });
+  </script>
+</body>
+</html>

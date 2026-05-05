@@ -6,7 +6,7 @@
   <title>QUANT LOG by Tatsuya | AI活用と金融プロトタイプ</title>
   <meta name="description" content="AI活用、金融マーケット観測、集中タイマー、支出管理、ドライブ学習をまとめたQuant Log公式サイト。">
   <link rel="icon" type="image/png" href="assets/favicon_16x16.png">
-  <link rel="stylesheet" href="styles.css?v=serif-sync-05">
+  <link rel="stylesheet" href="styles.css?v=serif-sync-06">
 </head>
 <body>
   <header class="site-header">
@@ -73,6 +73,13 @@
             <strong>Drive Study</strong>
             <small>渋滞時間を使う<br>音声学習</small>
             <em>実験中</em>
+            <b>→</b>
+          </a>
+          <a class="lab-row" href="white-space-calendar.html" data-prototype-link="white-space-calendar">
+            <span class="lab-no">05</span>
+            <strong>余白カレンダー</strong>
+            <small>1日3枠で<br>空白を守る週間設計</small>
+            <em>試作中</em>
             <b>→</b>
           </a>
           <a class="lab-more" href="#prototype">プロトタイプについて <span>→</span></a>
@@ -183,6 +190,11 @@
           <h3>渋滞時間の学習化</h3>
           <p>音声と文章を切り替える学習プレイリスト。</p>
         </a>
+        <a class="prototype-card" href="white-space-calendar.html" data-prototype-link="white-space-calendar">
+          <span>White Space Calendar</span>
+          <h3>余白カレンダー</h3>
+          <p>予定を詰めるためではなく、空白を守るための週間カレンダー。1日最大3ボックスに制限し、そのうち1つは必ず2時間の余白として確保します。</p>
+        </a>
       </div>
     </section>
 
@@ -262,6 +274,21 @@
       const expanded = toggle.getAttribute('aria-expanded') === 'true';
       toggle.setAttribute('aria-expanded', String(!expanded));
       document.body.classList.toggle('menu-open');
+    });
+    document.querySelectorAll('[data-prototype-link]').forEach((link) => {
+      link.addEventListener('click', () => {
+        const payload = {
+          prototype_id: link.dataset.prototypeLink,
+          prototype_name: 'White Space Calendar',
+          action_type: 'link_click'
+        };
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'prototype_link_click', payload);
+        } else {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: 'prototype_link_click', ...payload });
+        }
+      });
     });
   </script>
 </body>
