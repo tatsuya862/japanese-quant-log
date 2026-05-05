@@ -835,13 +835,13 @@ h3 {
   grid-template-columns: minmax(0, 1fr) minmax(360px, 0.52fr);
   gap: clamp(1.5rem, 4vw, 3rem);
   align-items: end;
-  padding: clamp(3.25rem, 7vw, 5.5rem) 0 2rem;
+  padding: clamp(2.5rem, 6vw, 4.5rem) 0 1.4rem;
   border-bottom: 1px solid var(--line);
 }
 
 .wsc-hero h1 {
   margin: 0.35rem 0 0.65rem;
-  font-size: clamp(2.5rem, 5.5vw, 4.7rem);
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
 }
 
 .wsc-lead {
@@ -897,9 +897,9 @@ h3 {
 }
 
 .wsc-principles p {
-  min-height: 92px;
+  min-height: 64px;
   margin: 0;
-  padding: 1.2rem 1.35rem;
+  padding: 0.95rem 1.15rem;
   border-right: 1px solid var(--line-soft);
   color: var(--text);
   background: rgba(5, 6, 6, 0.52);
@@ -946,12 +946,12 @@ h3 {
 }
 
 .wsc-panel {
-  padding: 1rem;
+  padding: 0.9rem;
 }
 
 .wsc-panel h2,
 .wsc-summary-lists h3 {
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.55rem;
   color: var(--gold-soft);
   font-size: 1.05rem;
 }

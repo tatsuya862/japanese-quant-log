@@ -32,44 +32,43 @@
   <main class="wsc-page">
     <section class="wsc-hero">
       <div>
-        <p class="section-label">Prototype / White Space Calendar</p>
+        <p class="section-label">White Space Calendar</p>
         <h1>余白カレンダー</h1>
-        <p class="wsc-lead">予定を詰めるためではなく、空白を守るための週間カレンダー。</p>
-        <p class="wsc-copy">1日3ボックスまで。そのうち1つは必ず2時間の余白。空白時間は、余ったら作るものではありません。先に確保するものです。</p>
+        <p class="wsc-lead">空白は、先に確保する。</p>
       </div>
       <dl class="wsc-hero-stats">
         <div>
-          <dt>今週</dt>
-          <dd data-week-period>----</dd>
-        </div>
-        <div>
-          <dt>余白確保率</dt>
+          <dt>余白</dt>
           <dd data-white-space-rate>0/7日</dd>
         </div>
         <div>
-          <dt>使用ボックス</dt>
+          <dt>使用枠</dt>
           <dd data-box-summary>0/21枠</dd>
+        </div>
+        <div>
+          <dt>警告</dt>
+          <dd data-warning-count>0</dd>
         </div>
       </dl>
     </section>
 
     <section class="wsc-principles" aria-label="余白カレンダーの思想">
-      <p>余白がない日は、未完成の日です。</p>
-      <p>予定を追加する前に、減らせる予定がないか確認してください。</p>
-      <p>時間管理ではなく、人生を立て直すための空白確保。</p>
+      <p>1日3枠。余白2時間は必須。</p>
+      <p data-week-period>----</p>
+      <p>追加する前に、減らす。</p>
     </section>
 
     <section class="wsc-app-shell" aria-label="余白カレンダーアプリ">
       <aside class="wsc-control-panel">
         <div class="wsc-action-row">
-          <button class="btn primary wsc-button" type="button" data-auto-place>余白を自動配置</button>
-          <button class="btn ghost wsc-button" type="button" data-reset>初期状態に戻す</button>
+          <button class="btn primary wsc-button" type="button" data-auto-place>自動配置</button>
+          <button class="btn ghost wsc-button" type="button" data-reset>リセット</button>
         </div>
 
         <p class="wsc-validation" data-validation-message aria-live="polite"></p>
 
         <section class="wsc-panel">
-          <h2>起床・就寝時刻</h2>
+          <h2>時間帯</h2>
           <form class="wsc-form compact" data-settings-form>
             <label>
               起床
@@ -84,12 +83,18 @@
         </section>
 
         <section class="wsc-panel">
-          <h2>固定予定追加</h2>
-          <p>会社・通勤・睡眠などの拘束時間。3ボックス制限には含めません。</p>
+          <h2>固定</h2>
           <form class="wsc-form" data-block-form data-fixed-form>
             <label>
-              タイトル
-              <input type="text" name="fixedTitle" value="会社" required>
+              種類
+              <select name="fixedTitle">
+                <option value="会社">会社</option>
+                <option value="通勤">通勤</option>
+                <option value="睡眠">睡眠</option>
+                <option value="家事">家事</option>
+                <option value="食事">食事</option>
+                <option value="定例">定例</option>
+              </select>
             </label>
             <label>
               曜日
@@ -113,17 +118,12 @@
                 <input type="time" name="fixedEnd" value="17:00" step="1800" required>
               </label>
             </div>
-            <label>
-              メモ
-              <textarea name="fixedMemo" rows="2" placeholder="任意"></textarea>
-            </label>
-            <button class="wsc-submit" type="submit">固定予定を追加</button>
+            <button class="wsc-submit" type="submit">追加</button>
           </form>
         </section>
 
         <section class="wsc-panel">
-          <h2>余白ボックス追加</h2>
-          <p>必ず連続2時間。副業、投資、学習、回復、創造のために先に守る時間です。</p>
+          <h2>余白</h2>
           <form class="wsc-form" data-block-form data-white-form>
             <label>
               曜日
@@ -156,22 +156,13 @@
                 <option value="reflection">内省</option>
               </select>
             </label>
-            <label>
-              メモ
-              <textarea name="whiteMemo" rows="2" placeholder="任意"></textarea>
-            </label>
-            <button class="wsc-submit" type="submit">余白を追加</button>
+            <button class="wsc-submit" type="submit">追加</button>
           </form>
         </section>
 
         <section class="wsc-panel">
-          <h2>自由予定追加</h2>
-          <p>余白を除き1日最大2つまで。最重要TOP3アクションだけを残します。</p>
+          <h2>TOP3</h2>
           <form class="wsc-form" data-block-form data-free-form>
-            <label>
-              タイトル
-              <input type="text" name="freeTitle" value="副業" required>
-            </label>
             <label>
               カテゴリ
               <select name="freeCategory">
@@ -208,11 +199,7 @@
                 <input type="time" name="freeEnd" value="21:00" step="1800" required>
               </label>
             </div>
-            <label>
-              メモ
-              <textarea name="freeMemo" rows="2" placeholder="任意"></textarea>
-            </label>
-            <button class="wsc-submit" type="submit">自由予定を追加</button>
+            <button class="wsc-submit" type="submit">追加</button>
           </form>
         </section>
       </aside>
@@ -228,28 +215,24 @@
     <section class="wsc-summary" aria-label="週次サマリー">
       <div class="section-heading">
         <p class="section-label">Weekly Summary</p>
-        <h2>週次サマリー</h2>
+        <h2>サマリー</h2>
       </div>
       <div class="wsc-summary-grid">
         <article>
           <span>固定予定</span>
           <strong data-fixed-hours>0h</strong>
-          <p>会社など、生活上すでに存在する拘束時間。</p>
         </article>
         <article>
           <span>余白時間</span>
           <strong data-white-hours>0h</strong>
-          <p>改過自新のために、内省せざるを得ない時間。</p>
         </article>
         <article>
           <span>自由予定</span>
           <strong data-free-hours>0h</strong>
-          <p>残すべき最重要アクションだけに絞った時間。</p>
         </article>
         <article>
           <span>余白確保済み</span>
           <strong data-protected-days>0/7日</strong>
-          <p>余白がない日は、未完成の日です。</p>
         </article>
       </div>
 
