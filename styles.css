@@ -1731,6 +1731,14 @@ h3 {
   background: rgba(184, 134, 24, 0.13);
 }
 
+.location-empty {
+  margin: 0.25rem 0;
+  padding: 0.4rem 0.58rem;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.84rem;
+}
+
 .weather-days {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
@@ -1793,15 +1801,36 @@ h3 {
   font-weight: 700;
 }
 
-.weather-cloud {
-  width: 4rem;
-  height: auto;
+.weather-now em {
+  display: block;
+  max-width: 15rem;
+  margin-top: 0.42rem;
+  color: rgba(244, 240, 233, 0.84);
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-style: normal;
+  line-height: 1.45;
+}
+
+.weather-main-icon {
+  min-width: 4.5rem;
   color: var(--text);
-  fill: currentColor;
+  font-family: var(--sans);
+  font-size: 4.1rem;
+  line-height: 1;
+  text-align: center;
 }
 
 .weather-chart-card {
   padding-top: 0.15rem;
+}
+
+.weather-source {
+  margin: 2.35rem 0 0;
+  color: var(--faint);
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  line-height: 1.5;
 }
 
 .weather-icons {
