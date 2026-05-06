@@ -214,6 +214,10 @@ h3 {
   gap: 1.35rem;
 }
 
+.hero-cta .btn.primary {
+  font-weight: 400;
+}
+
 .btn {
   display: inline-flex;
   min-width: 205px;
