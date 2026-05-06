@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>仮登録ありがとうございます | QUANT LOG by Tatsuya</title>
+  <meta name="description" content="Quant Logの無料仮登録に関心を示していただいた方向けの完了ページです。現在はニーズ調査段階で、個人情報は取得していません。">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RB2ZGN11KY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-RB2ZGN11KY');
+  </script>
+  <link rel="icon" type="image/png" href="assets/favicon_16x16.png">
+  <link rel="stylesheet" href="styles.css?v=register-interest-01">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html#hero" aria-label="QUANT LOG by Tatsuya">
+      <span class="brand-main">QUANT LOG</span>
+      <span class="brand-sub">by Tatsuya</span>
+    </a>
+    <button class="menu-toggle" aria-expanded="false" aria-label="メニューを開く">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav>
+      <a href="index.html#philosophy">Philosophy</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#media">Media</a>
+      <a href="market.html">Market</a>
+      <a href="index.html#prototype">Prototype</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="interest-page">
+    <section class="interest-hero" aria-labelledby="interest-title">
+      <p class="section-label">Interest Registered</p>
+      <h1 id="interest-title">仮登録ありがとうございます</h1>
+      <div class="interest-panel">
+        <p>現在はニーズ調査段階です。</p>
+        <p>今後、本登録機能を提供予定です。</p>
+        <p>現時点ではメールアドレス・パスワード・個人情報は取得していません。</p>
+      </div>
+      <a class="btn ghost" href="index.html">トップへ戻る</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <img src="assets/tatsuya-logo.png" alt="Tatsuya">
+    <p>©2025 Quant-Log by Tatsuya</p>
+  </footer>
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    toggle?.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      document.body.classList.toggle('menu-open');
+    });
+  </script>
+</body>
+</html>
