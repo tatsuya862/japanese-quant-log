@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Weather Brief | QUANT LOG by Tatsuya</title>
+  <meta name="description" content="市区町村単位で地点を切り替え、当日の気温推移を確認するQuant Logの天気観測プロトタイプ。">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RB2ZGN11KY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-RB2ZGN11KY');
+  </script>
+  <link rel="icon" type="image/png" href="assets/favicon_16x16.png">
+  <link rel="stylesheet" href="styles.css?v=weather-brief-01">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html#hero" aria-label="QUANT LOG by Tatsuya">
+      <span class="brand-main">QUANT LOG</span>
+      <span class="brand-sub">by Tatsuya</span>
+    </a>
+    <button class="menu-toggle" aria-expanded="false" aria-label="メニューを開く">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav>
+      <a href="index.html#philosophy">Philosophy</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#media">Media</a>
+      <a href="market.html">Market</a>
+      <a href="index.html#prototype">Prototype</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="weather-page">
+    <section class="weather-phone" aria-label="Weather Brief">
+      <div class="phone-status" aria-hidden="true">
+        <span>15:57</span>
+        <span class="phone-indicators">▮▮▮  Wi-Fi  ▭</span>
+      </div>
+
+      <div class="weather-sheet">
+        <header class="weather-app-header">
+          <button class="weather-menu-button" type="button" aria-expanded="true" aria-controls="location-panel" data-location-toggle>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span class="sr-only">地点検索を開く</span>
+          </button>
+          <div class="weather-location-heading">
+            <p>観測地点</p>
+            <h1 data-location-title>東京都新宿区</h1>
+          </div>
+        </header>
+
+        <section class="location-panel is-open" id="location-panel" aria-label="地点検索">
+          <div class="location-panel-head">
+            <h2>地点を検索</h2>
+            <small>市区町村名で検索</small>
+          </div>
+          <label class="location-search">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.2"></circle>
+              <path d="m16 16 4 4"></path>
+            </svg>
+            <input type="search" value="新宿" autocomplete="off" data-location-search aria-label="市区町村名で検索">
+          </label>
+          <div class="location-results" data-location-results></div>
+        </section>
+
+        <section class="weather-days" aria-label="日付選択">
+          <button type="button"><span>火</span><strong>5</strong></button>
+          <button class="is-selected" type="button"><span>水</span><strong>6</strong></button>
+          <button type="button"><span>木</span><strong>7</strong></button>
+          <button type="button"><span>金</span><strong>8</strong></button>
+          <button type="button"><span>土</span><strong>9</strong></button>
+          <button type="button"><span>日</span><strong>10</strong></button>
+          <button type="button"><span>月</span><strong>11</strong></button>
+        </section>
+
+        <section class="weather-now" aria-label="現在の天気">
+          <div>
+            <p><span data-current-temp>21</span>°C</p>
+            <small>高:<span data-high-temp>22</span> 低:<span data-low-temp>9</span></small>
+          </div>
+          <svg class="weather-cloud" viewBox="0 0 64 40" aria-hidden="true">
+            <path d="M22.4 34.5H49c7.3 0 12-4 12-10.2 0-6.5-5-10.5-11.5-10.1C46.3 6.6 39.6 2.8 32.1 4.1 25.4 5.2 20.7 10 19.4 16.5 10.8 15.9 4 20.9 4 27.2c0 4.7 3.8 7.3 10.4 7.3h8z"></path>
+          </svg>
+        </section>
+
+        <section class="weather-chart-card" aria-label="気温グラフ">
+          <div class="weather-icons" aria-hidden="true">
+            <span>☾</span>
+            <span>☾</span>
+            <span>☁</span>
+            <span>☁</span>
+            <span>☀</span>
+            <span>☀</span>
+            <span>☁</span>
+            <span>☁</span>
+          </div>
+          <div class="weather-chart" data-chart>
+            <svg viewBox="0 0 960 540" role="img" aria-label="0時から18時までの気温推移">
+              <defs>
+                <linearGradient id="weatherAreaGradient" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#d1a13a" stop-opacity="0.42"></stop>
+                  <stop offset="58%" stop-color="#568d7d" stop-opacity="0.34"></stop>
+                  <stop offset="100%" stop-color="#2a5d7a" stop-opacity="0.34"></stop>
+                </linearGradient>
+                <linearGradient id="weatherLineGradient" x1="0" x2="1" y1="0" y2="0">
+                  <stop offset="0%" stop-color="#5a9c9a"></stop>
+                  <stop offset="46%" stop-color="#d1a13a"></stop>
+                  <stop offset="100%" stop-color="#d9d07c"></stop>
+                </linearGradient>
+              </defs>
+              <g class="chart-grid">
+                <path d="M56 74H864M56 128H864M56 182H864M56 236H864M56 290H864M56 344H864M56 398H864M56 452H864"></path>
+                <path d="M56 74V466M258 74V466M460 74V466M662 74V466M864 74V466"></path>
+              </g>
+              <path class="chart-area" data-chart-area></path>
+              <path class="chart-line-path" data-chart-line></path>
+              <g class="chart-cursor" data-chart-cursor>
+                <path class="cursor-line" data-cursor-line></path>
+                <circle r="8" data-cursor-dot></circle>
+                <g class="cursor-badge" data-cursor-badge>
+                  <rect width="112" height="34" rx="2"></rect>
+                  <text x="56" y="22" text-anchor="middle" data-cursor-text>15:00 21°C</text>
+                </g>
+              </g>
+              <g class="axis-labels" aria-hidden="true">
+                <text x="892" y="83">35</text>
+                <text x="892" y="137">30</text>
+                <text x="892" y="191">25</text>
+                <text x="892" y="245">20</text>
+                <text x="892" y="299">15</text>
+                <text x="892" y="353">10</text>
+                <text x="892" y="407">5</text>
+                <text x="892" y="461">0</text>
+                <text x="892" y="515">-5</text>
+              </g>
+            </svg>
+            <div class="chart-time-labels" aria-hidden="true">
+              <span>0:00</span>
+              <span>6:00</span>
+              <span>12:00</span>
+              <span>18:00</span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <img src="assets/tatsuya-logo.png" alt="Tatsuya">
+    <p>©2025 Quant-Log by Tatsuya</p>
+  </footer>
+
+  <script src="weather-brief.js?v=weather-brief-01"></script>
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    toggle?.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      document.body.classList.toggle('menu-open');
+    });
+  </script>
+</body>
+</html>
