@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Weather Brief | QUANT LOG by Tatsuya</title>
-  <meta name="description" content="市区町村単位で地点を切り替え、当日の気温推移を確認するQuant Logの天気観測プロトタイプ。">
+  <meta name="description" content="市区町村単位で地点を切り替え、気象庁の公開データから最新の天気予報を確認するQuant Logの天気観測プロトタイプ。">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RB2ZGN11KY"></script>
   <script>
@@ -66,24 +66,23 @@
 
         <section class="weather-now" aria-label="現在の天気">
           <div>
-            <p><span data-current-temp>21</span>°C</p>
-            <small>高:<span data-high-temp>22</span> 低:<span data-low-temp>9</span></small>
+            <p><span data-current-temp>--</span>°C</p>
+            <small>高:<span data-high-temp>--</span> 低:<span data-low-temp>--</span></small>
+            <em data-weather-condition>気象庁データを取得中</em>
           </div>
-          <svg class="weather-cloud" viewBox="0 0 64 40" aria-hidden="true">
-            <path d="M22.4 34.5H49c7.3 0 12-4 12-10.2 0-6.5-5-10.5-11.5-10.1C46.3 6.6 39.6 2.8 32.1 4.1 25.4 5.2 20.7 10 19.4 16.5 10.8 15.9 4 20.9 4 27.2c0 4.7 3.8 7.3 10.4 7.3h8z"></path>
-          </svg>
+          <div class="weather-main-icon" data-main-icon aria-hidden="true">☁</div>
         </section>
 
         <section class="weather-chart-card" aria-label="気温グラフ">
           <div class="weather-icons" aria-hidden="true">
-            <span>☾</span>
-            <span>☾</span>
-            <span>☁</span>
-            <span>☁</span>
-            <span>☀</span>
-            <span>☀</span>
-            <span>☁</span>
-            <span>☁</span>
+            <span data-weather-icon>☁</span>
+            <span data-weather-icon>☁</span>
+            <span data-weather-icon>☁</span>
+            <span data-weather-icon>☁</span>
+            <span data-weather-icon>☁</span>
+            <span data-weather-icon>☁</span>
+            <span data-weather-icon>☁</span>
+            <span data-weather-icon>☁</span>
           </div>
           <div class="weather-chart" data-chart>
             <svg viewBox="0 0 960 540" role="img" aria-label="0時から18時までの気温推移">
@@ -133,6 +132,7 @@
             </div>
           </div>
         </section>
+        <p class="weather-source" data-weather-source>出典: 気象庁</p>
       </div>
     </section>
   </main>
