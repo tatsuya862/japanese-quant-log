@@ -18,26 +18,6 @@
   <link rel="stylesheet" href="styles.css?v=weather-brief-01">
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="index.html#hero" aria-label="QUANT LOG by Tatsuya">
-      <span class="brand-main">QUANT LOG</span>
-      <span class="brand-sub">by Tatsuya</span>
-    </a>
-    <button class="menu-toggle" aria-expanded="false" aria-label="メニューを開く">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    <nav>
-      <a href="index.html#philosophy">Philosophy</a>
-      <a href="index.html#services">Services</a>
-      <a href="index.html#media">Media</a>
-      <a href="market.html">Market</a>
-      <a href="index.html#prototype">Prototype</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
-  </header>
-
   <main class="weather-page">
     <section class="weather-phone" aria-label="Weather Brief">
       <div class="phone-status" aria-hidden="true">
@@ -157,19 +137,6 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <img src="assets/tatsuya-logo.png" alt="Tatsuya">
-    <p>©2025 Quant-Log by Tatsuya</p>
-  </footer>
-
   <script src="weather-brief.js?v=weather-brief-01"></script>
-  <script>
-    const toggle = document.querySelector('.menu-toggle');
-    toggle?.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      document.body.classList.toggle('menu-open');
-    });
-  </script>
 </body>
 </html>

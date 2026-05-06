@@ -1559,7 +1559,7 @@ h3 {
 
 .weather-page {
   display: grid;
-  min-height: calc(100vh - 104px);
+  min-height: 100vh;
   place-items: start center;
   padding: clamp(1.25rem, 4vw, 3rem) clamp(0.8rem, 3vw, 2rem) 4rem;
 }
@@ -1924,7 +1924,7 @@ h3 {
 
 @media (max-width: 520px) {
   .weather-page {
-    min-height: calc(100vh - 76px);
+    min-height: 100vh;
     padding: 0.65rem 0.55rem 2rem;
   }
 
