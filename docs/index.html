@@ -84,10 +84,17 @@
             <em>実験中</em>
             <b>→</b>
           </a>
-          <a class="lab-row" href="white-space-calendar.html" data-prototype-link="white-space-calendar">
+          <a class="lab-row" href="white-space-calendar.html" data-prototype-link="white-space-calendar" data-prototype-name="White Space Calendar">
             <span class="lab-no">05</span>
             <strong>余白カレンダー</strong>
             <small>1日3枠で<br>空白を守る週間設計</small>
+            <em>試作中</em>
+            <b>→</b>
+          </a>
+          <a class="lab-row" href="weather-brief.html" data-prototype-link="weather-brief" data-prototype-name="Weather Brief">
+            <span class="lab-no">06</span>
+            <strong>Weather Brief</strong>
+            <small>市区町村で切替<br>当日の気温観測</small>
             <em>試作中</em>
             <b>→</b>
           </a>
@@ -199,10 +206,15 @@
           <h3>渋滞時間の学習化</h3>
           <p>音声と文章を切り替える学習プレイリスト。</p>
         </a>
-        <a class="prototype-card" href="white-space-calendar.html" data-prototype-link="white-space-calendar">
+        <a class="prototype-card" href="white-space-calendar.html" data-prototype-link="white-space-calendar" data-prototype-name="White Space Calendar">
           <span>White Space Calendar</span>
           <h3>余白カレンダー</h3>
           <p>予定を詰めるためではなく、空白を守るための週間カレンダー。1日最大3ボックスに制限し、そのうち1つは必ず2時間の余白として確保します。</p>
+        </a>
+        <a class="prototype-card" href="weather-brief.html" data-prototype-link="weather-brief" data-prototype-name="Weather Brief">
+          <span>Weather Brief</span>
+          <h3>天気観測メモ</h3>
+          <p>市区町村単位で地点を切り替え、当日の気温推移を16:9グラフで確認します。</p>
         </a>
       </div>
     </section>
@@ -288,7 +300,7 @@
       link.addEventListener('click', () => {
         const payload = {
           prototype_id: link.dataset.prototypeLink,
-          prototype_name: 'White Space Calendar',
+          prototype_name: link.dataset.prototypeName || link.textContent.trim(),
           action_type: 'link_click'
         };
         if (typeof window.gtag === 'function') {
