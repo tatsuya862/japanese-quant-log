@@ -20,11 +20,6 @@
 <body>
   <main class="weather-page">
     <section class="weather-phone" aria-label="Weather Brief">
-      <div class="phone-status" aria-hidden="true">
-        <span>15:57</span>
-        <span class="phone-indicators">▮▮▮  Wi-Fi  ▭</span>
-      </div>
-
       <div class="weather-sheet">
         <header class="weather-app-header">
           <button class="weather-menu-button" type="button" aria-expanded="true" aria-controls="location-panel" data-location-toggle>
@@ -56,8 +51,8 @@
 
         <section class="weather-days" aria-label="日付選択">
           <button type="button"><span>火</span><strong>5</strong></button>
-          <button class="is-selected" type="button"><span>水</span><strong>6</strong></button>
-          <button type="button"><span>木</span><strong>7</strong></button>
+          <button type="button"><span>水</span><strong>6</strong></button>
+          <button class="is-selected" type="button"><span>木</span><strong>7</strong></button>
           <button type="button"><span>金</span><strong>8</strong></button>
           <button type="button"><span>土</span><strong>9</strong></button>
           <button type="button"><span>日</span><strong>10</strong></button>
@@ -70,19 +65,19 @@
             <small>高:<span data-high-temp>--</span> 低:<span data-low-temp>--</span></small>
             <em data-weather-condition>気象庁データを取得中</em>
           </div>
-          <div class="weather-main-icon" data-main-icon aria-hidden="true">☁</div>
+          <div class="weather-main-icon" data-main-icon data-icon="cloud" aria-hidden="true"></div>
         </section>
 
         <section class="weather-chart-card" aria-label="気温グラフ">
           <div class="weather-icons" aria-hidden="true">
-            <span data-weather-icon>☁</span>
-            <span data-weather-icon>☁</span>
-            <span data-weather-icon>☁</span>
-            <span data-weather-icon>☁</span>
-            <span data-weather-icon>☁</span>
-            <span data-weather-icon>☁</span>
-            <span data-weather-icon>☁</span>
-            <span data-weather-icon>☁</span>
+            <span data-weather-icon data-icon="cloud"></span>
+            <span data-weather-icon data-icon="cloud"></span>
+            <span data-weather-icon data-icon="cloud"></span>
+            <span data-weather-icon data-icon="cloud"></span>
+            <span data-weather-icon data-icon="cloud"></span>
+            <span data-weather-icon data-icon="cloud"></span>
+            <span data-weather-icon data-icon="cloud"></span>
+            <span data-weather-icon data-icon="cloud"></span>
           </div>
           <div class="weather-chart" data-chart>
             <svg viewBox="0 0 960 540" role="img" aria-label="0時から18時までの気温推移">
