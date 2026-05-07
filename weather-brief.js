@@ -41,6 +41,8 @@ const cursorBadge = document.querySelector("[data-cursor-badge]");
 const cursorText = document.querySelector("[data-cursor-text]");
 const locationPanel = document.querySelector("#location-panel");
 const locationToggle = document.querySelector("[data-location-toggle]");
+const dayButtons = document.querySelectorAll(".weather-days button");
+const weekdayLabels = ["日", "月", "火", "水", "木", "金", "土"];
 
 function xForIndex(index) {
   return chart.left + (index / 18) * (chart.right - chart.left);
@@ -163,11 +165,11 @@ function findTempArea(tempSeries) {
 
 function weatherIcon(codeOrText) {
   const value = String(codeOrText || "");
-  if (value.startsWith("4") || value.includes("雪")) return "❄";
-  if (value.startsWith("3") || value.includes("雨")) return "☂";
-  if (value.startsWith("1") || value.includes("晴")) return "☀";
-  if (value.startsWith("2") || value.includes("くもり") || value.includes("曇")) return "☁";
-  return "☁";
+  if (value.startsWith("4") || value.includes("雪")) return "snow";
+  if (value.startsWith("3") || value.includes("雨")) return "rain";
+  if (value.startsWith("1") || value.includes("晴")) return "sun";
+  if (value.startsWith("2") || value.includes("くもり") || value.includes("曇")) return "cloud";
+  return "cloud";
 }
 
 function compactWeather(text) {
@@ -175,11 +177,45 @@ function compactWeather(text) {
 }
 
 function parseTemp(value) {
+  if (value === null || value === undefined || value === "") return null;
   const temp = Number(value);
   return Number.isFinite(temp) ? temp : null;
 }
 
-function buildTemperatureProfile(temps) {
+function buildTemperatureProfile(temps, observedTemps = []) {
+  const observed = observedTemps.map(parseTemp);
+  const observedIndexes = observed
+    .map((temp, index) => temp === null ? null : index)
+    .filter((index) => index !== null);
+
+  if (observedIndexes.length >= 2) {
+    const profile = Array.from({ length: 19 }, (_, index) => observed[index] ?? null);
+    const firstIndex = observedIndexes[0];
+    const lastIndex = observedIndexes[observedIndexes.length - 1];
+
+    for (let index = 0; index < firstIndex; index += 1) {
+      profile[index] = profile[firstIndex];
+    }
+
+    for (let cursor = 0; cursor < observedIndexes.length - 1; cursor += 1) {
+      const start = observedIndexes[cursor];
+      const end = observedIndexes[cursor + 1];
+      for (let index = start + 1; index < end; index += 1) {
+        const ratio = (index - start) / (end - start);
+        profile[index] = Math.round(profile[start] + (profile[end] - profile[start]) * ratio);
+      }
+    }
+
+    const validForecast = temps.map(parseTemp).filter((temp) => temp !== null);
+    const forecastTarget = validForecast.length ? validForecast[validForecast.length - 1] : profile[lastIndex];
+    for (let index = lastIndex + 1; index <= 18; index += 1) {
+      const ratio = (index - lastIndex) / (18 - lastIndex || 1);
+      profile[index] = Math.round(profile[lastIndex] + (forecastTarget - profile[lastIndex]) * ratio);
+    }
+
+    return profile;
+  }
+
   const valid = temps.map(parseTemp).filter((temp) => temp !== null);
   if (!valid.length) return fallbackTemps;
 
@@ -255,12 +291,28 @@ function renderForecast() {
   highTemp.textContent = forecast.high ?? "--";
   lowTemp.textContent = forecast.low ?? "--";
   condition.textContent = forecast.weather;
-  mainIcon.textContent = forecast.icon;
+  mainIcon.dataset.icon = forecast.icon;
+  mainIcon.textContent = "";
   weatherIcons.forEach((icon, index) => {
-    icon.textContent = forecast.icons[index % forecast.icons.length] || forecast.icon;
+    icon.dataset.icon = forecast.icons[index % forecast.icons.length] || forecast.icon;
+    icon.textContent = "";
   });
   source.textContent = formatSource(forecast);
   renderChart(forecast.temps);
+}
+
+function renderDateSelector() {
+  const today = new Date();
+  const start = new Date(today);
+  start.setDate(today.getDate() - 2);
+
+  dayButtons.forEach((button, index) => {
+    const date = new Date(start);
+    date.setDate(start.getDate() + index);
+    button.querySelector("span").textContent = weekdayLabels[date.getDay()];
+    button.querySelector("strong").textContent = date.getDate();
+    button.classList.toggle("is-selected", date.toDateString() === today.toDateString());
+  });
 }
 
 async function fetchAmedasTemp(pointCode) {
@@ -293,6 +345,37 @@ async function fetchAmedasTemp(pointCode) {
   return null;
 }
 
+async function fetchAmedasHourlyTemps(pointCode) {
+  if (!pointCode) return [];
+  try {
+    const latestText = await fetchText(JMA_AMEDAS_LATEST_URL);
+    const latestDate = new Date(latestText.trim());
+    if (Number.isNaN(latestDate.getTime())) return [];
+
+    const publishedDate = new Date(latestDate.getTime() - 2 * 60 * 60 * 1000);
+    const yyyy = publishedDate.getFullYear();
+    const mm = String(publishedDate.getMonth() + 1).padStart(2, "0");
+    const dd = String(publishedDate.getDate()).padStart(2, "0");
+    const lastHour = Math.min(18, publishedDate.getHours());
+    const hourly = Array(19).fill(null);
+
+    await Promise.all(Array.from({ length: lastHour + 1 }, async (_, hour) => {
+      const hh = String(hour).padStart(2, "0");
+      try {
+        const pointData = await fetchJson(`${JMA_AMEDAS_POINT_URL}/${pointCode}/${yyyy}${mm}${dd}_${hh}.json`);
+        const latestEntry = Object.values(pointData).reverse().find((entry) => Array.isArray(entry.temp));
+        hourly[hour] = parseTemp(latestEntry?.temp?.[0]);
+      } catch {
+        hourly[hour] = null;
+      }
+    }));
+
+    return hourly;
+  } catch {
+    return [];
+  }
+}
+
 async function loadForecastForSelected() {
   if (!state.selected) return;
 
@@ -309,8 +392,11 @@ async function loadForecastForSelected() {
     const popArea = findForecastArea(popSeries, state.selected.class10.code);
     const tempArea = findTempArea(tempSeries);
     const forecastTemps = tempArea?.temps || [];
-    const profile = buildTemperatureProfile(forecastTemps);
-    const currentObservedTemp = await fetchAmedasTemp(tempArea?.area?.code);
+    const [hourlyObservedTemps, currentObservedTemp] = await Promise.all([
+      fetchAmedasHourlyTemps(tempArea?.area?.code),
+      fetchAmedasTemp(tempArea?.area?.code)
+    ]);
+    const profile = buildTemperatureProfile(forecastTemps, hourlyObservedTemps);
     const validTemps = forecastTemps.map(parseTemp).filter((temp) => temp !== null);
     const high = validTemps.length ? Math.max(...validTemps) : Math.max(...profile);
     const low = validTemps.length ? Math.min(...validTemps) : Math.min(...profile);
@@ -335,7 +421,7 @@ async function loadForecastForSelected() {
     console.error(error);
     condition.textContent = "気象庁データを取得できませんでした";
     source.textContent = "出典: 気象庁 / 通信状況を確認してください";
-    state.forecast = { temps: fallbackTemps, high: "--", low: "--", icon: "☁", icons: ["☁"] };
+    state.forecast = { temps: fallbackTemps, high: "--", low: "--", icon: "cloud", icons: ["cloud"] };
     renderChart(fallbackTemps);
   }
 }
@@ -357,6 +443,7 @@ chartEl.addEventListener("pointerdown", (event) => {
 
 async function init() {
   try {
+    renderDateSelector();
     state.areas = await fetchJson(JMA_AREA_URL);
     buildLocations();
     searchInput.value = state.selected.name;
