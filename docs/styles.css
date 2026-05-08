@@ -723,6 +723,19 @@ h3 {
   letter-spacing: 0.04em;
 }
 
+.site-footer .footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem 1.25rem;
+  letter-spacing: 0;
+}
+
+.site-footer .footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
 .interest-page {
   width: min(920px, 100%);
   margin: 0 auto;
