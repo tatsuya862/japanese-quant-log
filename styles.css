@@ -1867,9 +1867,22 @@ h3 {
   position: relative;
 }
 
+.weather-main-icon,
+.weather-icons span {
+  line-height: 1;
+}
+
 .weather-icons span:nth-child(5),
 .weather-icons span:nth-child(6) {
   color: var(--gold-soft);
+}
+
+.weather-main-icon:not([data-icon="sun"]):not([data-icon="cloud"]):not([data-icon="rain"]):not([data-icon="snow"]) {
+  font-size: 3.7rem;
+}
+
+.weather-icons span:not([data-icon="sun"]):not([data-icon="cloud"]):not([data-icon="rain"]):not([data-icon="snow"]) {
+  font-size: 1.32rem;
 }
 
 .weather-main-icon::before,

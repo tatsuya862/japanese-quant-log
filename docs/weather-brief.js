@@ -165,11 +165,11 @@ function findTempArea(tempSeries) {
 
 function weatherIcon(codeOrText) {
   const value = String(codeOrText || "");
-  if (value.startsWith("4") || value.includes("雪")) return "snow";
-  if (value.startsWith("3") || value.includes("雨")) return "rain";
-  if (value.startsWith("1") || value.includes("晴")) return "sun";
-  if (value.startsWith("2") || value.includes("くもり") || value.includes("曇")) return "cloud";
-  return "cloud";
+  if (value.startsWith("4") || value.includes("雪")) return "❄️";
+  if (value.startsWith("3") || value.includes("雨")) return "🌧️";
+  if (value.startsWith("1") || value.includes("晴")) return "☀️";
+  if (value.startsWith("2") || value.includes("くもり") || value.includes("曇")) return "☁️";
+  return "☁️";
 }
 
 function compactWeather(text) {
@@ -292,10 +292,10 @@ function renderForecast() {
   lowTemp.textContent = forecast.low ?? "--";
   condition.textContent = forecast.weather;
   mainIcon.dataset.icon = forecast.icon;
-  mainIcon.textContent = "";
+  mainIcon.textContent = forecast.icon;
   weatherIcons.forEach((icon, index) => {
     icon.dataset.icon = forecast.icons[index % forecast.icons.length] || forecast.icon;
-    icon.textContent = "";
+    icon.textContent = icon.dataset.icon;
   });
   source.textContent = formatSource(forecast);
   renderChart(forecast.temps);
@@ -421,7 +421,7 @@ async function loadForecastForSelected() {
     console.error(error);
     condition.textContent = "気象庁データを取得できませんでした";
     source.textContent = "出典: 気象庁 / 通信状況を確認してください";
-    state.forecast = { temps: fallbackTemps, high: "--", low: "--", icon: "cloud", icons: ["cloud"] };
+    state.forecast = { temps: fallbackTemps, high: "--", low: "--", icon: "☁️", icons: ["☁️"] };
     renderChart(fallbackTemps);
   }
 }
