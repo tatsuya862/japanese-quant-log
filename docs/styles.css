@@ -2119,6 +2119,31 @@ h3 {
   line-height: 1.8;
 }
 
+@media (max-width: 520px) {
+  .offline-voice-page {
+    min-height: 100svh;
+    padding-bottom: 12rem;
+  }
+
+  .voice-mic-button {
+    width: min(10rem, 44vw);
+  }
+
+  .voice-status {
+    bottom: calc(8.25rem + env(safe-area-inset-bottom, 0px));
+    font-size: 0.85rem;
+  }
+
+  .voice-transcript {
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    max-height: 6.5rem;
+    overflow-y: auto;
+    padding-inline: 0.75rem;
+    box-sizing: border-box;
+    text-align: left;
+  }
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
