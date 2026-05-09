@@ -1,7 +1,7 @@
-const CACHE_NAME = "quant-log-offline-voice-v4";
+const CACHE_NAME = "quant-log-offline-voice-v5";
 const APP_SHELL = [
   "offline-voice-memo.html",
-  "offline-voice-memo.js?v=offline-voice-memo-03",
+  "offline-voice-memo.js?v=offline-voice-memo-04",
   "styles.css?v=offline-voice-memo-03",
   "offline-voice-memo.webmanifest",
   "assets/favicon_16x16.png"

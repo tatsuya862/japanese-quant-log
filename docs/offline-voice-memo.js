@@ -11,6 +11,8 @@ let stream = null;
 let chunks = [];
 let isRecording = false;
 let recognition = null;
+let recognitionStopPromise = Promise.resolve();
+let resolveRecognitionStop = null;
 let finalTranscript = "";
 let liveTranscript = "";
 
@@ -71,6 +73,7 @@ async function saveRecording() {
 
   try {
     setStatus("文字起こし中");
+    await recognitionStopPromise;
     transcript = await transcribeLocally(audioBlob);
   } catch {
     transcript = "文字起こしエンジンで処理できませんでした。音声ファイルは保存済みです。";
@@ -105,8 +108,14 @@ async function transcribeLocally(audioBlob) {
 
 function startSpeechRecognition() {
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (!SpeechRecognition) return;
+  if (!SpeechRecognition) {
+    recognitionStopPromise = Promise.resolve();
+    return;
+  }
 
+  recognitionStopPromise = new Promise((resolve) => {
+    resolveRecognitionStop = resolve;
+  });
   recognition = new SpeechRecognition();
   recognition.lang = "ja-JP";
   recognition.continuous = true;
@@ -128,19 +137,35 @@ function startSpeechRecognition() {
     if (isRecording) {
       try {
         recognition.start();
-      } catch {}
+      } catch {
+        resolveRecognitionStop?.();
+        resolveRecognitionStop = null;
+        recognition = null;
+      }
+      return;
     }
+    resolveRecognitionStop?.();
+    resolveRecognitionStop = null;
+    recognition = null;
   });
   try {
     recognition.start();
-  } catch {}
+  } catch {
+    resolveRecognitionStop?.();
+    resolveRecognitionStop = null;
+    recognition = null;
+  }
 }
 
 function stopSpeechRecognition() {
   if (!recognition) return;
-  recognition.onend = null;
-  recognition.stop();
-  recognition = null;
+  try {
+    recognition.stop();
+  } catch {
+    resolveRecognitionStop?.();
+    resolveRecognitionStop = null;
+    recognition = null;
+  }
 }
 
 function resetTranscript() {
