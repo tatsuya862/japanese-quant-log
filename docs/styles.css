@@ -2033,6 +2033,20 @@ h3 {
   text-align: center;
 }
 
+.weather-page .weather-phone,
+.weather-page .weather-phone button,
+.weather-page .weather-phone input,
+.weather-page .weather-phone p,
+.weather-page .weather-phone h1,
+.weather-page .weather-phone h2,
+.weather-page .weather-phone small,
+.weather-page .weather-phone span,
+.weather-page .weather-phone strong,
+.weather-page .weather-phone em,
+.weather-page .weather-phone text {
+  font-family: var(--serif);
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
