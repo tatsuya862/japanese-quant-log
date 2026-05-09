@@ -2060,6 +2060,52 @@ h3 {
   font-family: var(--serif);
 }
 
+.offline-voice-page {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 2rem;
+}
+
+.voice-mic-button {
+  display: grid;
+  width: clamp(8rem, 24vw, 12rem);
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--gold-soft);
+  background: rgba(7, 8, 8, 0.82);
+  box-shadow: 0 0 0 1px rgba(244, 240, 233, 0.04), 0 2rem 4rem rgba(0, 0, 0, 0.38);
+  cursor: pointer;
+}
+
+.voice-mic-button svg {
+  width: 42%;
+  height: 42%;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.35;
+}
+
+.voice-mic-button.is-recording {
+  color: #f4f0e9;
+  background: rgba(184, 134, 24, 0.2);
+}
+
+.voice-status {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: clamp(2rem, 8vw, 4rem);
+  margin: 0;
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.9rem;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

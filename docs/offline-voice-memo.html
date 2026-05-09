@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Offline Voice Memo | QUANT LOG by Tatsuya</title>
+  <meta name="description" content="電波圏外でもひらめきを録音し、ローカルに音声とMarkdownログを保存するQuant Logのオフライン音声メモMVP。">
+  <link rel="icon" type="image/png" href="assets/favicon_16x16.png">
+  <link rel="manifest" href="offline-voice-memo.webmanifest">
+  <link rel="stylesheet" href="styles.css?v=offline-voice-memo-01">
+</head>
+<body>
+  <main class="offline-voice-page" aria-label="Offline Voice Memo">
+    <button class="voice-mic-button" type="button" aria-label="録音開始" data-mic-button>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3Z"></path>
+        <path d="M5 11a7 7 0 0 0 14 0"></path>
+        <path d="M12 18v3"></path>
+        <path d="M9 21h6"></path>
+      </svg>
+    </button>
+    <p class="voice-status" data-voice-status>タップで録音開始</p>
+  </main>
+  <script src="offline-voice-memo.js?v=offline-voice-memo-01"></script>
+</body>
+</html>
