@@ -75,6 +75,7 @@ async function saveRecording() {
   } catch {
     transcript = "文字起こしエンジンで処理できませんでした。音声ファイルは保存済みです。";
   }
+  showTranscript(transcript);
 
   const markdown = buildMarkdown(timestamp, audioName, transcript);
 
