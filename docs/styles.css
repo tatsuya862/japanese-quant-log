@@ -2099,11 +2099,24 @@ h3 {
   position: fixed;
   left: 0;
   right: 0;
-  bottom: clamp(2rem, 8vw, 4rem);
+  bottom: clamp(4.5rem, 11vw, 6rem);
   margin: 0;
   color: var(--muted);
   text-align: center;
   font-size: 0.9rem;
+}
+
+.voice-transcript {
+  position: fixed;
+  left: 50%;
+  bottom: clamp(1.5rem, 5vw, 3rem);
+  width: min(34rem, calc(100% - 2rem));
+  margin: 0;
+  transform: translateX(-50%);
+  color: var(--text);
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.8;
 }
 
 .sr-only {

@@ -4,11 +4,15 @@ const STORE_NAME = "voiceLogs";
 
 const micButton = document.querySelector("[data-mic-button]");
 const statusEl = document.querySelector("[data-voice-status]");
+const transcriptEl = document.querySelector("[data-voice-transcript]");
 
 let mediaRecorder = null;
 let stream = null;
 let chunks = [];
 let isRecording = false;
+let recognition = null;
+let finalTranscript = "";
+let liveTranscript = "";
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("offline-voice-memo-sw.js").catch(() => {});
@@ -32,7 +36,9 @@ async function startRecording() {
       if (event.data && event.data.size > 0) chunks.push(event.data);
     });
     mediaRecorder.addEventListener("stop", saveRecording);
+    resetTranscript();
     mediaRecorder.start();
+    startSpeechRecognition();
     isRecording = true;
     micButton.classList.add("is-recording");
     micButton.setAttribute("aria-label", "録音停止");
@@ -43,11 +49,12 @@ async function startRecording() {
 }
 
 function stopRecording() {
+  isRecording = false;
   if (mediaRecorder && mediaRecorder.state !== "inactive") {
     mediaRecorder.stop();
   }
+  stopSpeechRecognition();
   stream?.getTracks().forEach((track) => track.stop());
-  isRecording = false;
   micButton.classList.remove("is-recording");
   micButton.setAttribute("aria-label", "録音開始");
 }
@@ -87,10 +94,68 @@ async function saveRecording() {
 }
 
 async function transcribeLocally(audioBlob) {
+  const browserTranscript = cleanTranscript(finalTranscript || liveTranscript);
+  if (browserTranscript) return browserTranscript;
   if (window.quantLogTranscriber?.transcribe) {
     return window.quantLogTranscriber.transcribe(audioBlob);
   }
-  return "ローカル文字起こしエンジン未接続。音声ファイルは端末内に保存済みです。";
+  return "文字起こし結果なし。音声ファイルは端末内に保存済みです。";
+}
+
+function startSpeechRecognition() {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SpeechRecognition) return;
+
+  recognition = new SpeechRecognition();
+  recognition.lang = "ja-JP";
+  recognition.continuous = true;
+  recognition.interimResults = true;
+  recognition.addEventListener("result", (event) => {
+    let interim = "";
+    for (let index = event.resultIndex; index < event.results.length; index += 1) {
+      const text = event.results[index][0]?.transcript || "";
+      if (event.results[index].isFinal) {
+        finalTranscript = cleanTranscript(`${finalTranscript} ${text}`);
+      } else {
+        interim = `${interim} ${text}`;
+      }
+    }
+    liveTranscript = cleanTranscript(`${finalTranscript} ${interim}`);
+    showTranscript(liveTranscript);
+  });
+  recognition.addEventListener("end", () => {
+    if (isRecording) {
+      try {
+        recognition.start();
+      } catch {}
+    }
+  });
+  try {
+    recognition.start();
+  } catch {}
+}
+
+function stopSpeechRecognition() {
+  if (!recognition) return;
+  recognition.onend = null;
+  recognition.stop();
+  recognition = null;
+}
+
+function resetTranscript() {
+  finalTranscript = "";
+  liveTranscript = "";
+  showTranscript("");
+}
+
+function showTranscript(text) {
+  if (!transcriptEl) return;
+  transcriptEl.textContent = text;
+  transcriptEl.hidden = !text;
+}
+
+function cleanTranscript(text) {
+  return String(text || "").replace(/\s+/g, " ").trim();
 }
 
 function buildMarkdown(date, audioName, transcript) {
