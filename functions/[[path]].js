@@ -30,6 +30,10 @@ export async function onRequest(context) {
     return context.next();
   }
 
+  if (String(env.PUBLIC_AUTH_ENABLED || "").toLowerCase() !== "true") {
+    return publicMembershipRoute(request, url);
+  }
+
   try {
     assertEnv(env);
     await ensureSchema(env.AUTH_DB);
@@ -43,6 +47,83 @@ export async function onRequest(context) {
       </section>
     `, { status: 500 });
   }
+}
+
+function publicMembershipRoute(request, url) {
+  const authUiPaths = new Set([
+    "/register",
+    "/login",
+    "/account",
+    "/forgot-password",
+    "/reset-password",
+    "/verify-email",
+    "/resend-verification",
+    "/logout"
+  ]);
+
+  if (authUiPaths.has(url.pathname)) return publicMembershipNotice();
+  if (url.pathname === "/terms") return publicTermsPage();
+  if (url.pathname === "/privacy") return publicPrivacyPage();
+  if (url.pathname === "/contact") return publicContactPage();
+  return htmlPage("Not Found", `<section class="panel"><h1>ページが見つかりません</h1></section>`, { status: 404 });
+}
+
+function publicMembershipNotice() {
+  return htmlPage("会員機能の需要確認", `
+    <section class="panel wide">
+      <p class="eyebrow">Membership Interest</p>
+      <h1>会員機能は需要確認段階です</h1>
+      <p>現在の公開環境では、本物の無料登録・ログイン処理は提供していません。</p>
+      <p>メールアドレス、ユーザー名、パスワードなどの個人情報は入力不要です。登録フォーム、ログインフォーム、DB保存は公開していません。</p>
+      <p>将来的にニーズが確認できた場合、安全な無料登録機能の提供を検討します。有料プランやサブスクリプションを開始する場合は、料金、サービス内容、支払条件、解約方法を事前に明示し、ユーザーの同意なく自動的に課金へ移行することはありません。</p>
+      <div class="actions">
+        <a class="btn primary" href="/register-interest.html">会員機能の需要確認を見る</a>
+        <a class="btn ghost" href="/index.html">トップページへ戻る</a>
+      </div>
+    </section>
+  `);
+}
+
+function publicTermsPage() {
+  return htmlPage("利用規約", `
+    <section class="panel wide">
+      <p class="eyebrow">Terms</p>
+      <h1>利用規約</h1>
+      <p>会員機能については、現在、無料会員登録に向けた需要確認段階です。現時点では、メールアドレス、ユーザー名、パスワードなどの個人情報は収集していません。</p>
+      <p>将来的にニーズが確認できた場合、安全な無料登録機能の提供を検討します。有料プランやサブスクリプションを開始する場合は、料金、サービス内容、支払条件、解約方法を事前に明示し、ユーザーの同意なく自動的に課金へ移行することはありません。</p>
+      <p><a href="/contact">問い合わせ・通報窓口</a>をご利用ください。</p>
+    </section>
+  `);
+}
+
+function publicPrivacyPage() {
+  return htmlPage("プライバシーポリシー", `
+    <section class="panel wide">
+      <p class="eyebrow">Privacy</p>
+      <h1>プライバシーポリシー</h1>
+      <p>現在の公開環境では、本物の登録・ログイン機能を提供していません。そのため、メールアドレス、ユーザー名、パスワード、パスワードハッシュ、アカウント情報は収集していません。</p>
+      <p>会員機能については、将来的な無料機能候補の需要確認を目的として、静的な案内ページを公開しています。</p>
+      <p>正式な問い合わせ窓口は準備中です。公開時には、個人情報やアカウントに関する連絡先を明確に表示します。</p>
+    </section>
+  `);
+}
+
+function publicContactPage() {
+  return htmlPage("問い合わせ・通報", `
+    <section class="panel wide">
+      <p class="eyebrow">Contact</p>
+      <h1>問い合わせ・通報</h1>
+      <p>個人情報、アカウント、削除依頼、不正利用に関するお問い合わせは、正式な問い合わせ窓口からご連絡ください。</p>
+      <p>正式な問い合わせ窓口は準備中です。公開時には、個人情報やアカウントに関する連絡先を明確に表示します。</p>
+      <ul>
+        <li>サイト全般</li>
+        <li>会員機能に関する問い合わせ</li>
+        <li>個人情報に関する問い合わせ</li>
+        <li>削除依頼</li>
+        <li>不正利用・なりすまし・誹謗中傷の通報</li>
+      </ul>
+    </section>
+  `);
 }
 
 function assertEnv(env) {
@@ -735,8 +816,8 @@ function htmlPage(title, body, options = {}) {
       <a href="/index.html#services">Services</a>
       <a href="/market.html">Market</a>
       <a href="/index.html#prototype">Prototype</a>
-      <a href="/login">Login</a>
-      <a href="/register">Free Register</a>
+      <a href="/login">Status</a>
+      <a href="/register">Interest</a>
     </nav>
   </header>
   <main class="auth-main">${body}</main>
