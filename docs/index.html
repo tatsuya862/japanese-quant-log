@@ -57,29 +57,36 @@
             <span></span>
             <a href="#prototype">すべてのプロトタイプを見る</a>
           </div>
-          <a class="lab-row" href="money-script-dependency.html">
+          <a class="lab-row" href="time-long-game-no.html" data-ga4-event="click_featured_free_article" data-cta-label="time_long_game_featured_free_article">
             <span class="lab-no">01</span>
+            <strong>忙しい人ほど、長期戦略を失う</strong>
+            <small>ロングゲームを始めるためのNoの使い方<br>最新のYouTubeライブ配信後フォロー / Free Article</small>
+            <em>無料記事を読む</em>
+            <b>→</b>
+          </a>
+          <a class="lab-row" href="money-script-dependency.html">
+            <span class="lab-no">02</span>
             <strong>無料記事</strong>
             <small>経済依存マネースクリプトの<br>要点整理</small>
             <em>公開中</em>
             <b>→</b>
           </a>
           <a class="lab-row" href="https://tatsuya862.github.io/wealth_app/" target="_blank" rel="noreferrer">
-            <span class="lab-no">02</span>
+            <span class="lab-no">03</span>
             <strong>支出管理</strong>
             <small>収入から支出枠を<br>自動整理</small>
             <em>公開中</em>
             <b>→</b>
           </a>
           <a class="lab-row" href="https://tatsuya862.github.io/prottype_audio-texts/" target="_blank" rel="noreferrer">
-            <span class="lab-no">03</span>
+            <span class="lab-no">04</span>
             <strong>オーディオブック</strong>
             <small>渋滞時間を使う<br>音声学習</small>
             <em>実験中</em>
             <b>→</b>
           </a>
           <a class="lab-row" href="white-space-calendar.html" data-prototype-link="white-space-calendar" data-prototype-name="White Space Calendar">
-            <span class="lab-no">04</span>
+            <span class="lab-no">05</span>
             <strong>ホワイトスペース</strong>
             <small>1日3枠で<br>空白を守る週間設計</small>
             <em>試作中</em>
@@ -290,6 +297,21 @@
         } else {
           window.dataLayer = window.dataLayer || [];
           window.dataLayer.push({ event: 'prototype_link_click', ...payload });
+        }
+      });
+    });
+    document.querySelectorAll('[data-ga4-event]').forEach((link) => {
+      link.addEventListener('click', () => {
+        const payload = {
+          cta_label: link.dataset.ctaLabel || link.textContent.trim(),
+          page_id: 'quant_log_home',
+          action_type: 'link_click'
+        };
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', link.dataset.ga4Event, payload);
+        } else {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: link.dataset.ga4Event, ...payload });
         }
       });
     });
