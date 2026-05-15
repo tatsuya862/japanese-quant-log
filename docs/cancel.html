@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>お問い合わせ | QUANT LOG by Tatsuya</title>
-  <meta name="description" content="クオンツログの決済、解約、ログイン、コンテンツ閲覧、サービス内容、不具合に関する問い合わせ先。">
+  <title>決済未完了 | QUANT LOG by Tatsuya</title>
+  <meta name="description" content="クオンツログ有料メンバー登録の決済キャンセルページ。">
   <link rel="icon" type="image/png" href="assets/favicon_16x16.png">
   <link rel="stylesheet" href="styles.css?v=paid-membership-01">
 </head>
@@ -18,32 +18,28 @@
     <nav>
       <a href="index.html#hero">ホーム</a>
       <a href="index.html#pricing">料金</a>
-      <a href="members.html">メンバー限定</a>
       <a href="index.html#faq">FAQ</a>
-      <a href="terms.html">利用規約</a>
-      <a href="privacy.html">プライバシー</a>
-      <a href="legal.html">特商法表記</a>
+      <a href="contact.html">お問い合わせ</a>
     </nav>
   </header>
 
   <main class="membership-doc">
     <section class="doc-hero">
-      <p class="section-label">Contact</p>
-      <h1>お問い合わせ</h1>
-      <p>決済、解約、ログイン、コンテンツ閲覧、サービス内容、不具合については、以下のメールアドレスへご連絡ください。</p>
-      <!-- CONTACT_EMAIL: quantlog.official@gmail.com -->
-      <a class="btn primary" href="mailto:quantlog.official@gmail.com" data-contact-mailto>quantlog.official@gmail.com</a>
+      <p class="section-label">Canceled</p>
+      <h1>決済は完了していません</h1>
+      <p>登録処理はキャンセルされました。料金、内容、解約条件を確認してから、もう一度登録できます。</p>
+      <div class="membership-actions">
+        <button class="btn primary checkout-button" type="button" data-checkout-button>もう一度登録する</button>
+        <a class="btn ghost" href="index.html#pricing">料金と内容を確認</a>
+      </div>
+      <p class="checkout-message" data-checkout-message aria-live="polite"></p>
     </section>
-
     <section class="doc-panel">
-      <h2>問い合わせ対象</h2>
-      <ul>
-        <li>決済、領収書、重複決済に関する確認</li>
-        <li>解約、請求管理、Stripe Customer Portalの案内</li>
-        <li>ログイン、登録メール、メンバー限定コンテンツ閲覧</li>
-        <li>サービス内容、不具合、表示崩れの報告</li>
-      </ul>
-      <p>解約・請求管理については、登録時のメールアドレスからご連絡ください。確認後、Stripeの請求管理ページまたは手動対応にてご案内します。</p>
+      <h2>不安がある場合</h2>
+      <p>自動更新、退会、返金、専門的助言の範囲はFAQにまとめています。決済前に確認できます。</p>
+      <p><a class="text-link" href="index.html#faq">FAQを見る</a></p>
+      <!-- CONTACT_EMAIL: quantlog.official@gmail.com -->
+      <p>個別の確認は <a href="mailto:quantlog.official@gmail.com" data-contact-mailto>quantlog.official@gmail.com</a> へお問い合わせください。</p>
     </section>
   </main>
 

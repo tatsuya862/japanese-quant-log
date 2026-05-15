@@ -3,22 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>QUANT LOG by Tatsuya | AI活用と金融プロトタイプ</title>
-  <meta name="description" content="AI活用、金融マーケット観測、集中タイマー、支出管理、ドライブ学習をまとめたQuant Log公式サイト。">
+  <title>QUANT LOG by Tatsuya | 人生の資源を取り戻す</title>
+  <meta name="description" content="お金、時間、集中力、判断力。気づかないうちに失っている人生の資源を、クオンツログで可視化し、整え、取り戻すための有料メンバーサービス。">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RB2ZGN11KY"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-RB2ZGN11KY');
   </script>
   <link rel="icon" type="image/png" href="assets/favicon_16x16.png">
-  <link rel="stylesheet" href="styles.css?v=serif-sync-06">
+  <link rel="stylesheet" href="styles.css?v=paid-membership-01">
 </head>
-<body>
-  <header class="site-header">
+<body class="membership-page">
+  <header class="site-header membership-header">
     <a class="brand" href="#hero" aria-label="QUANT LOG by Tatsuya">
       <span class="brand-main">QUANT LOG</span>
       <span class="brand-sub">by Tatsuya</span>
@@ -29,304 +28,223 @@
       <span></span>
     </button>
     <nav>
-      <a href="#philosophy">フィソロフィー</a>
-      <a href="#services">サービス</a>
-      <a href="#media">メディア</a>
-      <a href="market.html">マーケット</a>
-      <a href="#prototype">プロトタイプ</a>
-      <a href="#contact">コンタクト</a>
-      <a href="register-interest.html">会員機能の需要確認</a>
+      <a href="#hero">ホーム</a>
+      <a href="#pricing">料金</a>
+      <a href="members.html">メンバー限定</a>
+      <a href="#free">無料記事</a>
+      <a href="#faq">FAQ</a>
+      <a href="terms.html">利用規約</a>
+      <a href="privacy.html">プライバシー</a>
+      <a href="legal.html">特商法表記</a>
+      <a href="contact.html">お問い合わせ</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero" id="hero">
-      <div class="hero-grid">
-        <div class="hero-copy-block">
-          <h1><span>AI</span>で構造化<br>次世代のサービスへ</h1>
-          <p class="hero-copy">Quant Log思考を軸に、サービス・プロトタイプ・市場観測を実装可能な形へ整理する。現在は個人情報を収集しておらず、会員機能は需要確認段階です。</p>
-          <div class="hero-cta">
-            <a class="btn primary" href="register-interest.html">会員機能の需要確認</a>
-            <a class="btn ghost" href="#prototype">実装を見る</a>
-          </div>
+    <section class="membership-hero" id="hero">
+      <div class="membership-hero-copy">
+        <p class="section-label">Paid Membership</p>
+        <h1>人生の資源を取り戻す</h1>
+        <p class="hero-copy">お金、時間、集中力、判断力。気づかないうちに失っている人生の資源を、クオンツログで可視化し、整え、取り戻す。</p>
+        <div class="membership-actions">
+          <button class="btn primary checkout-button" type="button" data-checkout-button>初回限定250円で始める</button>
+          <a class="btn ghost" href="#pricing">料金と条件を見る</a>
         </div>
+        <p class="checkout-message" data-checkout-message aria-live="polite"></p>
+        <ul class="cta-notes">
+          <li>初回限定価格250円、通常価格は月額500円です。</li>
+          <li>1か月ごとの自動更新。いつでも退会できます。</li>
+          <li>退会後も次回更新日前日までは通常通り利用できます。</li>
+          <li>有料音声・有料記事・Drive Studyアップデート版を利用できます。</li>
+        </ul>
+      </div>
+      <aside class="membership-summary" aria-label="登録前の確認事項">
+        <span>登録前に確認</span>
+        <dl>
+          <div><dt>初回</dt><dd>250円</dd></div>
+          <div><dt>通常</dt><dd>月額500円</dd></div>
+          <div><dt>更新</dt><dd>1か月ごと</dd></div>
+          <div><dt>解約</dt><dd>いつでも可能</dd></div>
+        </dl>
+        <p>月の途中で入会しても料金は同じです。今後、価格や提供内容は変更される可能性があります。</p>
+      </aside>
+    </section>
 
-        <aside class="prototype-lab" aria-label="Free Articles and Prototype Lab">
-          <div class="lab-heading">
-            <h2>Free Articles</h2>
-            <span></span>
-            <a href="time-goal-long-game.html">最新無料記事を読む</a>
-          </div>
-          <a class="lab-row" href="time-goal-long-game.html" data-ga4-event="click_featured_free_article" data-cta-label="time_goal_long_game_featured_free_article">
-            <span class="lab-no">01</span>
-            <strong>目標が曖昧な人ほど<br>時間を失う</strong>
-            <small>ライブで話した問題提起を、次の行動に移しやすい形で軽く整理<br>最新のYouTubeライブ配信後フォロー / Free Article</small>
-            <em>無料記事を読む</em>
-            <b>→</b>
-          </a>
-          <a class="lab-row" href="time-long-game-no.html" data-ga4-event="click_featured_free_article" data-cta-label="time_long_game_featured_free_article">
-            <span class="lab-no">02</span>
-            <strong>忙しい人ほど、長期戦略を失う</strong>
-            <small>ロングゲームを始めるためのNoの使い方<br>Free Article</small>
-            <em>無料記事を読む</em>
-            <b>→</b>
-          </a>
-          <a class="lab-row" href="money-script-dependency.html">
-            <span class="lab-no">03</span>
-            <strong>経済依存マネースクリプト</strong>
-            <small>経済依存マネースクリプトの<br>要点整理</small>
-            <em>無料記事を読む</em>
-            <b>→</b>
-          </a>
-          <div class="lab-heading" style="margin-top: 1.75rem;">
-            <h2>Prototype Lab</h2>
-            <span></span>
-            <a href="#prototype">すべてのプロトタイプを見る</a>
-          </div>
-          <a class="lab-row" href="https://tatsuya862.github.io/wealth_app/" target="_blank" rel="noreferrer">
-            <span class="lab-no">01</span>
-            <strong>支出管理</strong>
-            <small>収入から支出枠を<br>自動整理</small>
-            <em>公開中</em>
-            <b>→</b>
-          </a>
-          <a class="lab-row" href="https://tatsuya862.github.io/prottype_audio-texts/" target="_blank" rel="noreferrer">
-            <span class="lab-no">02</span>
-            <strong>オーディオブック</strong>
-            <small>渋滞時間を使う<br>音声学習</small>
-            <em>実験中</em>
-            <b>→</b>
-          </a>
-          <a class="lab-row" href="white-space-calendar.html" data-prototype-link="white-space-calendar" data-prototype-name="White Space Calendar">
-            <span class="lab-no">03</span>
-            <strong>ホワイトスペース</strong>
-            <small>1日3枠で<br>空白を守る週間設計</small>
-            <em>試作中</em>
-            <b>→</b>
-          </a>
-          <a class="lab-more" href="#prototype">プロトタイプについて <span>→</span></a>
-        </aside>
+    <section class="membership-band">
+      <p>対象は20〜40代の会社員、副業初心者、将来のお金や働き方に不安がある人。情報を見ているのに行動に落とせない状態を、日々の判断材料から整えます。</p>
+    </section>
+
+    <section class="membership-section" id="benefits">
+      <div class="section-heading">
+        <p class="section-label">Benefits</p>
+        <h2>迷いを減らすための3つの軸</h2>
+      </div>
+      <div class="benefit-grid">
+        <article>
+          <span>01</span>
+          <h3>お金の迷いを減らす</h3>
+          <p>支出、働き方、将来不安を整理し、自分に必要な判断材料を見える形にします。</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>時間の使い方を整える</h3>
+          <p>忙しさの中で失われる集中力と余白を見直し、小さく続けられる行動に変えます。</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>人生の判断基準を取り戻す</h3>
+          <p>仕事、副業、学習、暮らしの選択を、目先の不安だけで決めないための視点を持ちます。</p>
+        </article>
       </div>
     </section>
 
-    <section class="market-snapshot" aria-label="Market Snapshot" hidden style="display: none;">
+    <section class="membership-section split" id="members">
       <div>
-        <h2>Market Snapshot</h2>
-        <small>05.02 12:00更新</small>
+        <p class="section-label">Members</p>
+        <h2>メンバー限定コンテンツ</h2>
+        <p>有料メンバーは、有料音声、有料記事、Drive Studyアップデート版、既存オーディオブック、今後追加される限定コンテンツを利用できます。</p>
+        <p>今日公開時点では、決済後に登録メールアドレス宛へ閲覧方法を順次案内する手動運用を前提にします。</p>
+        <a class="text-link" href="members.html">メンバー限定ページを見る</a>
       </div>
-      <dl>
-        <div>
-          <dt>日経平均</dt>
-          <dd>36,378.32 <span class="down">-0.61%</span></dd>
-        </div>
-        <div>
-          <dt>米国10年金利</dt>
-          <dd>4.29% <span class="up">+0.02</span></dd>
-        </div>
-        <div>
-          <dt>USD / JPY</dt>
-          <dd>155.24 <span class="down">-0.19%</span></dd>
-        </div>
-        <div>
-          <dt>S&amp;P 500</dt>
-          <dd>5,127.79 <span class="up">+0.48%</span></dd>
-        </div>
-        <div>
-          <dt>Gold</dt>
-          <dd>2,317.42 <span class="up">+0.35%</span></dd>
-        </div>
-      </dl>
-      <a href="market.html">もっと見る <span>→</span></a>
-    </section>
-
-    <section class="philosophy" id="philosophy">
-      <div class="philosophy-title">
-        <div>
-          <p class="section-label">Philosophy</p>
-          <h2>量を検証し、質へ変換する</h2>
-        </div>
-        <p>日々移り変わる市場、状況、ニーズを柔軟に捉え、普遍的かつ再現性ある構造にアップデートしています</p>
-      </div>
-      <div class="process-panel" hidden style="display: none;">
-        <table>
-          <thead>
-            <tr>
-              <th>Phase</th>
-              <th>Focus</th>
-              <th>Output</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>01</td>
-              <td>観測</td>
-              <td>市場・データの事実整理</td>
-            </tr>
-            <tr>
-              <td>02</td>
-              <td>分析</td>
-              <td>構造化・仮説・シナリオ</td>
-            </tr>
-            <tr>
-              <td>03</td>
-              <td>実行</td>
-              <td>ルール・判断・実行</td>
-            </tr>
-            <tr>
-              <td>04</td>
-              <td>検証</td>
-              <td>検証・改善・資産化</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="chart-line" aria-hidden="true">
-          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-        </div>
-      </div>
-    </section>
-
-    <section class="prototype" id="prototype">
-      <div class="section-heading">
-        <p class="section-label">Prototype</p>
-        <h2>日常の資源を取り戻す</h2>
-        <p>Quant Logの考え方を、使えるプロトタイプとして検証します。</p>
-      </div>
-      <div class="prototype-grid">
-        <a class="prototype-card" href="market.html" hidden style="display: none;">
-          <span>Market Brief</span>
-          <h3>金融マーケット情報</h3>
-          <p>株式、金利、指数、為替の公開データを整理します。</p>
-        </a>
-        <a class="prototype-card" href="https://tatsuya862.github.io/wealth_app/" target="_blank" rel="noreferrer">
-          <span>Wealth</span>
-          <h3>支出管理</h3>
-          <p>収入を入れるだけで支出枠を自動表示。</p>
-        </a>
-        <a class="prototype-card" href="https://tatsuya862.github.io/prottype_audio-texts/" target="_blank" rel="noreferrer">
-          <span>Drive Study</span>
-          <h3>渋滞時間の学習化</h3>
-          <p>音声と文章を切り替える学習プレイリスト。</p>
-        </a>
-        <a class="prototype-card" href="white-space-calendar.html" data-prototype-link="white-space-calendar" data-prototype-name="White Space Calendar">
-          <span>White Space Calendar</span>
-          <h3>余白カレンダー</h3>
-          <p>私たちの時間資源を補助するツール</p>
-        </a>
-      </div>
-    </section>
-
-    <section class="services" id="services">
-      <div class="section-heading">
-        <p class="section-label">Services</p>
-        <h2>構造化と実装支援</h2>
-        <p>世界観、導線、プロトタイプを公開できる形に整えます。</p>
-      </div>
-      <div class="services-grid">
+      <div class="content-list">
         <article>
-          <h3>WEBサイト制作</h3>
-          <p>情報設計、導線、ブランド表現を一体化。</p>
+          <h3>Drive Study</h3>
+          <p>通勤中・散歩中・作業前に学べる音声学習コンテンツ。お金、時間、判断、人生設計をテーマに順次追加します。</p>
         </article>
         <article>
-          <h3>プロトタイプ制作</h3>
-          <p>アイディアを小さく使える形へ実装。</p>
+          <h3>有料音声・有料記事</h3>
+          <p>無料記事より深く、日々の迷いを減らすための視点、問い、整理方法を扱います。</p>
         </article>
         <article>
-          <h3>メディア導線設計</h3>
-          <p>Instagram、YouTube、Webを一つの流れに整理。</p>
+          <h3>既存コンテンツの活用</h3>
+          <p>既存オーディオブックと記事を、メンバー向けに使いやすく整理していきます。</p>
         </article>
       </div>
     </section>
 
-    <section class="media-links" id="media">
+    <section class="membership-section pricing-section" id="pricing">
       <div class="section-heading">
-        <p class="section-label">Media</p>
-        <h2>思考と制作のログ</h2>
-        <p>Quant Logの更新、制作過程、市場視点を発信します。</p>
+        <p class="section-label">Pricing</p>
+        <h2>料金と登録条件</h2>
+        <p>登録前に料金、更新、解約、返金条件を確認できます。</p>
       </div>
-      <div class="media-link-list">
-        <a href="https://www.instagram.com/tatsuyaaistructure/?hl=ja" target="_blank" rel="noreferrer">
-          <span>Instagram</span>
-          <strong><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" style="display:inline-block;margin-right:0.55rem;vertical-align:-0.18em;color:var(--gold-soft)"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.7"></rect><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.7"></circle><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"></circle></svg>@tatsuyaaistructure</strong>
-          <em>→</em>
-        </a>
-        <a href="https://www.youtube.com/channel/UCvpdFdz4iCD-degYzeuuDBQ" target="_blank" rel="noreferrer">
-          <span>YouTube</span>
-          <strong><svg aria-hidden="true" width="24" height="18" viewBox="0 0 24 18" fill="none" style="display:inline-block;margin-right:0.55rem;vertical-align:-0.1em;color:var(--gold-soft)"><rect x="1.5" y="1.5" width="21" height="15" rx="3.6" stroke="currentColor" stroke-width="1.7"></rect><path d="M10 5.2L15.2 9L10 12.8V5.2Z" fill="currentColor"></path></svg>QUANT LOG</strong>
-          <em>→</em>
-        </a>
-      </div>
-    </section>
-
-    <section class="profile" id="profile">
-      <div class="profile-card">
-        <img src="assets/profile.jpg" alt="プロフィール写真">
+      <div class="pricing-card">
         <div>
-          <p class="section-label">Profile</p>
-          <p>資源とリスクを定量化し、AIを使ったLP・画像・動画制作まで設計します。</p>
-          <p>金融視点と実データをもとに、成果につながるアウトプットを提供。</p>
-          <p>2018年からFXトレーダー。損失・確率・長期視点で判断します。</p>
+          <p class="plan-name">クオンツログ有料メンバー</p>
+          <p class="price"><small>初回限定</small>250円</p>
+          <p class="normal-price">通常価格：月額500円</p>
         </div>
+        <ul>
+          <li>1か月ごとの自動更新</li>
+          <li>いつでも退会可能</li>
+          <li>退会後も次回更新日前日までは利用可能</li>
+          <li>月の途中で入会しても料金は同じです</li>
+          <li>原則として決済完了後の返金は行いません</li>
+          <li>今後、価格は変更される可能性があります</li>
+        </ul>
+        <div class="membership-actions">
+          <button class="btn primary checkout-button" type="button" data-checkout-button>月額メンバー登録へ進む</button>
+          <a class="btn ghost" href="terms.html">利用規約を確認</a>
+        </div>
+        <p class="checkout-message" data-checkout-message aria-live="polite"></p>
       </div>
     </section>
 
-    <section class="contact" id="contact">
+    <section class="membership-section" id="free">
       <div class="section-heading">
+        <p class="section-label">Free Articles</p>
+        <h2>無料記事は入口、有料メンバーは深い学習へ</h2>
+      </div>
+      <div class="article-links">
+        <a href="time-goal-long-game.html">
+          <span>Free Article</span>
+          <strong>目標が苦手な人ほど、時間を失いやすい</strong>
+          <em>読む</em>
+        </a>
+        <a href="time-long-game-no.html">
+          <span>Free Article</span>
+          <strong>忙しい人ほど、長期戦略を失いやすい</strong>
+          <em>読む</em>
+        </a>
+        <a href="money-script-dependency.html">
+          <span>Free Article</span>
+          <strong>経済依存のマネースクリプト</strong>
+          <em>読む</em>
+        </a>
+      </div>
+    </section>
+
+    <section class="membership-section" id="faq">
+      <div class="section-heading">
+        <p class="section-label">FAQ</p>
+        <h2>登録前の不安を減らす確認事項</h2>
+      </div>
+      <div class="faq-list">
+        <details open>
+          <summary>何が使えますか？</summary>
+          <p>有料音声、有料記事、Drive Studyアップデート版、既存オーディオブック、今後追加されるメンバー限定コンテンツを利用できます。</p>
+        </details>
+        <details>
+          <summary>料金はいくらですか？</summary>
+          <p>初回限定価格は250円です。通常価格は月額500円です。</p>
+        </details>
+        <details>
+          <summary>自動更新ですか？</summary>
+          <p>はい。1か月ごとの自動更新です。</p>
+        </details>
+        <details>
+          <summary>いつでも退会できますか？</summary>
+          <p>はい。いつでも退会できます。</p>
+        </details>
+        <details>
+          <summary>退会したらすぐ使えなくなりますか？</summary>
+          <p>いいえ。退会後も次回更新日前日までは通常通り利用できます。</p>
+        </details>
+        <details>
+          <summary>月の途中で入会した場合、日割りになりますか？</summary>
+          <p>いいえ。月のどの日に入会しても料金は同じです。</p>
+        </details>
+        <details>
+          <summary>内容は今後増えますか？</summary>
+          <p>はい。お金、時間、仕事、副業、人生設計に関するメンバー限定コンテンツを順次追加予定です。</p>
+        </details>
+        <details>
+          <summary>返金はありますか？</summary>
+          <p>原則として、決済完了後の返金は行いません。ただし、重複決済やシステム上の問題がある場合はお問い合わせください。</p>
+        </details>
+        <details>
+          <summary>専門的な税務・法律相談はできますか？</summary>
+          <p>個別の税務・法律判断は行いません。必要に応じて税務署、税理士、弁護士などの専門家にご相談ください。</p>
+        </details>
+        <details>
+          <summary>解約・請求管理はどこからできますか？</summary>
+          <p>Stripe Customer Portalでの管理を前提にしています。ログイン連携が整うまでは、登録時のメールアドレスから <a href="mailto:quantlog.official@gmail.com" data-contact-mailto>quantlog.official@gmail.com</a> へお問い合わせください。</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="membership-section contact-strip" id="contact">
+      <div>
         <p class="section-label">Contact</p>
-        <h2>相談はInstagram DMへ</h2>
+        <h2>問い合わせ先</h2>
+        <p>決済、解約、ログイン、コンテンツ閲覧、サービス内容、不具合は以下へご連絡ください。</p>
+        <!-- CONTACT_EMAIL: quantlog.official@gmail.com -->
+        <a class="text-link" href="mailto:quantlog.official@gmail.com" data-contact-mailto>quantlog.official@gmail.com</a>
       </div>
-      <div class="contact-links">
-        <a class="btn primary" href="https://ig.me/m/tatsuyaaistructure" target="_blank" rel="noreferrer">Instagram DM</a>
-        <a class="btn ghost" href="https://www.instagram.com/tatsuyaaistructure/?hl=ja" target="_blank" rel="noreferrer">Instagram</a>
-      </div>
+      <a class="btn ghost" href="contact.html">お問い合わせページ</a>
     </section>
   </main>
 
   <footer class="site-footer">
     <img src="assets/tatsuya-logo.png" alt="Tatsuya">
-    <p>©2025 Quant-Log by Tatsuya</p>
+    <p>©2026 QUANT LOG by Tatsuya</p>
     <p class="footer-links">
       <a href="terms.html">利用規約</a>
       <a href="privacy.html">プライバシーポリシー</a>
-      <a href="contact.html">問い合わせ・通報</a>
+      <a href="legal.html">特定商取引法に基づく表記</a>
+      <a href="contact.html">お問い合わせ</a>
     </p>
   </footer>
-  <script>
-    const toggle = document.querySelector('.menu-toggle');
-    toggle?.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      document.body.classList.toggle('menu-open');
-    });
-    document.querySelectorAll('[data-prototype-link]').forEach((link) => {
-      link.addEventListener('click', () => {
-        const payload = {
-          prototype_id: link.dataset.prototypeLink,
-          prototype_name: link.dataset.prototypeName || link.textContent.trim(),
-          action_type: 'link_click'
-        };
-        if (typeof window.gtag === 'function') {
-          window.gtag('event', 'prototype_link_click', payload);
-        } else {
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({ event: 'prototype_link_click', ...payload });
-        }
-      });
-    });
-    document.querySelectorAll('[data-ga4-event]').forEach((link) => {
-      link.addEventListener('click', () => {
-        const payload = {
-          cta_label: link.dataset.ctaLabel || link.textContent.trim(),
-          page_id: 'quant_log_home',
-          action_type: 'link_click'
-        };
-        if (typeof window.gtag === 'function') {
-          window.gtag('event', link.dataset.ga4Event, payload);
-        } else {
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({ event: link.dataset.ga4Event, ...payload });
-        }
-      });
-    });
-  </script>
+  <script src="membership.js?v=paid-membership-01"></script>
 </body>
 </html>

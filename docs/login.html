@@ -3,47 +3,46 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>ログイン機能の準備状況 | QUANT LOG by Tatsuya</title>
-  <meta name="description" content="Quant Logのログイン機能は準備中です。現在のGitHub Pages公開環境では個人情報の入力や登録・ログイン処理は行いません。">
+  <title>メンバー案内 | QUANT LOG by Tatsuya</title>
+  <meta name="description" content="クオンツログ有料メンバーの閲覧案内と問い合わせ先。">
   <link rel="icon" type="image/png" href="assets/favicon_16x16.png">
-  <link rel="stylesheet" href="styles.css?v=serif-sync-06">
+  <link rel="stylesheet" href="styles.css?v=paid-membership-01">
 </head>
-<body>
-  <header class="site-header">
+<body class="membership-page sub-page">
+  <header class="site-header membership-header">
     <a class="brand" href="index.html#hero" aria-label="QUANT LOG by Tatsuya">
       <span class="brand-main">QUANT LOG</span>
       <span class="brand-sub">by Tatsuya</span>
     </a>
+    <button class="menu-toggle" aria-expanded="false" aria-label="メニューを開く"><span></span><span></span><span></span></button>
     <nav>
-      <a href="index.html#services">Services</a>
-      <a href="market.html">Market</a>
-      <a href="register-interest.html">Interest</a>
-      <a href="contact.html">Contact</a>
+      <a href="index.html#hero">ホーム</a>
+      <a href="index.html#pricing">料金</a>
+      <a href="members.html">メンバー限定</a>
+      <a href="contact.html">お問い合わせ</a>
     </nav>
   </header>
-
-  <main class="interest-page">
-    <section class="interest-hero">
-      <p class="section-label">Membership Status</p>
-      <h1>ログイン機能は準備中です</h1>
-      <div class="interest-panel">
-        <p>現在のGitHub Pages公開環境では、本物の無料登録・ログイン処理は提供していません。</p>
-        <p>このページでは、メールアドレス、ユーザー名、パスワードなどの個人情報を入力しないでください。入力フォームも公開していません。</p>
-        <p>本物の無料登録・ログイン機能は、サーバー認証、DB保存、セキュリティ対策が整った後に提供を検討します。現時点では、会員機能に向けた需要確認ページへ案内しています。</p>
+  <main class="membership-doc">
+    <section class="doc-hero">
+      <p class="section-label">Member Access</p>
+      <h1>メンバー閲覧案内</h1>
+      <p>今日公開時点では、決済後に登録メールアドレス宛へ閲覧方法を順次案内します。自動ログインと閲覧制御は次フェーズで整備します。</p>
+      <div class="membership-actions">
+        <a class="btn primary" href="members.html">メンバー限定ページへ</a>
+        <a class="btn ghost" href="contact.html">問い合わせる</a>
       </div>
-      <a class="btn primary" href="register-interest.html">会員機能の需要確認を見る</a>
-      <a class="btn ghost" href="index.html">トップページへ戻る</a>
     </section>
   </main>
-
   <footer class="site-footer">
     <img src="assets/tatsuya-logo.png" alt="Tatsuya">
-    <p>©2025 Quant-Log by Tatsuya</p>
+    <p>©2026 QUANT LOG by Tatsuya</p>
     <p class="footer-links">
       <a href="terms.html">利用規約</a>
       <a href="privacy.html">プライバシーポリシー</a>
-      <a href="contact.html">問い合わせ・通報</a>
+      <a href="legal.html">特定商取引法に基づく表記</a>
+      <a href="contact.html">お問い合わせ</a>
     </p>
   </footer>
+  <script src="membership.js?v=paid-membership-01"></script>
 </body>
 </html>

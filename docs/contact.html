@@ -3,54 +3,60 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>問い合わせ・通報 | QUANT LOG by Tatsuya</title>
+  <title>お問い合わせ | QUANT LOG by Tatsuya</title>
+  <meta name="description" content="クオンツログの決済、解約、ログイン、コンテンツ閲覧、サービス内容、不具合に関する問い合わせ先。">
   <link rel="icon" type="image/png" href="assets/favicon_16x16.png">
-  <link rel="stylesheet" href="styles.css?v=serif-sync-06">
+  <link rel="stylesheet" href="styles.css?v=paid-membership-01">
 </head>
-<body>
-  <header class="site-header">
+<body class="membership-page sub-page">
+  <header class="site-header membership-header">
     <a class="brand" href="index.html#hero" aria-label="QUANT LOG by Tatsuya">
       <span class="brand-main">QUANT LOG</span>
       <span class="brand-sub">by Tatsuya</span>
     </a>
+    <button class="menu-toggle" aria-expanded="false" aria-label="メニューを開く"><span></span><span></span><span></span></button>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="register-interest.html">Interest</a>
-      <a href="terms.html">Terms</a>
-      <a href="privacy.html">Privacy</a>
+      <a href="index.html#hero">ホーム</a>
+      <a href="index.html#pricing">料金</a>
+      <a href="members.html">メンバー限定</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="terms.html">利用規約</a>
+      <a href="privacy.html">プライバシー</a>
+      <a href="legal.html">特商法表記</a>
     </nav>
   </header>
 
-  <main class="interest-page">
-    <section class="interest-hero">
+  <main class="membership-doc">
+    <section class="doc-hero">
       <p class="section-label">Contact</p>
-      <h1>問い合わせ・通報</h1>
-      <div class="interest-panel">
-        <p>個人情報、アカウント、削除依頼、不正利用に関するお問い合わせは、正式な問い合わせ窓口からご連絡ください。</p>
-        <p>正式な問い合わせ窓口は準備中です。公開時には、個人情報やアカウントに関する連絡先を明確に表示します。現時点で存在しないメールアドレスは掲載していません。</p>
-        <h2>問い合わせ種別</h2>
-        <ul>
-          <li>サイト全般</li>
-          <li>会員機能に関する問い合わせ</li>
-          <li>個人情報に関する問い合わせ</li>
-          <li>削除依頼</li>
-          <li>不正利用・なりすまし・誹謗中傷の通報</li>
-        </ul>
-        <p>一般的な連絡や公開コンテンツに関する軽い確認は、既存のSNS導線も利用できます。ただし、個人情報やアカウント関連の連絡先は正式窓口の準備後に明示します。</p>
-      </div>
-      <a class="btn primary" href="https://ig.me/m/tatsuyaaistructure" target="_blank" rel="noreferrer">Instagram DM</a>
-      <a class="btn ghost" href="register-interest.html">会員機能の需要確認を見る</a>
+      <h1>お問い合わせ</h1>
+      <p>決済、解約、ログイン、コンテンツ閲覧、サービス内容、不具合については、以下のメールアドレスへご連絡ください。</p>
+      <!-- CONTACT_EMAIL: quantlog.official@gmail.com -->
+      <a class="btn primary" href="mailto:quantlog.official@gmail.com" data-contact-mailto>quantlog.official@gmail.com</a>
+    </section>
+
+    <section class="doc-panel">
+      <h2>問い合わせ対象</h2>
+      <ul>
+        <li>決済、領収書、重複決済に関する確認</li>
+        <li>解約、請求管理、Stripe Customer Portalの案内</li>
+        <li>ログイン、登録メール、メンバー限定コンテンツ閲覧</li>
+        <li>サービス内容、不具合、表示崩れの報告</li>
+      </ul>
+      <p>解約・請求管理については、登録時のメールアドレスからご連絡ください。確認後、Stripeの請求管理ページまたは手動対応にてご案内します。</p>
     </section>
   </main>
 
   <footer class="site-footer">
     <img src="assets/tatsuya-logo.png" alt="Tatsuya">
-    <p>©2025 Quant-Log by Tatsuya</p>
+    <p>©2026 QUANT LOG by Tatsuya</p>
     <p class="footer-links">
       <a href="terms.html">利用規約</a>
       <a href="privacy.html">プライバシーポリシー</a>
-      <a href="contact.html">問い合わせ・通報</a>
+      <a href="legal.html">特定商取引法に基づく表記</a>
+      <a href="contact.html">お問い合わせ</a>
     </p>
   </footer>
+  <script src="membership.js?v=paid-membership-01"></script>
 </body>
 </html>

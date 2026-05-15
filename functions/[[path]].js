@@ -7,6 +7,7 @@ const RESET_TTL_MINUTES = 30;
 const CSRF_TTL_MINUTES = 120;
 const PASSWORD_ITERATIONS = 310000;
 const MAX_PASSWORD_LENGTH = 1024;
+const STRIPE_API_BASE = "https://api.stripe.com/v1";
 
 const AUTH_PATHS = new Set([
   "/register",
@@ -19,7 +20,9 @@ const AUTH_PATHS = new Set([
   "/resend-verification",
   "/terms",
   "/privacy",
-  "/contact"
+  "/contact",
+  "/api/create-checkout-session",
+  "/api/create-portal-session"
 ]);
 
 export async function onRequest(context) {
@@ -28,6 +31,14 @@ export async function onRequest(context) {
 
   if (!AUTH_PATHS.has(url.pathname)) {
     return context.next();
+  }
+
+  if (url.pathname === "/api/create-checkout-session") {
+    return createCheckoutSession(request, env, url);
+  }
+
+  if (url.pathname === "/api/create-portal-session") {
+    return createPortalSession(request, env, url);
   }
 
   if (String(env.PUBLIC_AUTH_ENABLED || "").toLowerCase() !== "true") {
@@ -61,10 +72,10 @@ function publicMembershipRoute(request, url) {
     "/logout"
   ]);
 
-  if (authUiPaths.has(url.pathname)) return publicMembershipNotice();
-  if (url.pathname === "/terms") return publicTermsPage();
-  if (url.pathname === "/privacy") return publicPrivacyPage();
-  if (url.pathname === "/contact") return publicContactPage();
+  if (authUiPaths.has(url.pathname)) return redirect("/index.html#pricing");
+  if (url.pathname === "/terms") return redirect("/terms.html");
+  if (url.pathname === "/privacy") return redirect("/privacy.html");
+  if (url.pathname === "/contact") return redirect("/contact.html");
   return htmlPage("Not Found", `<section class="panel"><h1>ページが見つかりません</h1></section>`, { status: 404 });
 }
 
@@ -126,6 +137,111 @@ function publicContactPage() {
   `);
 }
 
+async function createCheckoutSession(request, env, url) {
+  if (request.method.toUpperCase() !== "POST") {
+    return jsonResponse({ error: "POST method required." }, 405);
+  }
+
+  const secretKey = env.STRIPE_SECRET_KEY;
+  const priceId = env.STRIPE_PRICE_ID_MONTHLY;
+  if (!secretKey || !priceId) {
+    return jsonResponse({
+      error: "Stripe is not configured. Required env vars: STRIPE_SECRET_KEY, STRIPE_PRICE_ID_MONTHLY, STRIPE_SUCCESS_URL, STRIPE_CANCEL_URL."
+    }, 503);
+  }
+
+  const successUrl = env.STRIPE_SUCCESS_URL || `${url.origin}/success.html?session_id={CHECKOUT_SESSION_ID}`;
+  const cancelUrl = env.STRIPE_CANCEL_URL || `${url.origin}/cancel.html`;
+  const params = new URLSearchParams();
+  params.set("mode", "subscription");
+  params.set("line_items[0][price]", priceId);
+  params.set("line_items[0][quantity]", "1");
+  params.set("success_url", successUrl);
+  params.set("cancel_url", cancelUrl);
+  params.set("allow_promotion_codes", "true");
+  params.set("billing_address_collection", "auto");
+  params.set("metadata[service]", "quant-log-paid-membership");
+
+  try {
+    const response = await fetch(`${STRIPE_API_BASE}/checkout/sessions`, {
+      method: "POST",
+      headers: {
+        "authorization": `Bearer ${secretKey}`,
+        "content-type": "application/x-www-form-urlencoded"
+      },
+      body: params
+    });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok || !data.url) {
+      console.error("stripe_checkout_error", data && data.error ? data.error.type : response.status);
+      return jsonResponse({ error: "決済ページを準備できませんでした。" }, 502);
+    }
+    return jsonResponse({ url: data.url });
+  } catch (error) {
+    console.error("stripe_checkout_fetch_error", error && error.name ? error.name : "Error");
+    return jsonResponse({ error: "決済ページを準備できませんでした。" }, 502);
+  }
+}
+
+async function createPortalSession(request, env, url) {
+  if (request.method.toUpperCase() !== "POST") {
+    return jsonResponse({ error: "POST method required." }, 405);
+  }
+
+  const secretKey = env.STRIPE_SECRET_KEY;
+  if (!secretKey) {
+    return jsonResponse({ error: "Stripe Customer Portal is not configured." }, 503);
+  }
+
+  let payload = {};
+  try {
+    payload = await request.json();
+  } catch {
+    payload = {};
+  }
+
+  if (!payload.customer_id) {
+    return jsonResponse({
+      error: "Customer ID is required until member login and Stripe customer mapping are connected."
+    }, 400);
+  }
+
+  const params = new URLSearchParams();
+  params.set("customer", payload.customer_id);
+  params.set("return_url", env.STRIPE_PORTAL_RETURN_URL || `${url.origin}/members.html`);
+
+  try {
+    const response = await fetch(`${STRIPE_API_BASE}/billing_portal/sessions`, {
+      method: "POST",
+      headers: {
+        "authorization": `Bearer ${secretKey}`,
+        "content-type": "application/x-www-form-urlencoded"
+      },
+      body: params
+    });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok || !data.url) {
+      console.error("stripe_portal_error", data && data.error ? data.error.type : response.status);
+      return jsonResponse({ error: "請求管理ページを準備できませんでした。" }, 502);
+    }
+    return jsonResponse({ url: data.url });
+  } catch (error) {
+    console.error("stripe_portal_fetch_error", error && error.name ? error.name : "Error");
+    return jsonResponse({ error: "請求管理ページを準備できませんでした。" }, 502);
+  }
+}
+
+function jsonResponse(body, status = 200) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: {
+      "content-type": "application/json; charset=utf-8",
+      "cache-control": "no-store",
+      "x-content-type-options": "nosniff"
+    }
+  });
+}
+
 function assertEnv(env) {
   if (!env.AUTH_DB) {
     throw new Error("AUTH_DB binding is required.");
@@ -146,9 +262,9 @@ async function route(request, env, url) {
   if (url.pathname === "/forgot-password" && method === "POST") return sendPasswordReset(env, request);
   if (url.pathname === "/reset-password" && method === "GET") return resetPasswordPage(env, request, url);
   if (url.pathname === "/reset-password" && method === "POST") return resetPassword(env, request);
-  if (url.pathname === "/terms" && method === "GET") return termsPage();
-  if (url.pathname === "/privacy" && method === "GET") return privacyPage();
-  if (url.pathname === "/contact" && method === "GET") return contactPage();
+  if (url.pathname === "/terms" && method === "GET") return redirect("/terms.html");
+  if (url.pathname === "/privacy" && method === "GET") return redirect("/privacy.html");
+  if (url.pathname === "/contact" && method === "GET") return redirect("/contact.html");
   return htmlPage("見つかりません", `<section class="panel"><h1>ページが見つかりません</h1></section>`, { status: 404 });
 }
 
