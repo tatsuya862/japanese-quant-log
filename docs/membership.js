@@ -1,4 +1,4 @@
-const CONTACT_EMAIL = "quantlog.official@gmail.com";
+const CONTACT_EMAIL = "quantlog.support@gmail.com";
 
 document.querySelectorAll("[data-contact-email]").forEach((node) => {
   node.textContent = CONTACT_EMAIL;
