@@ -2507,6 +2507,10 @@ h3 {
   border-top: 1px solid var(--line-soft);
 }
 
+.contact-strip .btn {
+  font-family: var(--serif);
+}
+
 .membership-doc {
   width: min(940px, 100%);
   margin: 0 auto;
