@@ -41,6 +41,21 @@ export async function onRequest(context) {
     return createPortalSession(request, env, url);
   }
 
+  const disabledAuthUiPaths = new Set([
+    "/register",
+    "/login",
+    "/logout",
+    "/account",
+    "/forgot-password",
+    "/reset-password",
+    "/verify-email",
+    "/resend-verification"
+  ]);
+
+  if (disabledAuthUiPaths.has(url.pathname)) {
+    return redirect("/register-interest.html");
+  }
+
   if (String(env.PUBLIC_AUTH_ENABLED || "").toLowerCase() !== "true") {
     return publicMembershipRoute(request, url);
   }
@@ -80,15 +95,15 @@ function publicMembershipRoute(request, url) {
 }
 
 function publicMembershipNotice() {
-  return htmlPage("会員機能の需要確認", `
+  return htmlPage("会員機能の有料メンバー案内", `
     <section class="panel wide">
       <p class="eyebrow">Membership Interest</p>
-      <h1>会員機能は需要確認段階です</h1>
-      <p>現在の公開環境では、本物の無料登録・ログイン処理は提供していません。</p>
-      <p>メールアドレス、ユーザー名、パスワードなどの個人情報は入力不要です。登録フォーム、ログインフォーム、DB保存は公開していません。</p>
-      <p>将来的にニーズが確認できた場合、安全な無料登録機能の提供を検討します。有料プランやサブスクリプションを開始する場合は、料金、サービス内容、支払条件、解約方法を事前に明示し、ユーザーの同意なく自動的に課金へ移行することはありません。</p>
+      <h1>会員機能は有料メンバー案内段階です</h1>
+      <p>現在の公開環境では、本物の有料メンバー登録・メンバー案内処理は提供していません。</p>
+      <p>メールアドレス、ユーザー名、パスワードなどの個人情報は入力不要です。有料メンバー登録ページ、メンバー案内フォーム、DB保存は公開していません。</p>
+      <p>将来的にニーズが確認できた場合、安全な有料メンバー登録機能の提供を検討します。有料プランやサブスクリプションを開始する場合は、料金、サービス内容、支払条件、解約方法を事前に明示し、ユーザーの同意なく自動的に課金へ移行することはありません。</p>
       <div class="actions">
-        <a class="btn primary" href="/register-interest.html">会員機能の需要確認を見る</a>
+        <a class="btn primary" href="/register-interest.html">会員機能の有料メンバー案内を見る</a>
         <a class="btn ghost" href="/index.html">トップページへ戻る</a>
       </div>
     </section>
@@ -100,8 +115,8 @@ function publicTermsPage() {
     <section class="panel wide">
       <p class="eyebrow">Terms</p>
       <h1>利用規約</h1>
-      <p>会員機能については、現在、無料会員登録に向けた需要確認段階です。現時点では、メールアドレス、ユーザー名、パスワードなどの個人情報は収集していません。</p>
-      <p>将来的にニーズが確認できた場合、安全な無料登録機能の提供を検討します。有料プランやサブスクリプションを開始する場合は、料金、サービス内容、支払条件、解約方法を事前に明示し、ユーザーの同意なく自動的に課金へ移行することはありません。</p>
+      <p>会員機能については、現在、有料メンバー登録に向けた有料メンバー案内段階です。現時点では、メールアドレス、ユーザー名、パスワードなどの個人情報は収集していません。</p>
+      <p>将来的にニーズが確認できた場合、安全な有料メンバー登録機能の提供を検討します。有料プランやサブスクリプションを開始する場合は、料金、サービス内容、支払条件、解約方法を事前に明示し、ユーザーの同意なく自動的に課金へ移行することはありません。</p>
       <p><a href="/contact">問い合わせ・通報窓口</a>をご利用ください。</p>
     </section>
   `);
@@ -112,8 +127,8 @@ function publicPrivacyPage() {
     <section class="panel wide">
       <p class="eyebrow">Privacy</p>
       <h1>プライバシーポリシー</h1>
-      <p>現在の公開環境では、本物の登録・ログイン機能を提供していません。そのため、メールアドレス、ユーザー名、パスワード、パスワードハッシュ、アカウント情報は収集していません。</p>
-      <p>会員機能については、将来的な無料機能候補の需要確認を目的として、静的な案内ページを公開しています。</p>
+      <p>現在の公開環境では、本物の登録・メンバー案内機能を提供していません。そのため、メールアドレス、ユーザー名、パスワード、パスワードハッシュ、アカウント情報は収集していません。</p>
+      <p>会員機能については、将来的なメンバー限定コンテンツ候補の案内を目的として、静的な案内ページを公開しています。</p>
       <p>正式な問い合わせ窓口は準備中です。公開時には、個人情報やアカウントに関する連絡先を明確に表示します。</p>
     </section>
   `);
@@ -336,12 +351,12 @@ async function ensureSchema(db) {
 
 async function registerPage(env, request, message = "") {
   const csrf = await createCsrf(env.AUTH_DB);
-  return htmlPage("無料会員登録", `
+  return htmlPage("有料メンバー登録", `
     <section class="panel wide">
-      <p class="eyebrow">Free Membership</p>
-      <h1>無料会員登録</h1>
-      <p>クオンツログでは、今後の会員限定コンテンツや新機能の提供に向けて、無料会員登録を受け付けています。</p>
-      <p>現在の登録は無料です。有料プランやサブスクリプションを開始する場合は、料金、サービス内容、支払条件、解約方法を事前に明示し、ユーザーの同意なく自動的に課金へ移行することはありません。</p>
+      <p class="eyebrow">Paid Membership</p>
+      <h1>有料メンバー登録</h1>
+      <p>クオンツログでは、今後の会員限定コンテンツや新機能の提供に向けて、有料メンバー登録を受け付けています。</p>
+      <p>現在はStripe決済後、登録メールアドレス宛に閲覧方法を案内します。独自の会員入力画面は本番導線として利用しません。</p>
       <p>登録には、メールアドレス、パスワード、ニックネームが必要です。氏名、住所、電話番号、生年月日、クレジットカード情報は取得しません。</p>
       ${message}
       <form method="post" action="/register" class="form">
@@ -350,10 +365,10 @@ async function registerPage(env, request, message = "") {
         <label>パスワード<input required type="password" name="password" autocomplete="new-password" minlength="15" maxlength="${MAX_PASSWORD_LENGTH}"></label>
         <p class="help">15文字以上を推奨します。空白、記号、英数字、Unicode文字を使用できます。</p>
         <label>ニックネーム<input required type="text" name="display_name" autocomplete="nickname" maxlength="40"></label>
-        <label class="check"><input required type="checkbox" name="accept_terms" value="yes"> <span><a href="/terms">利用規約</a>および<a href="/privacy">プライバシーポリシー</a>に同意して無料登録する</span></label>
-        <button class="btn primary" type="submit">無料で会員登録する</button>
+        <label class="check"><input required type="checkbox" name="accept_terms" value="yes"> <span><a href="/terms">利用規約</a>および<a href="/privacy">プライバシーポリシー</a>に同意して有料メンバー登録する</span></label>
+        <button class="btn primary" type="submit">有料メンバー登録へ進む</button>
       </form>
-      <p class="link-row"><a href="/login">ログインはこちら</a></p>
+      <p class="link-row"><a href="/login">メンバー案内はこちら</a></p>
     </section>
   `);
 }
@@ -406,7 +421,7 @@ async function registerUser(env, request) {
   const mail = await sendMail(env, {
     to: email,
     subject: "QUANT LOG メールアドレス確認",
-    text: `QUANT LOGの無料会員登録を完了するには、以下のURLを開いてメールアドレスを確認してください。\n\n${verifyUrl}\n\nこのリンクは${TOKEN_TTL_MINUTES}分で期限切れになります。`
+    text: `QUANT LOGの有料メンバー登録を完了するには、以下のURLを開いてメールアドレスを確認してください。\n\n${verifyUrl}\n\nこのリンクは${TOKEN_TTL_MINUTES}分で期限切れになります。`
   });
 
   return neutralMailPage("登録を受け付けました", "入力されたメールアドレス宛に、必要な場合は確認メールを送信します。メールをご確認ください。", mail.devFallback ? verifyUrl : "");
@@ -424,7 +439,7 @@ async function verifyEmail(env, url) {
   `).bind(tokenHash, now).first();
 
   if (!user) {
-    return htmlPage("メール認証", `<section class="panel"><h1>確認リンクが無効です</h1><p>リンクの期限が切れているか、すでに使用されています。</p><p><a href="/login">ログインへ</a></p></section>`, { status: 400 });
+    return htmlPage("メール案内", `<section class="panel"><h1>確認リンクが無効です</h1><p>リンクの期限が切れているか、すでに使用されています。</p><p><a href="/login">メンバー案内へ</a></p></section>`, { status: 400 });
   }
 
   await env.AUTH_DB.prepare(`
@@ -433,24 +448,24 @@ async function verifyEmail(env, url) {
     WHERE id = ?
   `).bind(now, now, user.id).run();
   await logEvent(env.AUTH_DB, "email_verified", { userId: user.id, email: user.email });
-  return htmlPage("メール認証完了", `<section class="panel"><h1>メール認証が完了しました</h1><p>無料会員としてログインできます。</p><p><a class="btn primary" href="/login">ログインする</a></p></section>`);
+  return htmlPage("メール案内完了", `<section class="panel"><h1>メール案内が完了しました</h1><p>有料メンバー向けの案内を確認できます。</p><p><a class="btn primary" href="/register-interest.html">有料メンバー登録を確認する</a></p></section>`);
 }
 
 async function loginPage(env, request, message = "") {
   const csrf = await createCsrf(env.AUTH_DB);
-  return htmlPage("ログイン", `
+  return htmlPage("メンバー案内", `
     <section class="panel">
       <p class="eyebrow">Member Login</p>
-      <h1>ログイン</h1>
+      <h1>メンバー案内</h1>
       ${message}
       <form method="post" action="/login" class="form">
         <input type="hidden" name="csrf" value="${escapeAttr(csrf)}">
         <label>メールアドレス<input required type="email" name="email" autocomplete="email" maxlength="254"></label>
         <label>パスワード<input required type="password" name="password" autocomplete="current-password" maxlength="${MAX_PASSWORD_LENGTH}"></label>
-        <button class="btn primary" type="submit">ログインする</button>
+        <button class="btn primary" type="submit">メンバー案内する</button>
       </form>
       <p class="link-row"><a href="/forgot-password">パスワードを忘れた方はこちら</a></p>
-      <p class="link-row"><a href="/register">無料会員登録はこちら</a></p>
+      <p class="link-row"><a href="/register">有料メンバー登録はこちら</a></p>
       <p class="legal-row"><a href="/terms">利用規約</a> / <a href="/privacy">プライバシーポリシー</a></p>
     </section>
   `);
@@ -523,8 +538,8 @@ async function accountPage(env, request, message = "") {
       <dl class="account-list">
         <div><dt>ニックネーム</dt><dd>${escapeHtml(auth.user.display_name)}</dd></div>
         <div><dt>登録メールアドレス</dt><dd>${escapeHtml(auth.user.email)}</dd></div>
-        <div><dt>メール認証状態</dt><dd>${status}</dd></div>
-        <div><dt>現在の会員ステータス</dt><dd>無料会員</dd></div>
+        <div><dt>メール案内状態</dt><dd>${status}</dd></div>
+        <div><dt>現在の会員ステータス</dt><dd>有料メンバー案内中</dd></div>
       </dl>
       <p>有料プランやサブスクリプションを開始する場合は、料金、サービス内容、支払条件、解約方法を事前に明示し、ユーザーの同意なく自動的に課金へ移行することはありません。</p>
       ${auth.user.email_verified_at ? "" : `
@@ -534,7 +549,7 @@ async function accountPage(env, request, message = "") {
         </form>
       `}
       <div class="actions">
-        <a class="btn ghost" href="/forgot-password">パスワードを再設定する</a>
+        <a class="btn ghost" href="/contact.html">閲覧方法を問い合わせる</a>
         <a class="btn ghost" href="/contact">問い合わせ・通報</a>
         <form method="post" action="/logout" class="inline-form">
           <input type="hidden" name="csrf" value="${escapeAttr(csrf)}">
@@ -568,17 +583,17 @@ async function resendVerification(env, request) {
 
 async function forgotPasswordPage(env, request, message = "") {
   const csrf = await createCsrf(env.AUTH_DB);
-  return htmlPage("パスワード再設定", `
+  return htmlPage("閲覧方法の案内", `
     <section class="panel">
-      <p class="eyebrow">Password Reset</p>
-      <h1>パスワード再設定</h1>
+      <p class="eyebrow">Member Access</p>
+      <h1>閲覧方法の案内</h1>
       ${message}
       <form method="post" action="/forgot-password" class="form">
         <input type="hidden" name="csrf" value="${escapeAttr(csrf)}">
         <label>メールアドレス<input required type="email" name="email" autocomplete="email" maxlength="254"></label>
         <button class="btn primary" type="submit">再設定用メールを送信する</button>
       </form>
-      <p class="link-row"><a href="/login">ログインへ戻る</a></p>
+      <p class="link-row"><a href="/login">メンバー案内へ戻る</a></p>
     </section>
   `);
 }
@@ -603,7 +618,7 @@ async function sendPasswordReset(env, request) {
       const resetUrl = new URL(`/reset-password?token=${encodeURIComponent(token)}`, request.url).toString();
       const mail = await sendMail(env, {
         to: user.email,
-        subject: "QUANT LOG パスワード再設定",
+        subject: "QUANT LOG 閲覧方法の案内",
         text: `パスワードを再設定するには、以下のURLを開いてください。\n\n${resetUrl}\n\nこのリンクは${RESET_TTL_MINUTES}分で期限切れになり、一度だけ使用できます。`
       });
       devLink = mail.devFallback ? resetUrl : "";
@@ -622,10 +637,10 @@ async function resetPasswordPage(env, request, url, message = "") {
   const user = await env.AUTH_DB.prepare("SELECT id FROM users WHERE password_reset_token_hash = ? AND password_reset_expires_at > ?")
     .bind(tokenHash, new Date().toISOString()).first();
   if (!user) {
-    return htmlPage("パスワード再設定", `<section class="panel"><h1>再設定リンクが無効です</h1><p>リンクの期限が切れているか、すでに使用されています。</p><p><a href="/forgot-password">再設定メールを再送する</a></p></section>`, { status: 400 });
+    return htmlPage("閲覧方法の案内", `<section class="panel"><h1>再設定リンクが無効です</h1><p>リンクの期限が切れているか、すでに使用されています。</p><p><a href="/forgot-password">再設定メールを再送する</a></p></section>`, { status: 400 });
   }
   const csrf = await createCsrf(env.AUTH_DB);
-  return htmlPage("パスワード再設定", `
+  return htmlPage("閲覧方法の案内", `
     <section class="panel">
       <h1>新しいパスワードを設定</h1>
       ${message}
@@ -648,7 +663,7 @@ async function resetPassword(env, request) {
   const user = await env.AUTH_DB.prepare("SELECT id, email, display_name FROM users WHERE password_reset_token_hash = ? AND password_reset_expires_at > ?")
     .bind(tokenHash, new Date().toISOString()).first();
   if (csrfError || !user) {
-    return htmlPage("パスワード再設定", `<section class="panel"><h1>再設定リンクが無効です</h1><p>リンクの期限が切れているか、すでに使用されています。</p></section>`, { status: 400 });
+    return htmlPage("閲覧方法の案内", `<section class="panel"><h1>再設定リンクが無効です</h1><p>リンクの期限が切れているか、すでに使用されています。</p></section>`, { status: 400 });
   }
   if (!isStrongPassword(password, user.email, user.display_name)) {
     return resetPasswordPage(env, request, new URL(`/reset-password?token=${encodeURIComponent(token)}`, request.url), errorMessage("このパスワードは推測されやすいため使用できません。より長く、他人が推測しにくいパスワードを設定してください。"));
@@ -664,7 +679,7 @@ async function resetPassword(env, request) {
     subject: "QUANT LOG パスワード変更完了",
     text: "QUANT LOGのパスワードが変更されました。心当たりがない場合は、問い合わせ窓口からご連絡ください。"
   });
-  return htmlPage("パスワード再設定完了", `<section class="panel"><h1>パスワードを更新しました</h1><p>新しいパスワードでログインしてください。</p><p><a class="btn primary" href="/login">ログインする</a></p></section>`, { headers: { "Set-Cookie": clearSessionCookie() } });
+  return htmlPage("閲覧方法の案内完了", `<section class="panel"><h1>パスワードを更新しました</h1><p>新しいパスワードでメンバー案内してください。</p><p><a class="btn primary" href="/login">メンバー案内する</a></p></section>`, { headers: { "Set-Cookie": clearSessionCookie() } });
 }
 
 function termsPage() {
@@ -673,9 +688,9 @@ function termsPage() {
       <p class="eyebrow">Terms</p>
       <h1>利用規約</h1>
       <h2>サービス内容</h2>
-      <p>当サイトは、AI活用、金融マーケット観測、サービス試作、個人プロトタイプに関する情報と機能を提供します。無料会員登録は、今後の会員限定コンテンツや新機能の提供に向けた登録ニーズ確認を目的とします。</p>
-      <h2>無料会員登録</h2>
-      <p>現在の登録は無料です。有料プランやサブスクリプションを開始する場合は、料金、サービス内容、支払条件、解約方法を事前に明示し、ユーザーの同意なく自動的に課金へ移行することはありません。</p>
+      <p>当サイトは、AI活用、金融マーケット観測、サービス試作、個人プロトタイプに関する情報と機能を提供します。有料メンバー登録は、公開済みの有料音声・有料記事、および今後追加されるメンバー限定コンテンツの案内を目的とします。</p>
+      <h2>有料メンバー登録</h2>
+      <p>現在はStripe決済後、登録メールアドレス宛に閲覧方法を案内します。料金、サービス内容、支払条件、解約方法を事前に明示します。</p>
       <h2>アカウント管理責任</h2>
       <p>ユーザーは、自身のメールアドレス、パスワード、アカウントを適切に管理する責任を負います。</p>
       <h2>禁止事項</h2>
@@ -708,11 +723,11 @@ function privacyPage() {
       <p class="eyebrow">Privacy</p>
       <h1>プライバシーポリシー</h1>
       <h2>取得する情報</h2>
-      <p>無料登録時点で、メールアドレス、ニックネーム、パスワードハッシュ、ログイン日時、IPアドレスなどのアクセス情報、User-Agent、パスワード再設定履歴、メール認証履歴を取得します。氏名、住所、電話番号、生年月日、クレジットカード情報は取得しません。</p>
+      <p>有料メンバー登録時点で、メールアドレス、ニックネーム、パスワードハッシュ、メンバー案内日時、IPアドレスなどのアクセス情報、User-Agent、閲覧方法の案内履歴、メール案内履歴を取得します。氏名、住所、電話番号、生年月日、クレジットカード情報は取得しません。</p>
       <h2>利用目的</h2>
       <ul>
-        <li>会員登録、ログイン認証、パスワード再設定、メール認証</li>
-        <li>不正ログイン防止、セキュリティ確保、悪質ユーザー対応</li>
+        <li>会員登録、メンバー案内認証、閲覧方法の案内、メール案内</li>
+        <li>不正メンバー案内防止、セキュリティ確保、悪質ユーザー対応</li>
         <li>サービス改善、お知らせの送信、問い合わせ対応</li>
       </ul>
       <h2>第三者提供の有無</h2>
@@ -722,9 +737,9 @@ function privacyPage() {
       <h2>安全管理措置</h2>
       <p>パスワードは平文保存せず、ソルト付きの安全なハッシュとして保存します。確認トークンと再設定トークンもハッシュ化して保存します。</p>
       <h2>Cookie・アクセス解析の利用</h2>
-      <p>ログイン状態の維持、不正利用防止、アクセス解析のためCookieやアクセスログを利用します。</p>
+      <p>メンバー案内状態の維持、不正利用防止、アクセス解析のためCookieやアクセスログを利用します。</p>
       <h2>問い合わせ先</h2>
-      <p>個人情報、削除依頼、不正ログインの疑い、その他トラブルは<a href="/contact">問い合わせ・通報窓口</a>からご連絡ください。</p>
+      <p>個人情報、削除依頼、不正メンバー案内の疑い、その他トラブルは<a href="/contact">問い合わせ・通報窓口</a>からご連絡ください。</p>
     </section>
   `);
 }
@@ -734,7 +749,7 @@ function contactPage() {
     <section class="panel wide">
       <p class="eyebrow">Contact</p>
       <h1>問い合わせ・通報</h1>
-      <p>アカウントに関する問い合わせ、不正ログインの疑い、誹謗中傷・嫌がらせの通報、個人情報に関する問い合わせ、削除依頼、その他トラブル報告を受け付けます。</p>
+      <p>アカウントに関する問い合わせ、不正メンバー案内の疑い、誹謗中傷・嫌がらせの通報、個人情報に関する問い合わせ、削除依頼、その他トラブル報告を受け付けます。</p>
       <div class="actions">
         <a class="btn primary" href="https://ig.me/m/tatsuyaaistructure" target="_blank" rel="noreferrer">Instagram DM</a>
         <a class="btn ghost" href="https://www.instagram.com/tatsuyaaistructure/?hl=ja" target="_blank" rel="noreferrer">Instagram</a>
@@ -893,7 +908,7 @@ function neutralMailPage(title, body, devLink = "") {
       <h1>${escapeHtml(title)}</h1>
       <p>${escapeHtml(body)}</p>
       ${devLink ? `<p class="dev-link">開発環境用リンク: <a href="${escapeAttr(devLink)}">${escapeHtml(devLink)}</a></p>` : ""}
-      <p><a class="btn primary" href="/login">ログインへ</a></p>
+      <p><a class="btn primary" href="/login">メンバー案内へ</a></p>
     </section>
   `);
 }
@@ -932,8 +947,8 @@ function htmlPage(title, body, options = {}) {
       <a href="/index.html#services">Services</a>
       <a href="/market.html">Market</a>
       <a href="/index.html#prototype">Prototype</a>
-      <a href="/login">Status</a>
-      <a href="/register">Interest</a>
+      <a href="/members.html">Members</a>
+      <a href="/index.html#pricing">Pricing</a>
     </nav>
   </header>
   <main class="auth-main">${body}</main>
