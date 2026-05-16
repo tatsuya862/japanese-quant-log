@@ -2241,6 +2241,10 @@ h3 {
   max-width: 760px;
 }
 
+.membership-hero .btn {
+  font-family: var(--serif);
+}
+
 .membership-hero h1,
 .doc-hero h1 {
   margin-bottom: 1.15rem;
