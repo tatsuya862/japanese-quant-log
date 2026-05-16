@@ -54,7 +54,7 @@ async function startCheckout(button) {
     if (typeof window.gtag === "function") {
       window.gtag("event", "begin_checkout", {
         item_name: "Quant Log Paid Membership",
-        value: 250,
+        value: 275,
         currency: "JPY"
       });
     }
