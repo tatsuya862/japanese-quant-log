@@ -2424,6 +2424,10 @@ h3 {
   padding: clamp(1.2rem, 4vw, 2.2rem);
 }
 
+.pricing-card .btn {
+  font-family: var(--serif);
+}
+
 .price {
   margin-bottom: 0;
   color: var(--text);
