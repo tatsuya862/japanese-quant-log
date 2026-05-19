@@ -1,4 +1,5 @@
 const CONTACT_EMAIL = "quantlog.support@gmail.com";
+const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/7sY3coaZKeRPfqa83U2wU02";
 
 document.querySelectorAll("[data-contact-email]").forEach((node) => {
   node.textContent = CONTACT_EMAIL;
@@ -32,7 +33,7 @@ function setCheckoutMessage(message, type = "info") {
   });
 }
 
-async function startCheckout(button) {
+function startCheckout() {
   const buttons = document.querySelectorAll("[data-checkout-button]");
   buttons.forEach((item) => {
     item.dataset.originalText = item.dataset.originalText || item.textContent;
@@ -41,34 +42,14 @@ async function startCheckout(button) {
   });
   setCheckoutMessage("", "info");
 
-  try {
-    const response = await fetch("/api/create-checkout-session", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ source: window.location.pathname })
-    });
-    const data = await response.json().catch(() => ({}));
-    if (!response.ok || !data.url) {
-      throw new Error(data.error || "決済ページを準備できませんでした。");
-    }
-    if (typeof window.gtag === "function") {
-      window.gtag("event", "begin_checkout", {
-        item_name: "Quant Log Paid Membership",
-        value: 275,
-        currency: "JPY"
-      });
-    }
-    window.location.href = data.url;
-  } catch (error) {
-    setCheckoutMessage(
-      `現在、決済ページを開けません。時間をおいて再試行するか、${CONTACT_EMAIL} へお問い合わせください。`,
-      "error"
-    );
-    buttons.forEach((item) => {
-      item.disabled = false;
-      item.textContent = item.dataset.originalText || "月額メンバー登録へ進む";
+  if (typeof window.gtag === "function") {
+    window.gtag("event", "begin_checkout", {
+      item_name: "Quant Log Paid Membership",
+      value: 275,
+      currency: "JPY"
     });
   }
+  window.location.href = STRIPE_PAYMENT_LINK;
 }
 
 document.querySelectorAll("[data-checkout-button]").forEach((button) => {
