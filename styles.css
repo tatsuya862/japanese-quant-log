@@ -2546,6 +2546,91 @@ h3 {
   padding: clamp(1.15rem, 3vw, 1.8rem);
 }
 
+.paid-audio-doc {
+  width: min(1060px, 100%);
+}
+
+.paid-audio-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.audio-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.84fr) minmax(18rem, 1fr);
+  gap: clamp(1rem, 4vw, 2rem);
+  align-items: start;
+  padding: clamp(1.15rem, 3vw, 1.8rem);
+  border: 1px solid var(--line-soft);
+  background: rgba(7, 8, 8, 0.76);
+}
+
+.audio-card[data-playing="true"] {
+  border-color: rgba(209, 161, 58, 0.72);
+}
+
+.audio-card h2 {
+  margin-bottom: 0.75rem;
+  font-size: clamp(1.45rem, 2.8vw, 2.25rem);
+}
+
+.audio-card p,
+.audio-player label {
+  color: var(--muted);
+}
+
+.audio-player {
+  display: grid;
+  gap: 0.95rem;
+}
+
+.audio-time,
+.audio-controls,
+.audio-settings {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.audio-time {
+  color: var(--gold-soft);
+  font-family: var(--sans);
+  font-size: 0.92rem;
+}
+
+.audio-controls {
+  flex-wrap: wrap;
+}
+
+.audio-controls .btn {
+  flex: 1 1 8.5rem;
+  min-height: 3rem;
+  padding-inline: 0.85rem;
+}
+
+.audio-player label {
+  display: grid;
+  gap: 0.45rem;
+  font-family: var(--sans);
+  font-size: 0.86rem;
+}
+
+.audio-player input[type="range"],
+.audio-player select {
+  width: 100%;
+  accent-color: var(--gold-soft);
+}
+
+.audio-player select {
+  min-height: 2.65rem;
+  padding: 0 0.8rem;
+  border: 1px solid var(--line-soft);
+  color: var(--text);
+  background: rgba(15, 15, 14, 0.9);
+}
+
 .legal-doc .doc-panel {
   gap: 0.8rem;
 }
@@ -2586,7 +2671,8 @@ h3 {
   .membership-hero,
   .membership-section.split,
   .benefit-grid,
-  .article-links {
+  .article-links,
+  .audio-card {
     grid-template-columns: 1fr;
   }
 

@@ -1,4 +1,5 @@
 const CACHE_NAME = "quant-log-offline-voice-v5";
+const CACHE_PREFIX = "quant-log-offline-voice-";
 const APP_SHELL = [
   "offline-voice-memo.html",
   "offline-voice-memo.js?v=offline-voice-memo-04",
@@ -14,7 +15,7 @@ self.addEventListener("install", (event) => {
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((keys) => Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))))
+    caches.keys().then((keys) => Promise.all(keys.filter((key) => key.startsWith(CACHE_PREFIX) && key !== CACHE_NAME).map((key) => caches.delete(key))))
   );
   self.clients.claim();
 });
