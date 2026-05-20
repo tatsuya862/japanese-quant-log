@@ -2245,20 +2245,21 @@ h3 {
   font-family: var(--serif);
 }
 
-.membership-hero .checkout-button {
-  border-color: var(--gold-soft);
-  color: #050505;
-  background: var(--gold-soft);
+.membership-hero .btn.hero-paid-cta {
+  border: 1px solid #f3d27a;
+  color: #1f1605;
+  background: linear-gradient(135deg, #d8b45a 0%, #f3d27a 50%, #b8892f 100%);
   font-size: 1.05rem;
-  box-shadow: 0 0 20px rgba(209, 161, 58, 0.18);
+  box-shadow: 0 0 18px rgba(216, 180, 90, 0.35);
 }
 
-.membership-hero .checkout-button:hover,
-.membership-hero .checkout-button:focus-visible {
-  border-color: var(--gold-soft);
-  color: #050505;
-  background: #e0b451;
-  box-shadow: 0 0 24px rgba(209, 161, 58, 0.32);
+.membership-hero .btn.hero-paid-cta:hover,
+.membership-hero .btn.hero-paid-cta:focus-visible {
+  border-color: #ffe39a;
+  color: #1f1605;
+  background: linear-gradient(135deg, #f0cf72 0%, #ffe39a 50%, #c99535 100%);
+  box-shadow: 0 0 26px rgba(243, 210, 122, 0.55);
+  transform: translateY(-1px);
 }
 
 .membership-hero h1,
