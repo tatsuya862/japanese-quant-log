@@ -2284,6 +2284,11 @@ h3 {
   margin-top: 1.4rem;
 }
 
+.membership-hero .membership-actions {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .cta-notes {
   display: grid;
   gap: 0.35rem;
