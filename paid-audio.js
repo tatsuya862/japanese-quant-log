@@ -20,12 +20,6 @@ function setMediaSession(card, audio) {
   });
   navigator.mediaSession.setActionHandler("play", () => audio.play());
   navigator.mediaSession.setActionHandler("pause", () => audio.pause());
-  navigator.mediaSession.setActionHandler("seekbackward", () => {
-    audio.currentTime = Math.max(0, audio.currentTime - 10);
-  });
-  navigator.mediaSession.setActionHandler("seekforward", () => {
-    audio.currentTime = Math.min(audio.duration || audio.currentTime + 10, audio.currentTime + 10);
-  });
 }
 
 audioCards.forEach((card) => {
@@ -35,10 +29,7 @@ audioCards.forEach((card) => {
   const duration = card.querySelector("[data-duration]");
   const seek = card.querySelector("[data-seek]");
   const rate = card.querySelector("[data-rate]");
-  const volume = card.querySelector("[data-volume]");
   const fallbackDuration = Number(card.dataset.durationSeconds) || 0;
-
-  audio.volume = Number(volume.value);
 
   const getDuration = () => {
     if (Number.isFinite(audio.duration) && audio.duration > 0) return audio.duration;
@@ -83,14 +74,6 @@ audioCards.forEach((card) => {
     }
   });
 
-  card.querySelectorAll("[data-skip]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const delta = Number(button.dataset.skip);
-      const durationValue = getDuration();
-      audio.currentTime = Math.min(Math.max(0, audio.currentTime + delta), durationValue || audio.currentTime + delta);
-    });
-  });
-
   seek.addEventListener("input", () => {
     const durationValue = getDuration();
     if (durationValue <= 0) return;
@@ -99,10 +82,6 @@ audioCards.forEach((card) => {
 
   rate.addEventListener("change", () => {
     audio.playbackRate = Number(rate.value);
-  });
-
-  volume.addEventListener("input", () => {
-    audio.volume = Number(volume.value);
   });
 });
 

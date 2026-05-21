@@ -2574,7 +2574,7 @@ h3 {
 
 .paid-audio-list {
   display: grid;
-  gap: 1rem;
+  gap: 1.25rem;
   margin-top: 1rem;
 }
 
@@ -2583,9 +2583,9 @@ h3 {
   grid-template-columns: minmax(0, 0.84fr) minmax(18rem, 1fr);
   gap: clamp(1rem, 4vw, 2rem);
   align-items: start;
-  padding: clamp(1.15rem, 3vw, 1.8rem);
+  padding: clamp(1.35rem, 3.4vw, 2.2rem);
   border: 1px solid var(--line-soft);
-  background: rgba(7, 8, 8, 0.76);
+  background: rgba(7, 8, 8, 0.7);
 }
 
 .audio-card[data-playing="true"] {
@@ -2604,49 +2604,83 @@ h3 {
 
 .audio-player {
   display: grid;
-  gap: 0.95rem;
+  gap: 0.8rem;
 }
 
-.audio-time,
-.audio-controls,
-.audio-settings {
+.audio-time {
   display: flex;
   gap: 0.75rem;
   align-items: center;
   justify-content: space-between;
-}
-
-.audio-time {
   color: var(--gold-soft);
   font-family: var(--sans);
   font-size: 0.92rem;
 }
 
+.audio-controls,
+.audio-settings {
+  display: flex;
+  align-items: center;
+}
+
 .audio-controls {
-  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.audio-settings {
+  justify-content: flex-end;
 }
 
 .audio-controls .btn {
-  flex: 1 1 8.5rem;
-  min-height: 3rem;
-  padding-inline: 0.85rem;
+  flex: 0 0 auto;
+  min-width: 8.5rem;
+  min-height: 2.75rem;
+  padding-inline: 1rem;
 }
 
 .audio-player label {
   display: grid;
-  gap: 0.45rem;
+  gap: 0.35rem;
   font-family: var(--sans);
   font-size: 0.86rem;
 }
 
-.audio-player input[type="range"],
-.audio-player select {
+.audio-seek input[type="range"] {
+  appearance: none;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(225, 210, 180, 0.22);
+  cursor: pointer;
+}
+
+.audio-seek input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--gold-soft);
+}
+
+.audio-seek input[type="range"]::-moz-range-thumb {
+  width: 0.7rem;
+  height: 0.7rem;
+  border: 0;
+  border-radius: 50%;
+  background: var(--gold-soft);
+}
+
+.audio-player select,
+.audio-seek input[type="range"] {
   width: 100%;
   accent-color: var(--gold-soft);
 }
 
+.audio-rate {
+  width: min(10rem, 100%);
+}
+
 .audio-player select {
-  min-height: 2.65rem;
+  min-height: 2.35rem;
   padding: 0 0.8rem;
   border: 1px solid var(--line-soft);
   color: var(--text);
@@ -2746,6 +2780,14 @@ h3 {
 
   .membership-page .btn {
     width: 100%;
+  }
+
+  .audio-controls .btn {
+    width: auto;
+  }
+
+  .audio-settings {
+    justify-content: flex-start;
   }
 
   .legal-table div {
