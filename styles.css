@@ -2936,6 +2936,11 @@ h3 {
     font-size: clamp(2.55rem, 16vw, 4.2rem);
   }
 
+  .paid-audio-doc .doc-hero h1 {
+    font-size: clamp(2rem, 8.5vw, 2.7rem);
+    line-height: 1.28;
+  }
+
   .membership-page .btn {
     width: 100%;
   }
