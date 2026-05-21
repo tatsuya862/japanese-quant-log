@@ -2937,7 +2937,9 @@ h3 {
   }
 
   .paid-audio-doc .doc-hero h1 {
-    font-size: clamp(2rem, 8.5vw, 2.7rem);
+    max-width: 18rem;
+    margin-inline: auto;
+    font-size: clamp(1.85rem, 7.2vw, 2.35rem);
     line-height: 1.28;
   }
 
