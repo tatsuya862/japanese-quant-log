@@ -2718,6 +2718,19 @@ h3 {
   font-weight: 700;
 }
 
+.work-template {
+  margin: 0;
+  overflow-x: auto;
+  padding: 1rem;
+  border: 1px solid var(--line-soft);
+  color: var(--muted);
+  background: rgba(3, 4, 4, 0.55);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  white-space: pre-wrap;
+}
+
 .legal-doc .doc-panel {
   gap: 0.8rem;
 }
