@@ -88,7 +88,7 @@ async function createPortalSession(request, env) {
 
   const secretKey = env.STRIPE_SECRET_KEY;
   if (!secretKey) {
-    return jsonResponse({ error: "Stripe Customer Portal is not configured." }, 503);
+    return jsonResponse({ error: "Billing management is not configured." }, 503);
   }
 
   let payload = {};
