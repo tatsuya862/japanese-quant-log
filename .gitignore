@@ -1,3 +1,37 @@
 .chrome-wsc-check/
 wsc-check.png
 private-notes/
+
+# Private / paid content
+assets/audio/
+docs/assets/audio/
+assets/audio-scripts/
+docs/assets/audio-scripts/
+private/
+drafts/
+scripts-private/
+paid-source/
+premium-source/
+
+# Local browser profiles / test artifacts
+.chrome-check-final/
+.chrome-*/
+.playwright/
+playwright-report/
+test-results/
+
+# Secrets / local env
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.crt
+*.sqlite
+*.db
+
+# Local machine paths / temporary files
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
