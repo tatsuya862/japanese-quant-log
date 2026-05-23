@@ -12,6 +12,10 @@ drafts/
 scripts-private/
 paid-source/
 premium-source/
+ops/private/
+ops/*.csv
+ops/*.xlsx
+ops/*.xls
 
 # Local browser profiles / test artifacts
 .chrome-check-final/
