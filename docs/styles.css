@@ -54,7 +54,8 @@ body::before {
 body,
 button,
 input,
-textarea {
+textarea,
+select {
   font: inherit;
 }
 
@@ -2618,6 +2619,121 @@ h3 {
   color: var(--text);
   font-family: var(--sans);
   word-break: break-all;
+}
+
+.contact-doc {
+  width: min(900px, 100%);
+}
+
+.contact-hero {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.contact-card {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: clamp(1.2rem, 3vw, 1.8rem);
+  border: 1px solid var(--line-soft);
+  background: rgba(7, 8, 8, 0.78);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
+}
+
+.contact-card h2 {
+  margin: 0;
+  color: var(--gold-soft);
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+}
+
+.contact-card p,
+.contact-card li {
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.94rem;
+  line-height: 1.85;
+}
+
+.contact-notes ul {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.contact-notes p,
+.contact-form-card > p,
+.contact-form-note,
+.contact-form-message {
+  margin: 0;
+}
+
+.contact-form-card .contact-form {
+  max-width: none;
+  margin-top: 0.25rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.contact-form-card .contact-form label {
+  gap: 0.45rem;
+  color: rgba(244, 240, 233, 0.82);
+  font-family: var(--sans);
+  font-size: 0.92rem;
+}
+
+.contact-form-card .contact-form input,
+.contact-form-card .contact-form select,
+.contact-form-card .contact-form textarea {
+  width: 100%;
+  min-height: 52px;
+  border: 1px solid rgba(225, 210, 180, 0.22);
+  border-radius: 6px;
+  padding: 0.82rem 0.95rem;
+  color: var(--text);
+  background: rgba(3, 4, 4, 0.9);
+  outline: none;
+}
+
+.contact-form-card .contact-form textarea {
+  min-height: 176px;
+  resize: vertical;
+}
+
+.contact-form-card .contact-form input::placeholder,
+.contact-form-card .contact-form textarea::placeholder {
+  color: rgba(244, 240, 233, 0.36);
+}
+
+.contact-form-card .contact-form input:focus,
+.contact-form-card .contact-form select:focus,
+.contact-form-card .contact-form textarea:focus {
+  border-color: rgba(209, 161, 58, 0.72);
+  box-shadow: 0 0 0 3px rgba(209, 161, 58, 0.12);
+}
+
+.contact-form-note {
+  color: var(--faint);
+  font-family: var(--sans);
+  font-size: 0.86rem;
+  line-height: 1.75;
+}
+
+.contact-form-message {
+  min-height: 1.55rem;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+}
+
+.contact-form-message[data-state="error"] {
+  color: #f0b0a8;
+}
+
+.contact-form-message[data-state="success"] {
+  color: var(--gold-soft);
 }
 
 .membership-doc {

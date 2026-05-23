@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>お問い合わせ | QUANT LOG by Tatsuya</title>
-  <meta name="description" content="クオンツログの決済、解約、有料コンテンツ案内、サービス内容、不具合に関する問い合わせ先。">
+  <meta name="description" content="クオンツログの決済、解約、有料コンテンツ案内、サービス内容、不具合に関するお問い合わせフォーム。">
   <link rel="icon" type="image/png" href="assets/favicon_16x16.png">
-  <link rel="stylesheet" href="styles.css?v=support-callout-02">
+  <link rel="stylesheet" href="styles.css?v=contact-form-01">
 </head>
 <body class="membership-page sub-page">
   <header class="site-header membership-header">
@@ -23,28 +23,60 @@
     </nav>
   </header>
 
-  <main class="membership-doc">
-    <section class="doc-hero support-callout">
+  <main class="membership-doc contact-doc">
+    <section class="doc-hero contact-hero">
       <p class="section-label">Contact</p>
       <h1>お問い合わせ</h1>
-      <p>決済・解約・有料コンテンツ案内・不具合については、以下よりご連絡ください。通常24〜48時間以内を目安に確認します。</p>
-      <!-- CONTACT_EMAIL: quantlog.support@gmail.com -->
-      <div class="membership-actions">
-        <a class="btn primary" href="mailto:quantlog.support@gmail.com" data-contact-mailto>お問い合わせメールを作成する</a>
-        <a class="support-mail" href="mailto:quantlog.support@gmail.com" data-contact-mailto>quantlog.support@gmail.com</a>
-      </div>
+      <p>決済・解約・有料コンテンツ案内・不具合について、必要事項を整理してメールを作成できます。送信前に内容を確認し、通常24〜48時間以内を目安に確認します。</p>
     </section>
 
-    <section class="doc-panel">
-      <h2>問い合わせ対象</h2>
+    <section class="contact-card contact-notes">
+      <h2>お問い合わせ前にご確認ください</h2>
       <ul>
-        <li>決済、領収書、重複決済に関する確認</li>
-        <li>解約、請求管理の案内</li>
-        <li>登録メール、有料コンテンツの閲覧方法</li>
-        <li>サービス内容、不具合、表示崩れの報告</li>
+        <li>決済、領収書、重複決済、案内メール未着、不具合について確認できます。</li>
+        <li>解約や請求管理は、登録時のメールアドレスからご連絡ください。</li>
+        <li>現在は初期運用のため、自動ポータルではなくメールで順次ご案内しています。</li>
+        <li>税務、法律、医療、投資判断などの専門的助言は行っていません。</li>
       </ul>
-      <p>解約をご希望の場合や請求管理については、登録時のメールアドレスからご連絡ください。現在、請求管理・解約手続きは自動ポータルではなく、メールでのご連絡をもとに手動でご案内しています。確認後、以後の請求が発生しないよう順次対応いたします。</p>
-      <p>月の途中で登録または解約された場合も、日割り返金はありません。重複決済、システム上の問題、案内メール未着などは個別に確認します。</p>
+      <!-- CONTACT_EMAIL: quantlog.support@gmail.com -->
+      <p>フォームが開けない場合は <a href="mailto:quantlog.support@gmail.com" data-contact-mailto>quantlog.support@gmail.com</a> へ直接ご連絡ください。</p>
+    </section>
+
+    <section class="contact-card contact-form-card">
+      <h2>お問い合わせフォーム</h2>
+      <p>入力内容はこのブラウザ内でメール本文に変換されます。サイト側のデータベースには保存しません。</p>
+      <form class="contact-form" data-contact-form novalidate>
+        <label>
+          お問い合わせ内容
+          <select name="topic" required>
+            <option value="">選択してください</option>
+            <option value="決済・領収書について">決済・領収書について</option>
+            <option value="解約・請求管理について">解約・請求管理について</option>
+            <option value="有料コンテンツ案内について">有料コンテンツ案内について</option>
+            <option value="不具合・表示崩れについて">不具合・表示崩れについて</option>
+            <option value="サービス内容について">サービス内容について</option>
+            <option value="その他">その他</option>
+          </select>
+        </label>
+        <label>
+          お名前
+          <input type="text" name="name" autocomplete="name" placeholder="例：山田 太郎" required>
+        </label>
+        <label>
+          返信先メールアドレス
+          <input type="email" name="email" autocomplete="email" placeholder="example@gmail.com" required>
+        </label>
+        <label>
+          お問い合わせの詳細
+          <textarea name="message" rows="8" placeholder="決済日時、登録メールアドレス、不具合が起きたページなど、確認に必要な情報をご記入ください。" required></textarea>
+        </label>
+        <p class="contact-form-note">送信ボタンを押すと、お使いのメールアプリが開きます。メールアプリ上で内容を確認してから送信してください。</p>
+        <p class="contact-form-message" data-contact-form-message aria-live="polite"></p>
+        <div class="membership-actions">
+          <button class="btn primary" type="submit">メールを作成する</button>
+          <a class="support-mail" href="mailto:quantlog.support@gmail.com" data-contact-mailto>quantlog.support@gmail.com</a>
+        </div>
+      </form>
     </section>
   </main>
 
@@ -58,6 +90,6 @@
       <a href="contact.html">お問い合わせ</a>
     </p>
   </footer>
-  <script src="membership.js?v=support-email-01"></script>
+  <script src="membership.js?v=contact-form-01"></script>
 </body>
 </html>
