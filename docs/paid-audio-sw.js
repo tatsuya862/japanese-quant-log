@@ -9,7 +9,7 @@ const APP_SHELL = [
   "styles.css?v=paid-audio-09",
   "styles.css?v=paid-waves-02",
   "styles.css?v=paid-leverage-02",
-  "membership.js?v=stripe-link-01",
+  "membership.js?v=stripe-link-02",
   "assets/favicon_16x16.png",
   "assets/tatsuya-logo.png"
 ];
