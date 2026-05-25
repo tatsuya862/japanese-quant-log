@@ -2230,15 +2230,17 @@ h3 {
 
 .membership-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.55fr);
+  grid-template-columns: minmax(0, 760px);
   gap: clamp(1.5rem, 5vw, 4.5rem);
   align-items: center;
+  justify-content: center;
   min-height: calc(100vh - 104px);
   padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 7vw, 7rem);
   border-bottom: 1px solid var(--line-soft);
 }
 
 .membership-hero-copy {
+  width: 100%;
   max-width: 760px;
 }
 
