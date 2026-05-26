@@ -1,4 +1,4 @@
-const CACHE_NAME = "quant-log-paid-audio-v10";
+const CACHE_NAME = "quant-log-paid-audio-v11";
 const CACHE_PREFIX = "quant-log-paid-audio-";
 const APP_SHELL = [
   "paid-audio.html",
