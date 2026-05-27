@@ -1,8 +1,9 @@
-const CACHE_NAME = "quant-log-paid-audio-v11";
+const CACHE_NAME = "quant-log-paid-audio-v12";
 const CACHE_PREFIX = "quant-log-paid-audio-";
 const APP_SHELL = [
   "paid-audio.html",
   "paid-audio-leverage.html",
+  "paid-longgame-harvest-recovery.html",
   "paid-longgame-give-up.html",
   "paid-longgame-leverage.html",
   "paid-longgame-waves.html",
