@@ -2249,11 +2249,12 @@ h3 {
   right: -18%;
   z-index: 0;
   width: min(1180px, 96vw);
-  height: 2px;
-  background: linear-gradient(90deg, transparent 0%, rgba(175, 125, 49, 0.08) 18%, rgba(205, 163, 82, 0.34) 48%, rgba(255, 218, 139, 0.2) 64%, transparent 100%);
-  box-shadow: 0 0 18px rgba(205, 163, 82, 0.16), 0 0 46px rgba(160, 104, 30, 0.1);
-  opacity: 0.72;
-  filter: blur(0.8px);
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent 0%, rgba(175, 125, 49, 0.12) 18%, rgba(205, 163, 82, 0.52) 48%, rgba(255, 218, 139, 0.3) 64%, transparent 100%);
+  box-shadow: 0 0 22px rgba(205, 163, 82, 0.22), 0 0 60px rgba(160, 104, 30, 0.14);
+  opacity: 0.82;
+  filter: blur(1px);
   transform: rotate(-18deg);
   transform-origin: center;
   pointer-events: none;
