@@ -2245,14 +2245,14 @@ h3 {
 .membership-hero::before {
   content: "";
   position: absolute;
-  top: -8%;
-  right: -22%;
+  top: 2%;
+  right: -12%;
   z-index: 0;
-  width: min(1280px, 106vw);
-  height: clamp(260px, 42vw, 520px);
-  background: linear-gradient(90deg, transparent 0%, rgba(168, 111, 32, 0.02) 18%, rgba(205, 163, 82, 0.16) 43%, rgba(255, 220, 150, 0.1) 56%, rgba(150, 93, 24, 0.03) 72%, transparent 100%);
-  opacity: 0.9;
-  filter: blur(28px);
+  width: min(1320px, 112vw);
+  height: clamp(320px, 48vw, 620px);
+  background: linear-gradient(90deg, transparent 0%, rgba(168, 111, 32, 0.04) 16%, rgba(205, 163, 82, 0.28) 43%, rgba(255, 220, 150, 0.18) 58%, rgba(150, 93, 24, 0.05) 74%, transparent 100%);
+  opacity: 1;
+  filter: blur(24px);
   transform: rotate(-18deg);
   transform-origin: center;
   pointer-events: none;
@@ -2261,14 +2261,14 @@ h3 {
 .membership-hero::after {
   content: "";
   position: absolute;
-  top: 31%;
-  right: -16%;
+  top: 34%;
+  right: -10%;
   z-index: 0;
-  width: min(1040px, 88vw);
-  height: 2px;
-  background: linear-gradient(90deg, transparent 0%, rgba(168, 111, 32, 0.04) 22%, rgba(219, 178, 93, 0.22) 48%, rgba(255, 228, 160, 0.1) 63%, transparent 100%);
-  opacity: 0.58;
-  filter: blur(1.4px);
+  width: min(1120px, 94vw);
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, rgba(168, 111, 32, 0.06) 22%, rgba(219, 178, 93, 0.32) 48%, rgba(255, 228, 160, 0.16) 63%, transparent 100%);
+  opacity: 0.72;
+  filter: blur(1.2px);
   transform: rotate(-18deg);
   transform-origin: center;
   pointer-events: none;
