@@ -2245,16 +2245,30 @@ h3 {
 .membership-hero::before {
   content: "";
   position: absolute;
-  top: 28%;
-  right: -18%;
+  top: -8%;
+  right: -22%;
   z-index: 0;
-  width: min(1180px, 96vw);
-  height: 4px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, transparent 0%, rgba(175, 125, 49, 0.12) 18%, rgba(205, 163, 82, 0.52) 48%, rgba(255, 218, 139, 0.3) 64%, transparent 100%);
-  box-shadow: 0 0 22px rgba(205, 163, 82, 0.22), 0 0 60px rgba(160, 104, 30, 0.14);
-  opacity: 0.82;
-  filter: blur(1px);
+  width: min(1280px, 106vw);
+  height: clamp(260px, 42vw, 520px);
+  background: linear-gradient(90deg, transparent 0%, rgba(168, 111, 32, 0.02) 18%, rgba(205, 163, 82, 0.16) 43%, rgba(255, 220, 150, 0.1) 56%, rgba(150, 93, 24, 0.03) 72%, transparent 100%);
+  opacity: 0.9;
+  filter: blur(28px);
+  transform: rotate(-18deg);
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.membership-hero::after {
+  content: "";
+  position: absolute;
+  top: 31%;
+  right: -16%;
+  z-index: 0;
+  width: min(1040px, 88vw);
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(168, 111, 32, 0.04) 22%, rgba(219, 178, 93, 0.22) 48%, rgba(255, 228, 160, 0.1) 63%, transparent 100%);
+  opacity: 0.58;
+  filter: blur(1.4px);
   transform: rotate(-18deg);
   transform-origin: center;
   pointer-events: none;
