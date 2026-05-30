@@ -768,6 +768,20 @@ h3 {
   letter-spacing: 0.05em;
 }
 
+.luck-equation-page .interest-panel p,
+.luck-equation-page .doc-panel p,
+.luck-equation-page .doc-panel li {
+  overflow-wrap: anywhere;
+  word-break: break-all;
+}
+
+.luck-equation-page .interest-panel,
+.luck-equation-page .doc-panel {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
 .market-page {
   width: min(1080px, 100%);
   margin: 0 auto;
@@ -3203,6 +3217,14 @@ h3 {
 
   .membership-page .btn {
     width: 100%;
+  }
+
+  .luck-equation-page .interest-panel p,
+  .luck-equation-page .doc-panel p,
+  .luck-equation-page .doc-panel li {
+    max-width: 18rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
   }
 
   .audio-controls .btn {
