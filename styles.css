@@ -2240,10 +2240,10 @@ h3 {
   overflow: hidden;
   border-bottom: 1px solid var(--line-soft);
   background:
-    linear-gradient(90deg, #050505 0%, rgba(5, 5, 5, 0.98) 36%, rgba(5, 5, 5, 0.8) 58%, rgba(7, 5, 3, 0.44) 100%),
-    radial-gradient(circle at 88% 32%, rgba(240, 199, 106, 0.24), transparent 25%),
-    radial-gradient(ellipse at 88% 82%, rgba(214, 168, 79, 0.14), transparent 38%),
-    linear-gradient(145deg, #050505 0%, #080706 52%, #171008 100%);
+    linear-gradient(90deg, #050505 0%, rgba(5, 5, 5, 0.98) 34%, rgba(5, 5, 5, 0.74) 58%, rgba(8, 6, 3, 0.38) 100%),
+    radial-gradient(circle at 88% 30%, rgba(240, 199, 106, 0.3), transparent 27%),
+    radial-gradient(ellipse at 86% 80%, rgba(214, 168, 79, 0.18), transparent 40%),
+    linear-gradient(145deg, #050505 0%, #080706 50%, #1a1208 100%);
   isolation: isolate;
 }
 
@@ -2253,12 +2253,12 @@ h3 {
   inset: -18% -18% -24% 40%;
   z-index: 0;
   background:
-    linear-gradient(135deg, transparent 0%, transparent 39%, rgba(214, 168, 79, 0.09) 46%, rgba(255, 222, 140, 0.44) 50%, rgba(214, 168, 79, 0.18) 54%, transparent 64%, transparent 100%),
-    radial-gradient(circle at 82% 33%, rgba(240, 199, 106, 0.22) 0 1px, transparent 2px),
-    radial-gradient(circle at 72% 42%, rgba(214, 168, 79, 0.14) 0 1px, transparent 2px),
-    radial-gradient(circle at 90% 58%, rgba(240, 199, 106, 0.16) 0 1px, transparent 2px);
-  opacity: 0.9;
-  filter: blur(1.8px);
+    linear-gradient(135deg, transparent 0%, transparent 38%, rgba(214, 168, 79, 0.11) 45%, rgba(255, 222, 140, 0.5) 50%, rgba(214, 168, 79, 0.22) 55%, transparent 66%, transparent 100%),
+    radial-gradient(circle at 82% 33%, rgba(240, 199, 106, 0.24) 0 1px, transparent 2px),
+    radial-gradient(circle at 72% 42%, rgba(214, 168, 79, 0.16) 0 1px, transparent 2px),
+    radial-gradient(circle at 90% 58%, rgba(240, 199, 106, 0.18) 0 1px, transparent 2px);
+  opacity: 0.86;
+  filter: blur(1.4px);
   pointer-events: none;
 }
 
@@ -2269,10 +2269,10 @@ h3 {
   z-index: 0;
   height: 44%;
   background:
-    linear-gradient(166deg, transparent 0%, transparent 46%, rgba(214, 168, 79, 0.24) 47.2%, rgba(255, 225, 152, 0.38) 47.8%, transparent 49.4%, transparent 100%),
-    linear-gradient(172deg, transparent 0%, transparent 58%, rgba(214, 168, 79, 0.18) 59.2%, rgba(255, 225, 152, 0.28) 59.8%, transparent 61.4%, transparent 100%),
-    radial-gradient(ellipse at 72% 62%, rgba(214, 168, 79, 0.18), transparent 62%);
-  opacity: 0.78;
+    linear-gradient(166deg, transparent 0%, transparent 46%, rgba(214, 168, 79, 0.3) 47.2%, rgba(255, 225, 152, 0.44) 47.8%, transparent 49.4%, transparent 100%),
+    linear-gradient(172deg, transparent 0%, transparent 58%, rgba(214, 168, 79, 0.22) 59.2%, rgba(255, 225, 152, 0.32) 59.8%, transparent 61.4%, transparent 100%),
+    radial-gradient(ellipse at 72% 62%, rgba(214, 168, 79, 0.22), transparent 62%);
+  opacity: 0.74;
   filter: blur(0.5px);
   pointer-events: none;
 }
@@ -3141,19 +3141,19 @@ h3 {
     min-height: auto;
     padding-top: 3.2rem;
     background:
-      linear-gradient(90deg, #050505 0%, rgba(5, 5, 5, 0.97) 48%, rgba(7, 5, 3, 0.74) 100%),
-      radial-gradient(circle at 92% 22%, rgba(240, 199, 106, 0.16), transparent 34%),
-      linear-gradient(150deg, #050505 0%, #080706 66%, #120d07 100%);
+      linear-gradient(90deg, #050505 0%, rgba(5, 5, 5, 0.97) 48%, rgba(7, 5, 3, 0.68) 100%),
+      radial-gradient(circle at 92% 22%, rgba(240, 199, 106, 0.19), transparent 34%),
+      linear-gradient(150deg, #050505 0%, #080706 66%, #150f08 100%);
   }
 
   .membership-hero::before {
     inset: -16% -48% 16% 46%;
-    opacity: 0.46;
+    opacity: 0.5;
   }
 
   .membership-hero::after {
     inset: auto -34% -16% 34%;
-    opacity: 0.42;
+    opacity: 0.45;
   }
 
   .paid-audio-doc .doc-hero {
