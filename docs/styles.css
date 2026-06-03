@@ -130,12 +130,22 @@ a {
 }
 
 .site-header nav a.x-nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-width: 2.1rem;
   color: var(--gold-soft);
 }
 
 .site-header nav a.x-nav-link::after {
   display: none;
+}
+
+.x-logo-icon {
+  display: block;
+  width: 1.05rem;
+  height: 1.05rem;
+  fill: currentColor;
 }
 
 .menu-toggle {
@@ -762,6 +772,12 @@ h3 {
 .footer-x-card span {
   color: var(--text);
   font-size: 0.9rem;
+}
+
+.footer-x-heading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
 }
 
 .footer-x-card strong {
