@@ -2401,20 +2401,52 @@ h3 {
   line-height: 1.75;
 }
 
-.hero-x-link {
-  margin: 0.95rem 0 0;
-  color: var(--muted);
+.hero-x-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-height: 52px;
+  margin-top: 1rem;
+  padding: 0.72rem 1rem;
+  border: 1px solid rgba(214, 168, 79, 0.62);
+  color: var(--text);
+  background: rgba(5, 5, 5, 0.32);
   font-family: var(--sans);
-  font-size: 0.86rem;
-}
-
-.hero-x-link a {
-  color: rgba(214, 168, 79, 0.86);
   text-decoration: none;
 }
 
-.hero-x-link a:hover,
-.hero-x-link a:focus-visible,
+.hero-x-mark {
+  display: inline-grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 1px solid rgba(214, 168, 79, 0.72);
+  color: var(--gold-soft);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.hero-x-cta strong,
+.hero-x-cta em {
+  display: block;
+}
+
+.hero-x-cta strong {
+  color: var(--gold-soft);
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.hero-x-cta em {
+  margin-top: 0.16rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-style: normal;
+}
+
+.hero-x-cta:hover,
+.hero-x-cta:focus-visible,
 .footer-x-card:hover,
 .footer-x-card:focus-visible {
   border-color: var(--gold-soft);
