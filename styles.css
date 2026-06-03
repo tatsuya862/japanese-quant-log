@@ -129,6 +129,15 @@ a {
   background: var(--line);
 }
 
+.site-header nav a.x-nav-link {
+  min-width: 2.1rem;
+  color: var(--gold-soft);
+}
+
+.site-header nav a.x-nav-link::after {
+  display: none;
+}
+
 .menu-toggle {
   display: none;
   width: 40px;
@@ -735,6 +744,38 @@ h3 {
 .site-footer .footer-links a {
   color: var(--muted);
   text-decoration: none;
+}
+
+.footer-x-card {
+  display: inline-grid;
+  gap: 0.22rem;
+  min-width: min(100%, 22rem);
+  margin-top: 1.25rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(214, 168, 79, 0.58);
+  color: var(--text);
+  background: rgba(8, 7, 5, 0.58);
+  text-align: left;
+  text-decoration: none;
+}
+
+.footer-x-card span {
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+.footer-x-card strong {
+  color: var(--gold-soft);
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.footer-x-card em {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-style: normal;
 }
 
 .interest-page {
@@ -2358,6 +2399,26 @@ h3 {
   font-family: var(--sans);
   font-size: 0.9rem;
   line-height: 1.75;
+}
+
+.hero-x-link {
+  margin: 0.95rem 0 0;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.86rem;
+}
+
+.hero-x-link a {
+  color: rgba(214, 168, 79, 0.86);
+  text-decoration: none;
+}
+
+.hero-x-link a:hover,
+.hero-x-link a:focus-visible,
+.footer-x-card:hover,
+.footer-x-card:focus-visible {
+  border-color: var(--gold-soft);
+  color: var(--gold-soft);
 }
 
 .checkout-message {
