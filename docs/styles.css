@@ -2420,7 +2420,9 @@ h3 {
 .hero-x-cta {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.8rem;
+  width: min(100%, 14rem);
   min-height: 52px;
   margin-top: 1rem;
   padding: 0.72rem 1rem;
