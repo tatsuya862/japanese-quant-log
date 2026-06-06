@@ -3314,6 +3314,14 @@ h3 {
   }
 }
 
+@media (max-width: 1024px) and (max-height: 560px) {
+  .membership-hero .membership-actions,
+  .membership-hero .membership-actions .btn,
+  .membership-page .hero-x-cta {
+    width: 100%;
+  }
+}
+
 @media (max-width: 560px) {
   .membership-hero h1 {
     font-size: clamp(2.55rem, 16vw, 4.2rem);
