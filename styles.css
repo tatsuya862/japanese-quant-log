@@ -2708,6 +2708,117 @@ h3 {
   font-style: normal;
 }
 
+.preview-card {
+  display: grid;
+  gap: 0.85rem;
+  max-width: 760px;
+  padding: clamp(1.25rem, 3vw, 1.9rem);
+  border: 1px solid rgba(209, 161, 58, 0.55);
+  background: linear-gradient(145deg, rgba(14, 13, 10, 0.92), rgba(7, 8, 8, 0.78));
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+}
+
+.preview-card h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+}
+
+.preview-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.85;
+}
+
+.preview-card .btn {
+  width: fit-content;
+  margin-top: 0.2rem;
+  font-family: var(--serif);
+}
+
+.card-kicker,
+.doc-subtitle {
+  margin: 0;
+  color: var(--gold-soft);
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  letter-spacing: 0.08em;
+}
+
+.free-diagnostic {
+  display: grid;
+  gap: 1rem;
+}
+
+.free-diagnostic .doc-panel {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.free-diagnostic .doc-panel p {
+  margin: 0;
+}
+
+.mth-definition,
+.diagnostic-types {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.mth-definition div,
+.diagnostic-types article,
+.diagnostic-list section {
+  padding: 1rem;
+  border: 1px solid var(--line-soft);
+  background: rgba(7, 8, 8, 0.62);
+}
+
+.mth-definition span {
+  display: block;
+  color: var(--gold-soft);
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mth-definition strong {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--text);
+  font-size: 1.18rem;
+  font-weight: 400;
+}
+
+.diagnostic-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.diagnostic-list h3,
+.diagnostic-types h3 {
+  margin: 0 0 0.55rem;
+  color: var(--text);
+  font-size: 1.08rem;
+}
+
+.diagnostic-types {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.diagnostic-types p {
+  color: var(--muted);
+}
+
+.free-diagnostic-cta {
+  width: 100%;
+  margin-top: 0.35rem;
+  padding: clamp(1.4rem, 4vw, 2rem);
+  border: 1px solid rgba(209, 161, 58, 0.5);
+  background: rgba(9, 11, 10, 0.84);
+}
+
 .faq-list {
   display: grid;
   gap: 0.75rem;
@@ -3252,6 +3363,8 @@ h3 {
   .for-you-list,
   .benefit-grid,
   .article-links,
+  .mth-definition,
+  .diagnostic-types,
   .audio-card {
     grid-template-columns: 1fr;
   }
