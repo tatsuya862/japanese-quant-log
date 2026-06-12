@@ -2819,6 +2819,228 @@ h3 {
   background: rgba(9, 11, 10, 0.84);
 }
 
+/* Image-matched free preview layout */
+.membership-page {
+  background:
+    radial-gradient(ellipse at 50% 12%, rgba(209, 161, 58, 0.055), transparent 34rem),
+    radial-gradient(ellipse at 72% 58%, rgba(209, 161, 58, 0.08), transparent 26rem),
+    linear-gradient(115deg, #020303 0%, #050606 52%, #090806 100%);
+}
+
+.membership-page main {
+  width: 100%;
+  max-width: none;
+  padding: 0 0 clamp(4rem, 8vw, 6rem);
+}
+
+.membership-page .site-header {
+  min-height: 70px;
+  padding: 0 clamp(2.25rem, 4vw, 3.5rem);
+  border-top: 0;
+  background: rgba(3, 4, 4, 0.94);
+}
+
+.membership-page .brand {
+  gap: 1rem;
+}
+
+.membership-page .brand-main {
+  font-size: clamp(1.8rem, 2.2vw, 2.35rem);
+  letter-spacing: 0.18em;
+}
+
+.membership-page .brand-sub {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.membership-page .membership-hero {
+  display: none;
+}
+
+.membership-page .membership-section {
+  width: min(1160px, calc(100% - 3rem));
+}
+
+.membership-page .section-heading {
+  max-width: none;
+  margin: 0 0 1.35rem;
+  text-align: left;
+}
+
+.membership-page .section-label,
+.membership-page .card-kicker {
+  color: var(--gold-soft);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.membership-page .for-you-section {
+  width: min(840px, calc(100% - 3rem));
+  padding-top: clamp(1.25rem, 2.6vw, 1.8rem);
+  padding-bottom: clamp(0.75rem, 2vw, 1.1rem);
+}
+
+.membership-page .for-you-section h2 {
+  font-size: clamp(1.8rem, 2.7vw, 2.35rem);
+  letter-spacing: 0.04em;
+  line-height: 1.28;
+}
+
+.membership-page .for-you-list li {
+  min-height: 2.55rem;
+  padding-top: 0.62rem;
+  padding-bottom: 0.62rem;
+  color: rgba(244, 240, 233, 0.9);
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.membership-page .for-you-message {
+  max-width: none;
+  margin-top: 1.05rem;
+  color: rgba(244, 240, 233, 0.74);
+  font-size: 0.98rem;
+}
+
+.membership-page .free-preview-section {
+  display: grid;
+  gap: 1.25rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.preview-card,
+.preview-next-card {
+  width: 100%;
+  max-width: none;
+  border: 1px solid rgba(209, 161, 58, 0.64);
+  border-radius: 7px;
+  background:
+    radial-gradient(ellipse at 84% 34%, rgba(209, 161, 58, 0.14), transparent 34rem),
+    radial-gradient(ellipse at 18% 62%, rgba(244, 240, 233, 0.035), transparent 22rem),
+    rgba(7, 8, 8, 0.78);
+  box-shadow: none;
+}
+
+.preview-card {
+  grid-template-columns: minmax(0, 1.08fr) minmax(420px, 0.84fr);
+  gap: clamp(2rem, 5vw, 4.2rem);
+  align-items: center;
+  padding: clamp(1.85rem, 3.2vw, 2.45rem);
+}
+
+.preview-copy {
+  display: grid;
+  gap: 0.78rem;
+  text-align: left;
+}
+
+.preview-copy h2 {
+  max-width: 560px;
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(2.25rem, 3.15vw, 3.2rem);
+  letter-spacing: 0.03em;
+  line-height: 1.16;
+}
+
+.preview-copy p:not(.section-label) {
+  max-width: 560px;
+  margin: 0;
+  color: rgba(244, 240, 233, 0.82);
+  font-size: 0.98rem;
+  line-height: 1.78;
+}
+
+.preview-copy .btn,
+.preview-next-card .btn {
+  position: relative;
+  width: min(100%, 330px);
+  margin-top: 0.42rem;
+  border-color: rgba(229, 174, 52, 0.95);
+  border-radius: 2px;
+  color: #090806;
+  background: linear-gradient(180deg, #e7b744, #d6a02d);
+  font-family: var(--serif);
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+}
+
+.preview-copy .btn::after,
+.preview-next-card .btn::after {
+  content: "→";
+  position: absolute;
+  right: 1.35rem;
+}
+
+.preview-check-card {
+  padding: clamp(1rem, 2vw, 1.35rem);
+  border: 1px solid rgba(209, 161, 58, 0.72);
+  border-radius: 7px;
+  background: rgba(4, 5, 5, 0.34);
+}
+
+.preview-check-card ul {
+  display: grid;
+  gap: 0;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.preview-check-card li {
+  position: relative;
+  min-height: 2.35rem;
+  padding: 0.48rem 0 0.48rem 2.7rem;
+  border-bottom: 1px solid rgba(225, 210, 180, 0.13);
+  color: rgba(244, 240, 233, 0.84);
+  font-size: 0.92rem;
+}
+
+.preview-check-card li:last-child {
+  border-bottom: 0;
+}
+
+.preview-check-card li::before {
+  content: "✓";
+  position: absolute;
+  top: 0.38rem;
+  left: 0;
+  display: grid;
+  width: 1.45rem;
+  height: 1.45rem;
+  place-items: center;
+  border: 1px solid var(--gold-soft);
+  border-radius: 50%;
+  color: var(--gold-soft);
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  line-height: 1;
+}
+
+.preview-next-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2rem;
+  align-items: center;
+  padding: clamp(1.45rem, 2.5vw, 2rem) clamp(2rem, 5vw, 4rem);
+}
+
+.preview-next-card h3 {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  letter-spacing: 0.05em;
+}
+
+.preview-next-card p {
+  margin: 0;
+  color: rgba(244, 240, 233, 0.76);
+}
+
 .faq-list {
   display: grid;
   gap: 0.75rem;
@@ -3482,5 +3704,171 @@ h3 {
   .legal-table div {
     grid-template-columns: 1fr;
     gap: 0.25rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .membership-page .site-header {
+    min-height: 90px;
+    padding: 0 1.6rem;
+  }
+
+  .membership-page .brand {
+    gap: 0.9rem;
+  }
+
+  .membership-page .brand-main {
+    font-size: clamp(2rem, 8vw, 2.65rem);
+    letter-spacing: 0.08em;
+  }
+
+  .membership-page .brand-sub {
+    font-size: clamp(0.9rem, 3.4vw, 1.15rem);
+  }
+
+  .membership-page .menu-toggle {
+    display: block;
+    width: 48px;
+    height: 48px;
+    border: 0;
+  }
+
+  .membership-page .menu-toggle span {
+    width: 34px;
+    height: 3px;
+    margin: 7px auto;
+    background: var(--gold-soft);
+  }
+
+  .membership-page .site-header nav {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.9rem 1.6rem 1.2rem;
+    border-bottom: 1px solid var(--line);
+    background: rgba(3, 4, 4, 0.98);
+  }
+
+  body.menu-open.membership-page .site-header nav {
+    display: flex;
+  }
+
+  .membership-page .site-header nav a {
+    padding: 0.8rem 0;
+    text-align: left;
+    font-size: 1rem;
+  }
+
+  .membership-page .site-header nav a::after {
+    display: none;
+  }
+
+  .membership-page .for-you-section {
+    width: min(720px, calc(100% - 2rem));
+    padding-top: 2.1rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .for-you-section h2 {
+    font-size: clamp(2rem, 8vw, 2.8rem);
+  }
+
+  .membership-page .for-you-list {
+    grid-template-columns: 1fr;
+    border-top-color: rgba(225, 210, 180, 0.23);
+  }
+
+  .membership-page .for-you-list li {
+    position: relative;
+    min-height: 4rem;
+    padding: 1rem 0 1rem 2.7rem;
+    font-size: clamp(1.02rem, 4.3vw, 1.35rem);
+    line-height: 1.65;
+  }
+
+  .membership-page .for-you-list li::before {
+    content: "✓";
+    position: absolute;
+    top: 1.05rem;
+    left: 0;
+    color: var(--gold-soft);
+    font-family: var(--sans);
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+
+  .membership-page .for-you-list li:nth-child(n + 6),
+  .membership-page .for-you-message {
+    display: none;
+  }
+
+  .membership-page .free-preview-section {
+    width: min(720px, calc(100% - 2rem));
+    gap: 1.35rem;
+    padding-top: 1.1rem;
+  }
+
+  .preview-card {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
+    padding: clamp(1.7rem, 7vw, 2.4rem);
+  }
+
+  .preview-copy {
+    justify-items: center;
+    padding: clamp(1.35rem, 6vw, 2rem);
+    border: 1px solid rgba(209, 161, 58, 0.72);
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .preview-copy h2 {
+    font-size: clamp(2.05rem, 8.2vw, 3rem);
+    line-height: 1.2;
+  }
+
+  .preview-copy p:not(.section-label) {
+    font-size: clamp(1rem, 4vw, 1.18rem);
+    line-height: 1.9;
+  }
+
+  .preview-copy .btn,
+  .preview-next-card .btn {
+    width: min(100%, 560px);
+    min-height: 66px;
+    font-size: clamp(1.03rem, 4.2vw, 1.25rem);
+  }
+
+  .preview-check-card {
+    padding: clamp(1.15rem, 5vw, 1.7rem);
+    border-color: rgba(225, 210, 180, 0.18);
+  }
+
+  .preview-check-card li {
+    min-height: 3.6rem;
+    padding-left: 2.7rem;
+    font-size: clamp(0.95rem, 3.8vw, 1.12rem);
+  }
+
+  .preview-next-card {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 0.9rem;
+    padding: clamp(1.25rem, 5vw, 1.75rem);
+    text-align: center;
+  }
+
+  .preview-next-card h3 {
+    font-size: clamp(1.42rem, 5.2vw, 1.85rem);
+    line-height: 1.45;
+  }
+
+  .preview-next-card p {
+    font-size: clamp(0.95rem, 3.7vw, 1.06rem);
+    line-height: 1.75;
   }
 }
