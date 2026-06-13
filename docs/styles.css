@@ -2854,10 +2854,6 @@ h3 {
   font-weight: 700;
 }
 
-.membership-page .membership-hero {
-  display: none;
-}
-
 .membership-page .membership-section {
   width: min(1160px, calc(100% - 3rem));
 }
