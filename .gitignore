@@ -1,6 +1,7 @@
 .chrome-wsc-check/
 wsc-check.png
 private-notes/
+quant-log-public-repo-local-archive/
 
 # Private / paid content
 assets/audio/
@@ -12,6 +13,7 @@ drafts/
 scripts-private/
 paid-source/
 premium-source/
+ops/
 ops/private/
 ops/*.csv
 ops/*.xlsx
