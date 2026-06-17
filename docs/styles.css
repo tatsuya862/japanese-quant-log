@@ -2660,6 +2660,17 @@ h3 {
   font-family: var(--serif);
 }
 
+.campaign-addition-card {
+  margin-bottom: 1.1rem;
+}
+
+.campaign-addition-card h3 {
+  margin: 0.25rem 0 0.65rem;
+  color: var(--text);
+  font-size: clamp(1.45rem, 3.5vw, 2.15rem);
+  line-height: 1.35;
+}
+
 .price {
   margin-bottom: 0;
   color: var(--text);
