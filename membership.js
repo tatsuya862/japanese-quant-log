@@ -1,5 +1,5 @@
 const CONTACT_EMAIL = "quantlog.support@gmail.com";
-const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/28E00c4Bm8tra5Q1Fw2wU03";
+const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/8x23co0l68tra5Q97Y2wU04";
 
 document.querySelectorAll("[data-contact-email]").forEach((node) => {
   node.textContent = CONTACT_EMAIL;
