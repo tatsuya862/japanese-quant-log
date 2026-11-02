@@ -2884,6 +2884,11 @@ h3 {
   text-transform: uppercase;
 }
 
+.membership-page .section-label.brand-case,
+.membership-page .section-label .brand-case {
+  text-transform: none;
+}
+
 .membership-page .for-you-section {
   width: min(840px, calc(100% - 3rem));
   padding-top: clamp(1.25rem, 2.6vw, 1.8rem);
