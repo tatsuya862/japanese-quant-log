@@ -4348,6 +4348,10 @@ h3 {
   border-top: 1px solid var(--line-soft);
 }
 
+.service-apps .section-heading {
+  margin-bottom: clamp(1.25rem, 2vw, 1.75rem);
+}
+
 .app-tile-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
