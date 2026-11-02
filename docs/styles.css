@@ -4267,8 +4267,8 @@ h3 {
 }
 
 .problem-grid article {
-  min-height: 250px;
-  padding: clamp(1.5rem, 3vw, 2.6rem);
+  min-height: 190px;
+  padding: clamp(1.3rem, 2.4vw, 2rem);
   border-right: 1px solid var(--line-soft);
   border-bottom: 1px solid var(--line-soft);
   background: rgba(8, 10, 9, 0.54);
@@ -4284,6 +4284,10 @@ h3 {
   letter-spacing: 0.18em;
 }
 
+.problem-grid span {
+  margin-bottom: 1.5rem;
+}
+
 .problem-grid h3,
 .solution-flow h3,
 .app-tile h3 {
@@ -4291,6 +4295,10 @@ h3 {
   color: var(--text);
   font-size: clamp(1.3rem, 2.2vw, 2rem);
   line-height: 1.5;
+}
+
+.problem-grid h3 {
+  margin-bottom: 0;
 }
 
 .problem-grid p,
