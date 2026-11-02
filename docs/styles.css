@@ -4195,7 +4195,7 @@ h3 {
 .service-hero {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.7fr);
+  grid-template-columns: minmax(0, 1fr);
   min-height: min(760px, calc(100vh - 72px));
   overflow: hidden;
   border-bottom: 1px solid var(--line-soft);
@@ -4226,78 +4226,6 @@ h3 {
   font-size: clamp(1rem, 1.35vw, 1.2rem);
   line-height: 2;
   overflow-wrap: anywhere;
-}
-
-.service-hero-visual {
-  position: relative;
-  min-height: 480px;
-  overflow: hidden;
-}
-
-.service-hero-visual::before,
-.service-hero-visual::after {
-  content: "";
-  position: absolute;
-  border: 1px solid rgba(209, 161, 58, 0.35);
-  border-radius: 50%;
-}
-
-.service-hero-visual::before {
-  top: 12%;
-  right: -18%;
-  width: min(38vw, 600px);
-  aspect-ratio: 1;
-}
-
-.service-hero-visual::after {
-  right: 18%;
-  bottom: 13%;
-  width: min(17vw, 250px);
-  aspect-ratio: 1;
-}
-
-.service-hero .orbit {
-  position: absolute;
-  display: block;
-  border: 1px solid rgba(244, 240, 233, 0.12);
-  border-radius: 50%;
-}
-
-.service-hero .orbit-one {
-  top: 27%;
-  right: 10%;
-  width: min(28vw, 420px);
-  aspect-ratio: 1;
-}
-
-.service-hero .orbit-two {
-  top: 43%;
-  right: 29%;
-  width: min(12vw, 170px);
-  aspect-ratio: 1;
-}
-
-.reduce-mark {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  color: var(--gold-soft);
-  font-family: var(--sans);
-  font-size: clamp(6rem, 13vw, 12rem);
-  font-weight: 200;
-  line-height: 0.4;
-  transform: translate(-50%, -50%);
-}
-
-.reduce-copy {
-  position: absolute;
-  right: clamp(1.5rem, 4vw, 4rem);
-  bottom: clamp(2rem, 6vw, 5rem);
-  color: rgba(244, 240, 233, 0.48);
-  font-family: var(--sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.28em;
-  line-height: 1.8;
 }
 
 .service-page .membership-section {
@@ -4566,35 +4494,6 @@ h3 {
   .service-hero .hero-copy {
     font-size: 1rem;
     line-height: 1.9;
-  }
-
-  .service-hero-visual {
-    min-height: 260px;
-    margin-top: -1rem;
-  }
-
-  .service-hero-visual::before {
-    top: -35%;
-    right: -20%;
-    width: 95vw;
-  }
-
-  .service-hero-visual::after {
-    right: 18%;
-    bottom: 4%;
-    width: 42vw;
-  }
-
-  .service-hero .orbit-one {
-    top: -5%;
-    right: 2%;
-    width: 70vw;
-  }
-
-  .service-hero .orbit-two {
-    top: 34%;
-    right: 42%;
-    width: 28vw;
   }
 
   .service-page .membership-section {

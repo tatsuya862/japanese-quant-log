@@ -1,4 +1,4 @@
-const AUDIO_SITE_NAME = "QUANT LOG by Tatsuya";
+const AUDIO_SITE_NAME = "Quant Log by Tatsuya";
 
 const formatAudioTime = (seconds) => {
   if (!Number.isFinite(seconds)) return "0:00";
