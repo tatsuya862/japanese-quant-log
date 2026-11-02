@@ -4337,6 +4337,7 @@ h3 {
 }
 
 .solution-flow h3 {
+  margin-bottom: 0;
   max-width: 740px;
 }
 
