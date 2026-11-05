@@ -1,4 +1,5 @@
 const STORAGE_KEY = "quant-log-family-meal-note-v1";
+const storage = new URLSearchParams(window.location.search).has("test") ? sessionStorage : localStorage;
 
 const defaultMenus = [
   { name: "肉じゃが", tags: ["牛肉", "豚肉", "肉", "じゃがいも", "玉ねぎ"] },
@@ -53,7 +54,7 @@ const emptyState = () => ({
 
 function loadState() {
   try {
-    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    const saved = JSON.parse(storage.getItem(STORAGE_KEY));
     return {
       ...emptyState(),
       ...saved,
@@ -69,7 +70,7 @@ function loadState() {
 let state = loadState();
 
 function saveState() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  storage.setItem(STORAGE_KEY, JSON.stringify(state));
 }
 
 function todayString() {
