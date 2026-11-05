@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="家族一人の好みと毎日の反応に合わせて、一週間の献立を考えるための記録アプリです。">
+  <title>おばあちゃんの一週間献立</title>
+  <link rel="stylesheet" href="family-meal-planner.css?v=20261106-01">
+</head>
+<body>
+  <header class="app-header">
+    <p class="eyebrow">FAMILY MEAL NOTE</p>
+    <h1>おばあちゃんの<br>一週間献立</h1>
+    <p class="lead">食べた、残した、好評だった。毎日の反応を、次の一週間へ。</p>
+  </header>
+
+  <main>
+    <section aria-labelledby="constraints-title">
+      <div class="section-heading">
+        <span>01</span>
+        <div>
+          <h2 id="constraints-title">食べないものを登録</h2>
+          <p>改行または読点で区切って入力してください。</p>
+        </div>
+      </div>
+      <form id="constraints-form" class="stack-form">
+        <label>
+          確実に食べないもの
+          <textarea id="never-eat" rows="3" placeholder="例：魚、辛いもの"></textarea>
+        </label>
+        <label>
+          苦手なもの
+          <textarea id="dislikes" rows="3" placeholder="例：きのこ、酸っぱいもの"></textarea>
+        </label>
+        <button type="submit">条件を保存</button>
+        <p id="constraints-status" class="status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section aria-labelledby="daily-title">
+      <div class="section-heading">
+        <span>02</span>
+        <div>
+          <h2 id="daily-title">今日の反応を記録</h2>
+          <p>一つの料理に複数の反応を付けられます。</p>
+        </div>
+      </div>
+      <form id="record-form" class="stack-form">
+        <input id="record-id" type="hidden">
+        <div class="two-columns">
+          <label>
+            日付
+            <input id="meal-date" type="date" required>
+          </label>
+          <label>
+            料理名
+            <input id="meal-name" type="text" placeholder="例：肉じゃが" required>
+          </label>
+        </div>
+        <fieldset>
+          <legend>反応</legend>
+          <label class="check"><input id="ate" type="checkbox"> 食べた</label>
+          <label class="check"><input id="left" type="checkbox"> 残した</label>
+          <label class="check"><input id="liked" type="checkbox"> 好評だった</label>
+        </fieldset>
+        <div class="button-row">
+          <button id="record-submit" type="submit">記録を追加</button>
+          <button id="record-cancel" class="text-button" type="button" hidden>編集をやめる</button>
+        </div>
+        <p id="record-status" class="status" role="status" aria-live="polite"></p>
+      </form>
+      <div id="record-list" class="record-list" aria-live="polite"></div>
+    </section>
+
+    <section aria-labelledby="week-title">
+      <div class="section-heading">
+        <span>03</span>
+        <div>
+          <h2 id="week-title">次の一週間を提案</h2>
+          <p>登録した制約を除外し、好評だった料理を優先します。</p>
+        </div>
+      </div>
+      <button id="generate-week" type="button">7日分を考える</button>
+      <p id="week-status" class="status" role="status" aria-live="polite"></p>
+      <ol id="week-list" class="week-list"></ol>
+    </section>
+  </main>
+
+  <footer>
+    <p>記録はこの端末のブラウザだけに保存され、外部へ送信されません。</p>
+    <p><a href="index.html">Quant Logへ戻る</a></p>
+  </footer>
+
+  <script src="family-meal-planner.js?v=20261106-01"></script>
+</body>
+</html>

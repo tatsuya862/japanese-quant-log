@@ -1,0 +1,193 @@
+:root {
+  color-scheme: light;
+  --ink: #111;
+  --muted: #666;
+  --line: #d8d8d8;
+  --paper: #fff;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+}
+
+body { margin: 0; background: var(--paper); }
+button, input, textarea { font: inherit; }
+
+button {
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  padding: 0.85rem 1.2rem;
+  background: var(--ink);
+  color: var(--paper);
+  cursor: pointer;
+}
+
+button:hover,
+button:focus-visible { background: var(--paper); color: var(--ink); }
+
+input,
+textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  padding: 0.85rem;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+input:focus,
+textarea:focus,
+button:focus-visible,
+a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+textarea { resize: vertical; }
+
+.app-header,
+main,
+footer { width: min(100% - 2rem, 820px); margin-inline: auto; }
+
+.app-header {
+  padding: clamp(4rem, 12vw, 8rem) 0 clamp(3rem, 8vw, 5rem);
+  border-bottom: 1px solid var(--ink);
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+h1, h2, p { margin-top: 0; }
+
+h1 {
+  margin-bottom: 1.25rem;
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+  font-size: clamp(2.4rem, 9vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: 0.02em;
+}
+
+.lead {
+  max-width: 36rem;
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+section {
+  padding: clamp(3rem, 9vw, 5rem) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-heading {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.section-heading > span {
+  padding-top: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+h2 {
+  margin-bottom: 0.55rem;
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+  font-size: clamp(1.55rem, 5vw, 2.35rem);
+  font-weight: 400;
+}
+
+.section-heading p,
+.status,
+footer { color: var(--muted); }
+
+.section-heading p { margin-bottom: 0; font-size: 0.9rem; line-height: 1.7; }
+.stack-form { display: grid; gap: 1.25rem; }
+
+.stack-form > label,
+.two-columns label {
+  display: grid;
+  gap: 0.55rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.two-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 1rem;
+}
+
+fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  border: 1px solid var(--line);
+  padding: 1rem;
+}
+
+legend { padding: 0 0.45rem; font-size: 0.85rem; font-weight: 700; }
+.check { display: flex; align-items: center; gap: 0.45rem; font-size: 0.9rem; }
+.check input { width: 1rem; height: 1rem; margin: 0; }
+.button-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; }
+
+.text-button,
+.record-actions button {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.status { min-height: 1.5em; margin: 0; font-size: 0.85rem; }
+.record-list { display: grid; margin-top: 2.5rem; border-top: 1px solid var(--line); }
+
+.record-item {
+  display: grid;
+  grid-template-columns: 6rem 1fr auto;
+  gap: 1rem;
+  align-items: start;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.record-item time { color: var(--muted); font-size: 0.82rem; }
+.record-item h3 { margin: 0 0 0.5rem; font-size: 1rem; }
+.badges { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.badge { border: 1px solid var(--line); padding: 0.2rem 0.45rem; font-size: 0.72rem; }
+.record-actions { display: flex; gap: 0.75rem; font-size: 0.78rem; }
+.empty { margin: 0; padding: 1.25rem 0; color: var(--muted); font-size: 0.9rem; }
+
+.week-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin: 2rem 0 0;
+  padding: 1px;
+  background: var(--line);
+  list-style: none;
+}
+
+.week-list li { min-height: 8rem; padding: 1rem; background: var(--paper); }
+.week-list time { display: block; margin-bottom: 1.5rem; color: var(--muted); font-size: 0.78rem; }
+.week-list strong { font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: 1.15rem; font-weight: 400; }
+
+footer { padding: 2.5rem 0 4rem; font-size: 0.8rem; line-height: 1.7; }
+footer a { color: var(--ink); }
+
+@media (max-width: 600px) {
+  .two-columns,
+  .record-item,
+  .week-list { grid-template-columns: 1fr; }
+  .record-item { gap: 0.65rem; }
+}
