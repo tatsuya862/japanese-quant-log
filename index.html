@@ -14,7 +14,7 @@
     gtag('config', 'G-RB2ZGN11KY');
   </script>
   <link rel="icon" type="image/png" href="assets/favicon_16x16.png">
-  <link rel="stylesheet" href="styles.css?v=20261102-case01">
+  <link rel="stylesheet" href="styles.css?v=20261106-contact01">
 </head>
 <body class="membership-page service-page">
   <header class="site-header membership-header">
@@ -168,11 +168,26 @@
     </section>
 
     <section class="membership-section service-contact" id="contact">
-      <div>
+      <div class="contact-intro">
         <p class="section-label">CONTACT</p>
-        <h2>まず、減らしたい手間を聞かせてください</h2>
+        <p>必要事項を入力すると、メールアプリにお問い合わせ内容を引き継ぎます。</p>
       </div>
-      <p>名刺を受け取った方は、お渡しした本人へ直接お声がけください。アドレスや入力フォームは設けていません。</p>
+      <form class="contact-form" id="contact-form" action="mailto:quantlog.tatsuya@gmail.com" method="post" enctype="text/plain">
+        <label>
+          お名前
+          <input type="text" name="name" autocomplete="name" required>
+        </label>
+        <label>
+          返信先メールアドレス
+          <input type="email" name="email" autocomplete="email" required>
+        </label>
+        <label>
+          お問い合わせ内容
+          <textarea name="message" rows="6" required></textarea>
+        </label>
+        <button type="submit">メールを作成する</button>
+        <p class="contact-note">メールアプリが開きます。内容を確認して送信してください。</p>
+      </form>
     </section>
 
     <section class="profile" id="profile">
@@ -200,6 +215,6 @@
       <a href="privacy.html">プライバシーポリシー</a>
     </p>
   </footer>
-  <script src="membership.js?v=20261102-service01"></script>
+  <script src="membership.js?v=20261106-contact01"></script>
 </body>
 </html>

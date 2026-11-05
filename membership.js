@@ -22,3 +22,19 @@ document.querySelectorAll("[data-ga4-event]").forEach((link) => {
     });
   });
 });
+
+const contactForm = document.querySelector("#contact-form");
+contactForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(contactForm);
+  const name = String(formData.get("name") || "").trim();
+  const email = String(formData.get("email") || "").trim();
+  const message = String(formData.get("message") || "").trim();
+  const subject = encodeURIComponent("Quant Logへのお問い合わせ");
+  const body = encodeURIComponent(
+    `お名前：${name}\n返信先メールアドレス：${email}\n\nお問い合わせ内容：\n${message}`,
+  );
+
+  window.location.href = `mailto:quantlog.tatsuya@gmail.com?subject=${subject}&body=${body}`;
+});
