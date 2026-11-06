@@ -4352,6 +4352,19 @@ h3 {
   margin-bottom: 0.8rem;
 }
 
+.service-pricing {
+  border-top: 1px solid var(--line-soft);
+}
+
+.service-pricing .solution-flow article {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.service-pricing .service-price {
+  color: var(--gold-soft);
+  font-size: 1.05rem;
+}
+
 .service-apps {
   border-top: 1px solid var(--line-soft);
 }
