@@ -4345,6 +4345,46 @@ h3 {
   max-width: 720px;
 }
 
+.solution-case-study {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  border: 1px solid var(--line-soft);
+  border-left: 3px solid var(--gold);
+  padding: clamp(1.4rem, 3vw, 2.2rem);
+  background: rgba(8, 10, 9, 0.54);
+}
+
+.solution-case-study h3 {
+  margin: 0 0 1rem;
+  color: var(--gold-soft);
+  font-family: var(--sans);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+}
+
+.solution-case-study p {
+  margin: 0;
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.9;
+}
+
+.solution-case-study .solution-case-disclaimer {
+  margin-top: 0.8rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.solution-case-source {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--gold-soft);
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+  text-underline-offset: 0.2em;
+}
+
 .service-first-plan {
   border-top: 1px solid var(--line-soft);
 }
