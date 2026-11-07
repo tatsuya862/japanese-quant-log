@@ -4361,7 +4361,7 @@ h3 {
 }
 
 .service-pricing .service-price {
-  color: var(--gold-soft);
+  color: var(--text);
   font-size: 1.05rem;
 }
 
