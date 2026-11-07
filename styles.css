@@ -4262,7 +4262,7 @@ h3 {
 
 .problem-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   border-top: 1px solid var(--line-soft);
   border-left: 1px solid var(--line-soft);
 }
@@ -4351,6 +4351,13 @@ h3 {
 
 .service-first-plan .solution-flow h3 {
   margin-bottom: 0.8rem;
+}
+
+.service-first-plan .first-plan-note {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-family: var(--sans);
+  line-height: 1.9;
 }
 
 .service-pricing {
@@ -4673,6 +4680,11 @@ h3 {
 
   .service-hero h1 {
     font-size: clamp(2.55rem, 11vw, 3.3rem);
+  }
+
+  .service-page .service-solutions {
+    padding-right: 0;
+    padding-left: 0;
   }
 
   .solution-flow article {
