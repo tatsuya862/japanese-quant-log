@@ -4122,7 +4122,8 @@ h3 {
 }
 
 .service-intro-video-frame {
-  width: min(100%, 560px);
+  width: min(100%, 960px);
+  aspect-ratio: 16 / 9;
   margin: 0 auto;
   overflow: hidden;
   border: 1px solid rgba(202, 162, 64, 0.38);
@@ -4133,12 +4134,17 @@ h3 {
 .service-intro-video-frame iframe {
   display: block;
   width: 100%;
-  aspect-ratio: 9 / 16;
+  height: 100%;
   border: 0;
   background: #000;
 }
 
 @media (max-width: 768px) {
+  .service-intro-video-frame {
+    width: min(100%, 420px);
+    aspect-ratio: 9 / 16;
+  }
+
   .free-preview-section {
     margin-top: 56px;
     padding: 0 18px;
