@@ -4122,7 +4122,7 @@ h3 {
 }
 
 .service-intro-video-frame {
-  width: min(100%, 420px);
+  width: min(100%, 560px);
   margin: 0 auto;
   overflow: hidden;
   border: 1px solid rgba(202, 162, 64, 0.38);
