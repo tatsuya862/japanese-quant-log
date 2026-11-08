@@ -4716,7 +4716,23 @@ h3 {
   }
 
   .app-tile-grid {
-    gap: 1.5rem;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 88%;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    padding-bottom: 0.75rem;
+  }
+
+  .app-tile-grid > .app-tile {
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+
+  .app-tile-grid > .app-tile:nth-child(2) {
+    order: -1;
   }
 
   .phone-shot {
