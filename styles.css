@@ -4121,6 +4121,23 @@ h3 {
   margin-top: 0.3rem;
 }
 
+.service-intro-video-frame {
+  width: min(100%, 420px);
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid rgba(202, 162, 64, 0.38);
+  border-radius: 8px;
+  background: #000;
+}
+
+.service-intro-video-frame iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  border: 0;
+  background: #000;
+}
+
 @media (max-width: 768px) {
   .free-preview-section {
     margin-top: 56px;
