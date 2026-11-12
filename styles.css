@@ -4496,6 +4496,7 @@ h3 {
 }
 
 .wine-site-showcase-image {
+  aspect-ratio: 16 / 10;
   min-height: 270px;
   overflow: hidden;
   background: #e9e2d4;
