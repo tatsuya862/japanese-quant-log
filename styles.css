@@ -4292,6 +4292,10 @@ h3 {
   overflow-wrap: anywhere;
 }
 
+.service-hero .hero-cta {
+  margin-top: 2rem;
+}
+
 .service-page .membership-section {
   width: min(1180px, calc(100% - 3rem));
   padding-top: clamp(4.8rem, 9vw, 8rem);
@@ -4401,6 +4405,25 @@ h3 {
 
 .solution-flow p {
   max-width: 720px;
+}
+
+.solution-detail {
+  max-width: 720px;
+  margin-top: 0.35rem;
+}
+
+.solution-detail summary {
+  width: fit-content;
+  color: var(--gold-soft);
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+}
+
+.solution-detail p {
+  margin-top: 0.45rem;
+  line-height: 1.65;
 }
 
 .solution-case-study {
