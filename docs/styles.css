@@ -4419,7 +4419,6 @@ h3 {
   letter-spacing: 0.08em;
 }
 .solution-detail summary::-webkit-details-marker { display: none; }
-.solution-detail summary::after { content: '▽'; display: block; width: fit-content; margin-left: 0.05rem; }
 
 .solution-detail p {
   margin-top: 0.45rem;
