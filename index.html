@@ -290,6 +290,66 @@
       const intro = document.querySelector(".service-hero-intro");
       if (intro) intro.hidden = true;
     }, 6000);
+
+    const track = document.querySelector(".service-hero-track");
+    const slides = [...(track?.querySelectorAll(".service-hero-slide") || [])];
+    if (track && slides.length > 1) {
+      let index = 0;
+      let direction = 1;
+      let stopped = false;
+      let timer;
+      let frame;
+
+      const stopAuto = () => {
+        stopped = true;
+        clearTimeout(timer);
+        cancelAnimationFrame(frame);
+        track.style.scrollSnapType = "";
+      };
+      ["pointerdown", "wheel", "keydown", "focusin"].forEach((eventName) => {
+        track.addEventListener(eventName, stopAuto, { passive: true });
+      });
+
+      const schedule = (delay) => {
+        timer = setTimeout(() => {
+          if (stopped) return;
+          const bounds = track.getBoundingClientRect();
+          if (document.hidden || bounds.bottom <= 0 || bounds.top >= innerHeight) {
+            schedule(1000);
+            return;
+          }
+
+          let next = index + direction;
+          if (next < 0 || next >= slides.length) {
+            direction *= -1;
+            next = index + direction;
+          }
+          const from = track.scrollLeft;
+          const to = slides[next].offsetLeft - slides[0].offsetLeft;
+          const duration = 1100;
+          let started;
+          track.style.scrollSnapType = "none";
+
+          const step = (now) => {
+            if (stopped) return;
+            started ??= now;
+            const progress = Math.min((now - started) / duration, 1);
+            const eased = (1 - Math.cos(Math.PI * progress)) / 2;
+            track.scrollLeft = from + (to - from) * eased;
+            if (progress < 1) {
+              frame = requestAnimationFrame(step);
+            } else {
+              track.style.scrollSnapType = "";
+              index = next;
+              schedule(4000);
+            }
+          };
+          frame = requestAnimationFrame(step);
+        }, delay);
+      };
+
+      schedule(7000);
+    }
   </script>
 </body>
 </html>
