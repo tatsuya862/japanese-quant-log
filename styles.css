@@ -4939,6 +4939,8 @@ h3 {
   animation: service-intro-out 0.5s ease 5s forwards;
 }
 
+.service-hero-intro[hidden] { display: none !important; }
+
 .service-hero-intro .section-label,
 .service-hero-slide-copy .section-label,
 .wine-feature .section-label,
@@ -5118,6 +5120,5 @@ h3 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .service-hero-intro { animation: none; position: relative; top: auto; left: auto; max-width: none; padding: 2rem 1.25rem 0; }
-  .service-hero-gallery { padding-top: 1rem; }
+  .service-hero-intro { animation-duration: 1ms; animation-timing-function: step-end; }
 }
