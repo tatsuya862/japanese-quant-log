@@ -11,7 +11,7 @@
   --muted: rgba(244, 240, 233, 0.66);
   --faint: rgba(244, 240, 233, 0.46);
   --serif: "Times New Roman", "Yu Mincho", "Hiragino Mincho ProN", "YuMincho", serif;
-  --sans: "Noto Sans JP", "Yu Gothic", "Hiragino Kaku Gothic ProN", system-ui, sans-serif;
+  --sans: var(--serif); /* Legacy alias: all site text uses serif. */
   font-family: var(--serif);
   background: var(--bg);
   color: var(--text);
@@ -1965,7 +1965,7 @@ h3 {
   align-items: center;
   padding: 0.1rem 2.8rem 0.2rem 0.6rem;
   color: rgba(244, 240, 233, 0.88);
-  font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", var(--sans);
+  font-family: var(--serif);
   font-size: 1.32rem;
   line-height: 1;
 }
@@ -2127,7 +2127,7 @@ h3 {
 .cursor-badge text,
 .axis-labels text {
   fill: rgba(244, 240, 233, 0.7);
-  font-family: "Noto Sans JP", "Yu Gothic", system-ui, sans-serif;
+  font-family: var(--serif);
   font-size: 24px;
   font-weight: 700;
 }
