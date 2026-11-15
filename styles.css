@@ -5063,7 +5063,7 @@ h3 {
   position: absolute;
   z-index: 1;
   right: clamp(1.5rem, 7vw, 7.5rem);
-  bottom: clamp(2rem, 6vw, 5rem);
+  bottom: clamp(3.5rem, 8vw, 6.5rem);
   left: clamp(1.5rem, 7vw, 7.5rem);
   max-width: 660px;
   font-family: var(--serif);
@@ -5106,7 +5106,7 @@ h3 {
   .service-hero-slide-copy h2 { font-size: clamp(1.8rem, 7vw, 2.8rem); }
   .wine-feature img { height: 55%; object-fit: contain; object-position: center top; background: #f4f1e9; }
   .wine-feature > a::after { inset: 50% 0 0; background: linear-gradient(transparent, #171410 35%); }
-  .wine-feature-copy { bottom: 3rem; }
+  .wine-feature-copy { bottom: 6.5rem; }
   .service-philosophy { width: min(100% - 2rem, 720px); }
 }
 
