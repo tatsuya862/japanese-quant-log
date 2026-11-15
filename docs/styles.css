@@ -4260,6 +4260,21 @@ h3 {
   white-space: nowrap;
 }
 
+.service-page .site-header nav .header-socials { display: flex; align-items: center; gap: 0.65rem; }
+.service-page .site-header nav .header-socials a {
+  display: grid;
+  width: 2rem;
+  min-width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 1px solid var(--gold-soft);
+  color: var(--gold-soft);
+}
+.service-page .site-header nav .header-socials a::after { display: none; }
+.service-page .site-header nav .header-socials a:hover,
+.service-page .site-header nav .header-socials a:focus-visible { background: var(--gold-soft); color: #080808; }
+.header-socials svg { display: block; width: 1rem; height: 1rem; fill: currentColor; }
+
 .service-hero {
   position: relative;
   display: grid;
@@ -4789,6 +4804,9 @@ h3 {
     padding: 0.72rem 0;
     font-size: 0.96rem;
   }
+
+  .service-page .site-header nav .header-socials { padding: 0.7rem 0; }
+  .service-page .site-header nav .header-socials a { padding: 0; }
 }
 
 @media (max-width: 820px) {
@@ -5103,6 +5121,7 @@ h3 {
   padding: clamp(4.8rem, 9vw, 8rem) 0;
   border-bottom: 1px solid var(--line-soft);
 }
+.service-philosophy h1,
 .service-philosophy h2 { margin: 0.8rem 0 1.2rem; font-size: clamp(2rem, 4vw, 4rem); }
 .service-philosophy > p:last-child { max-width: 44em; margin: 0; color: var(--muted); line-height: 1.9; }
 
