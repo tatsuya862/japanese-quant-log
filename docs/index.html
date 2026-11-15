@@ -14,7 +14,7 @@
     gtag('config', 'G-RB2ZGN11KY');
   </script>
   <link rel="icon" type="image/png" href="assets/favicon_16x16.png">
-  <link rel="stylesheet" href="styles.css?v=5ca85a6-button-fix">
+  <link rel="stylesheet" href="styles.css?v=20261115-showcase">
 </head>
 <body class="membership-page service-page">
   <header class="site-header membership-header">
@@ -31,7 +31,7 @@
       <a href="#hero">ホーム</a>
       <a href="#problems">よくある悩み</a>
       <a href="#solutions">解決できること</a>
-      <a href="#apps">アプリサンプル</a>
+      <a href="#apps">制作サンプル</a>
       <a href="#faq">FAQ</a>
       <a href="#contact">コンタクト</a>
     </nav>
@@ -39,19 +39,43 @@
 
   <main>
     <section class="service-hero" id="hero">
-      <div class="service-hero-copy">
+      <div class="service-hero-intro">
         <p class="section-label">LESS, THEN BETTER.</p>
         <h1>減らす発想で<br>人生の質を上げる</h1>
-        <p class="hero-copy">理念はAIドクター。私たちの課題を診断し、適切な処置を検討する。そのうえで足すのではなく引く思想で解決するサポートを提供します。</p>
-        <div class="hero-cta"><a class="btn primary" href="#contact">無料相談する</a></div>
       </div>
+      <div class="service-hero-gallery">
+        <div class="service-hero-track" tabindex="0" aria-label="Webアプリ制作サンプル。横にスクロールして切り替え">
+          <article class="service-hero-slide">
+            <div class="service-hero-slide-copy"><p class="section-label">WEBアプリ制作サンプル</p><h2>現場まとめ</h2><p>バラバラな現場報告を、進捗、問題、次の行動へ整理。</p></div>
+            <div class="service-hero-phone"><img src="assets/sample-genba-mobile.png" alt="現場まとめのスマートフォン表示" fetchpriority="high"></div>
+          </article>
+          <article class="service-hero-slide">
+            <div class="service-hero-slide-copy"><p class="section-label">WEBアプリ制作サンプル</p><h2>サロンメモ Lite</h2><p>来店予定、購入メモ、商材確認、次の連絡を一画面に整理。</p></div>
+            <div class="service-hero-phone"><img src="assets/sample-salon-mobile.png" alt="サロンメモ Liteのスマートフォン表示" loading="lazy"></div>
+          </article>
+          <article class="service-hero-slide">
+            <div class="service-hero-slide-copy"><p class="section-label">WEBアプリ制作サンプル</p><h2>Wine Log</h2><p>記録、検索、振り返りを、すぐ辿り着ける一つの場所に集約。</p></div>
+            <div class="service-hero-phone"><img src="assets/sample-wine-mobile.png" alt="Wine Logのスマートフォン表示" loading="lazy"></div>
+          </article>
+        </div>
+        <div class="service-hero-actions"><a class="btn primary" href="#contact">相談はこちら</a><p>横にスワイプして制作サンプルを見る →</p></div>
+      </div>
+    </section>
+
+    <section class="wine-feature" id="apps" aria-label="HP制作サンプル">
+      <a href="https://wine-with-tatsuya.quantlog.chatgpt.site" target="_blank" rel="noopener noreferrer" aria-label="HP制作サンプル Wine Log by Tatsuyaを開く">
+        <img src="assets/wine-site-screenshot.png" alt="Wine Log by Tatsuyaのトップ画面" loading="lazy">
+        <div class="wine-feature-copy"><p class="section-label">HP制作サンプル</p><h2>Wine Log by Tatsuya</h2><p>実飲記録と、予想が外れた学びをまとめた初心者向けワインサイト。</p><span>サイトを見る ↗</span></div>
+      </a>
     </section>
 
     <section class="membership-section service-problems" id="problems">
       <div class="section-heading">
         <p class="section-label">COMMON FRICTION</p>
         <h2>悩みを抱えていませんか？</h2>
+        <p>日々の確認や伝達の手間に、心当たりはありますか。</p>
       </div>
+      <details class="service-fold"><summary>悩みの例を見る</summary>
       <div class="problem-grid">
         <article>
           <h3>顧客単位の予約、商材、フォローアップが大変</h3>
@@ -66,13 +90,16 @@
           <h3>アイディアがあるが漠然で具体的な形にできない</h3>
         </article>
       </div>
+      </details>
     </section>
 
     <section class="membership-section service-solutions" id="solutions">
       <div class="section-heading">
         <p class="section-label">WHAT <span class="brand-case">Quant Log</span> DOES</p>
         <h2>Quant Logのメリット</h2>
+        <p>手間を整理し、大切な仕事に使える時間を増やします。</p>
       </div>
+      <details class="service-fold"><summary>メリットを詳しく見る</summary>
       <div class="solution-flow">
         <article>
           <span class="solution-number">01</span>
@@ -99,6 +126,7 @@
         <p class="solution-case-disclaimer">※同社の事例であり、同等の効果を保証するものではありません。</p>
         <a class="solution-case-source" href="https://sustainability.sej.co.jp/action/000107/" target="_blank" rel="noopener noreferrer">出典：セブン‐イレブン・ジャパン「店内作業効率化の取り組み」</a>
       </aside>
+      </details>
     </section>
 
     <section class="membership-section service-first-plan" id="first-plan">
@@ -106,37 +134,43 @@
         <p class="section-label">FIRST OFFER</p>
         <h2>初回限定プラン</h2>
         <p class="first-plan-note">※Webアプリ制作のみ</p>
+        <p class="first-plan-price">初回限定 20,000円</p>
       </div>
+      <details class="service-fold"><summary>プラン内容を見る</summary>
       <div class="solution-flow">
         <article>
           <span class="solution-number">01</span>
           <div>
             <h3>相談、診断無料（30-60分）</h3>
-            <details class="solution-detail"><summary aria-label="詳細を開く"></summary><p>困り事、悩みをヒアリングし課題の方向性を一緒に考えます</p></details>
+            <p>困り事、悩みをヒアリングし課題の方向性を一緒に考えます</p>
           </div>
         </article>
         <article>
           <span class="solution-number">02</span>
           <div>
             <h3>成果物納品　20,000円（通常価格の60％ OFF）</h3>
-            <details class="solution-detail"><summary aria-label="詳細を開く"></summary><p>診断結果に基づき、Tatsuyaの発想を取り入れた成果物を作ります</p></details>
+            <p>診断結果に基づき、Tatsuyaの発想を取り入れた成果物を作ります</p>
           </div>
         </article>
         <article>
           <span class="solution-number">03</span>
           <div>
             <h3>修正対応　無制限</h3>
-            <details class="solution-detail"><summary aria-label="詳細を開く"></summary><p>ただし当初の相談範囲内の調整に限ります　大幅な機能追加、仕様変更は別途ご相談となります。具体的なご指摘に基づき、納得いただけるまで丁寧に修正します</p></details>
+            <p>ただし当初の相談範囲内の調整に限ります　大幅な機能追加、仕様変更は別途ご相談となります。具体的なご指摘に基づき、納得いただけるまで丁寧に修正します</p>
           </div>
         </article>
       </div>
+      </details>
     </section>
 
     <section class="membership-section service-pricing" id="pricing">
       <div class="section-heading">
         <p class="section-label">SERVICE &amp; PRICE</p>
         <h2>サービス内容と料金</h2>
+        <p>HP・WebサイトとWebアプリを制作します。</p>
+        <p class="service-price-summary">HP制作 100,000円から ／ Webアプリ制作 初回 20,000円</p>
       </div>
+      <details class="service-fold"><summary>サービスと料金を見る</summary>
       <div class="solution-flow">
         <article>
           <div>
@@ -151,49 +185,7 @@
           </div>
         </article>
       </div>
-    </section>
-
-    <section class="membership-section service-apps" id="apps">
-      <div class="section-heading">
-        <p class="section-label">WORK SAMPLES</p>
-        <h2>制作サンプル</h2>
-      </div>
-      <a class="wine-site-showcase" href="https://wine-with-tatsuya.quantlog.chatgpt.site" target="_blank" rel="noopener noreferrer" aria-label="Wine Log by Tatsuyaのサイトを開く">
-        <div class="wine-site-showcase-image"><img src="assets/wine-site-screenshot.png" alt="Wine Log by Tatsuyaのトップ画面" loading="lazy"></div>
-        <div class="wine-site-showcase-copy"><p class="card-kicker">WEB SITE</p><h3>Wine Log by Tatsuya</h3><p>実飲記録と、予想が外れた学びをまとめた初心者向けワインサイト。</p><span>サイトを見る ↗</span></div>
-      </a>
-      <div class="app-tile-grid">
-        <article class="app-tile">
-          <div class="phone-shot">
-            <img src="assets/sample-salon-mobile.png" alt="サロンメモ Liteのスマートフォン表示" loading="lazy">
-          </div>
-          <div class="app-tile-copy">
-            <p class="card-kicker">SALON</p>
-            <h3>顧客対応管理</h3>
-            <p>来店予定、購入メモ、商材確認、次の連絡を一画面に整理。</p>
-          </div>
-        </article>
-        <article class="app-tile">
-          <div class="phone-shot">
-            <img src="assets/sample-genba-mobile.png" alt="現場まとめのスマートフォン表示" loading="lazy">
-          </div>
-          <div class="app-tile-copy">
-            <p class="card-kicker">FIELD REPORT</p>
-            <h3>マルチ現場管理</h3>
-            <p>バラバラな現場報告を、進捗、問題、次の行動へ整理。</p>
-          </div>
-        </article>
-        <article class="app-tile">
-          <div class="phone-shot">
-            <img src="assets/sample-wine-mobile.png" alt="Wine Logのスマートフォン表示" loading="lazy">
-          </div>
-          <div class="app-tile-copy">
-            <p class="card-kicker">PERSONAL LOG</p>
-            <h3>Wine Log</h3>
-            <p>記録、検索、振り返りを、すぐ辿り着ける一つの場所に集約。</p>
-          </div>
-        </article>
-      </div>
+      </details>
     </section>
 
     <section class="membership-section service-payment" id="payment">
@@ -257,6 +249,12 @@
         <button type="submit">メールを作成する</button>
         <p class="contact-note">メールアプリが開きます。内容を確認して送信してください。</p>
       </form>
+    </section>
+
+    <section class="service-philosophy" aria-labelledby="philosophy-title">
+      <p class="section-label">PHILOSOPHY</p>
+      <h2 id="philosophy-title">制作の考え方</h2>
+      <p>理念はAIドクター。私たちの課題を診断し、適切な処置を検討する。そのうえで足すのではなく引く思想で解決するサポートを提供します。</p>
     </section>
 
     <section class="profile" id="profile">
