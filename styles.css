@@ -5033,7 +5033,7 @@ h3 {
   border-bottom: 1px solid var(--line-soft);
 }
 
-.wine-feature > a {
+.wine-feature-stage {
   position: relative;
   display: block;
   min-height: 100svh;
@@ -5052,12 +5052,14 @@ h3 {
   object-position: center;
 }
 
-.wine-feature > a::after {
+.wine-feature-image-link::after {
   content: "";
   position: absolute;
   inset: 35% 0 0;
   background: linear-gradient(transparent, rgba(2, 3, 3, 0.9));
 }
+
+.wine-feature-image-link { position: absolute; inset: 0; }
 
 .wine-feature-copy {
   position: absolute;
@@ -5071,6 +5073,17 @@ h3 {
 
 .wine-feature-copy h2 { margin: 0.7rem 0; font-size: clamp(2.1rem, 5vw, 5rem); line-height: 1.15; }
 .wine-feature-copy .btn { margin-top: 0.65rem; font-family: var(--serif); }
+.wine-feature-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+.wine-feature-actions .btn { margin-top: 0; }
+.wine-service-btn { background: var(--gold-soft); color: #171410; border-color: var(--gold-soft); }
+.wine-service-btn:hover { background: var(--gold); border-color: var(--gold); color: #171410; }
+
+.service-details-intro,
+.service-details-contact { width: min(1180px, calc(100% - 3rem)); margin: 0 auto; }
+.service-details-intro { padding: clamp(5rem, 10vw, 9rem) 0 clamp(3rem, 6vw, 5rem); }
+.service-details-intro h1 { margin: 0.6rem 0 1rem; font-size: clamp(2.5rem, 6vw, 5rem); }
+.service-details-intro > p:last-child { color: var(--muted); line-height: 1.8; }
+.service-details-contact { padding: 1rem 0 4rem; }
 
 .service-fold { border-top: 1px solid var(--line-soft); }
 .service-fold summary {
@@ -5105,7 +5118,7 @@ h3 {
   .service-hero-slide-copy { grid-row: 2; padding: 1.4rem 0 0; }
   .service-hero-slide-copy h2 { font-size: clamp(1.8rem, 7vw, 2.8rem); }
   .wine-feature img { height: 55%; object-fit: contain; object-position: center top; background: #f4f1e9; }
-  .wine-feature > a::after { inset: 50% 0 0; background: linear-gradient(transparent, #171410 35%); }
+  .wine-feature-image-link::after { inset: 50% 0 0; background: linear-gradient(transparent, #171410 35%); }
   .wine-feature-copy { bottom: 6.5rem; }
   .service-philosophy { width: min(100% - 2rem, 720px); }
 }
@@ -5113,6 +5126,6 @@ h3 {
 @media (max-width: 480px) {
   .service-hero-gallery { padding-top: 9rem; }
   .service-hero-actions { align-items: flex-start; flex-direction: column; }
-  .wine-feature, .wine-feature > a { min-height: 88svh; }
+  .wine-feature, .wine-feature-stage { min-height: 88svh; }
   .wine-feature img { height: 49%; }
 }
