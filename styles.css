@@ -5070,6 +5070,7 @@ h3 {
 }
 
 .wine-feature-copy h2 { margin: 0.7rem 0; font-size: clamp(2.1rem, 5vw, 5rem); line-height: 1.15; }
+.wine-feature-copy .btn { margin-top: 0.65rem; font-family: var(--serif); }
 
 .service-fold { border-top: 1px solid var(--line-soft); }
 .service-fold summary {
