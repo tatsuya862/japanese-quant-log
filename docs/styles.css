@@ -4954,7 +4954,7 @@ h3 {
   left: clamp(1.5rem, 7vw, 7.5rem);
   max-width: min(50vw, 760px);
   pointer-events: none;
-  animation: service-intro-out 1s ease 5s forwards;
+  animation: service-intro-out 1.5s ease 4s forwards;
 }
 
 .service-hero-intro[hidden] { display: none !important; }
