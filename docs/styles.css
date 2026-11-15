@@ -5081,6 +5081,10 @@ h3 {
 .wine-feature-frame.is-current { transform: translateY(0); }
 .wine-feature-frame.is-past { transform: translateY(-100%); }
 
+@media (prefers-reduced-motion: reduce) {
+  .wine-feature-frame { transition: none; }
+}
+
 .wine-feature img {
   position: absolute;
   inset: 0;

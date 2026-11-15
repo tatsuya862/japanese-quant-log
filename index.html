@@ -14,7 +14,7 @@
     gtag('config', 'G-RB2ZGN11KY');
   </script>
   <link rel="icon" type="image/png" href="assets/favicon_16x16.png">
-  <link rel="stylesheet" href="styles.css?v=20261116-wine-scroll">
+  <link rel="stylesheet" href="styles.css?v=20261116-wine-scroll-rm">
 </head>
 <body class="membership-page service-page">
   <header class="site-header membership-header">
@@ -259,7 +259,7 @@
     }
 
     const wineFeature = document.querySelector(".wine-feature");
-    if (wineFeature && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (wineFeature) {
       const frames = [...wineFeature.querySelectorAll(".wine-feature-frame")];
       let started = false;
       const advance = (index) => {
