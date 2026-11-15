@@ -14,7 +14,7 @@
     gtag('config', 'G-RB2ZGN11KY');
   </script>
   <link rel="icon" type="image/png" href="assets/favicon_16x16.png">
-  <link rel="stylesheet" href="styles.css?v=20261115-faq-hero-timing">
+  <link rel="stylesheet" href="styles.css?v=20261116-wine-scroll">
 </head>
 <body class="membership-page service-page">
   <header class="site-header membership-header">
@@ -70,7 +70,13 @@
 
     <section class="wine-feature" id="apps" aria-label="HP制作サンプル">
       <div class="wine-feature-stage">
-        <a class="wine-feature-image-link" href="https://wine-with-tatsuya.quantlog.chatgpt.site" target="_blank" rel="noopener noreferrer" aria-label="HP制作サンプル Wine Log by Tatsuyaを開く"><img src="assets/wine-site-screenshot.png" alt="Wine Log by Tatsuyaのトップ画面" loading="lazy"></a>
+        <div class="wine-feature-media" aria-hidden="true">
+          <div class="wine-feature-frame is-current"><img src="assets/wine-site-screenshot.png" alt="" loading="lazy"></div>
+          <iframe class="wine-feature-frame" src="https://wine-with-tatsuya.quantlog.chatgpt.site/#find" title="ワインを探す画面" tabindex="-1" loading="eager" onload="this.dataset.ready='true'"></iframe>
+          <iframe class="wine-feature-frame" src="https://wine-with-tatsuya.quantlog.chatgpt.site/#results" title="テイスティング記録の画面" tabindex="-1" loading="eager" onload="this.dataset.ready='true'"></iframe>
+          <iframe class="wine-feature-frame" src="https://wine-with-tatsuya.quantlog.chatgpt.site/#story" title="ワイン体験の考え方の画面" tabindex="-1" loading="eager" onload="this.dataset.ready='true'"></iframe>
+        </div>
+        <a class="wine-feature-image-link" href="https://wine-with-tatsuya.quantlog.chatgpt.site" target="_blank" rel="noopener noreferrer" aria-label="HP制作サンプル Wine Log by Tatsuyaを開く"></a>
         <div class="wine-feature-copy"><p class="section-label">HP制作サンプル</p><h2>Wine Log by Tatsuya</h2><div class="wine-feature-actions"><a class="btn wine-service-btn" href="service.html">サービス内容はこちら</a><a class="btn primary" href="https://wine-with-tatsuya.quantlog.chatgpt.site" target="_blank" rel="noopener noreferrer">サイトを見る</a></div></div>
       </div>
     </section>
@@ -250,6 +256,30 @@
       };
 
       schedule(7000);
+    }
+
+    const wineFeature = document.querySelector(".wine-feature");
+    if (wineFeature && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const frames = [...wineFeature.querySelectorAll(".wine-feature-frame")];
+      let started = false;
+      const advance = (index) => {
+        if (index >= 3) return;
+        if (frames[index + 1].dataset.ready !== "true") {
+          frames[index + 1].addEventListener("load", () => advance(index), { once: true });
+          return;
+        }
+        frames[index].classList.remove("is-current");
+        frames[index].classList.add("is-past");
+        frames[index + 1].classList.add("is-current");
+        if (index < 2) setTimeout(() => advance(index + 1), 4500);
+      };
+      const observer = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting || started) return;
+        started = true;
+        observer.disconnect();
+        setTimeout(() => advance(0), 3000);
+      }, { threshold: 0.45 });
+      observer.observe(wineFeature);
     }
   </script>
 </body>
