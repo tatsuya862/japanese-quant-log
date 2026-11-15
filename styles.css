@@ -5118,7 +5118,3 @@ h3 {
   .wine-feature, .wine-feature > a { min-height: 88svh; }
   .wine-feature img { height: 49%; }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .service-hero-intro { animation-duration: 1ms; animation-timing-function: step-end; }
-}
