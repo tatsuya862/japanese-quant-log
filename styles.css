@@ -4762,6 +4762,13 @@ h3 {
   line-height: 1.7;
 }
 
+.service-contact .contact-intro .section-label,
+.service-page .profile-card .section-label { font-size: 1.64rem; }
+
+.service-contact .contact-intro > p:last-child,
+.service-contact .contact-form label,
+.service-contact .contact-note { color: var(--text); }
+
 .service-page .profile {
   padding-top: clamp(4.8rem, 9vw, 8rem);
 }
