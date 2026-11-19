@@ -5139,7 +5139,7 @@ h3 {
   .service-hero-track { gap: 0.75rem; }
   .service-hero-slide { flex-basis: calc(100% - 1.75rem); }
   .service-hero-slide { grid-template-columns: 1fr; min-height: 0; }
-  .service-hero-phone { grid-row: 1; height: auto; width: min(82vw, 390px); border-radius: 30px; }
+  .service-hero-phone { grid-row: 1; height: min(72vh, 760px); width: min(82vw, 390px); border-radius: 30px; }
   .service-hero-slide-copy { grid-row: 2; padding: 1.4rem 0 0; }
   .service-hero-slide-copy h2 { font-size: clamp(1.8rem, 7vw, 2.8rem); }
   .wine-feature-media { height: 55%; }
