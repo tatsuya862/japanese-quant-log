@@ -5162,3 +5162,30 @@ h3 {
   .wine-feature, .wine-feature-stage { min-height: 88svh; }
   .wine-feature-media { height: 49%; }
 }
+
+/* Web app samples detail page */
+.app-samples-page .sample-contact-link { color: var(--text); text-decoration: none; letter-spacing: .08em; }
+.sample-page-intro { max-width: 1240px; margin: 0 auto; padding: clamp(3rem, 8vw, 6rem) 2rem 1rem; }
+.sample-page-intro .section-label { color: var(--gold-soft); letter-spacing: .2em; }
+.sample-page-intro h1 { margin: .5rem 0 0; font-size: clamp(1.2rem, 2.4vw, 2rem); font-weight: 400; }
+.sample-list { max-width: 1240px; margin: 0 auto; padding: 0 2rem; }
+.sample-item { min-height: 460px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: clamp(2rem, 8vw, 8rem); padding: 3rem 0; border-bottom: 1px solid var(--line-soft); }
+.sample-item:nth-child(even) img { grid-column: 2; grid-row: 1; }
+.sample-item:nth-child(even) div { grid-column: 1; grid-row: 1; }
+.sample-item img { display: block; width: min(100%, 360px); max-height: 420px; object-fit: contain; object-position: top center; justify-self: center; }
+.sample-item h2 { margin: 0 0 .5rem; font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 400; }
+.sample-item p { margin: 0; color: var(--muted); font-size: clamp(1rem, 1.5vw, 1.25rem); }
+.sample-contact { display: flex; justify-content: center; padding: 5rem 1.5rem; }
+.sample-contact a { display: inline-flex; min-width: 240px; justify-content: center; padding: 1rem 2.5rem; color: #080806; background: var(--gold-soft); border: 1px solid var(--gold-soft); text-decoration: none; letter-spacing: .12em; font-size: 1.1rem; transition: background .2s, color .2s; }
+.sample-contact a:hover { color: var(--gold-soft); background: transparent; }
+@media (max-width: 700px) {
+  .sample-page-intro { padding: 2rem 1.25rem .25rem; }
+  .sample-page-intro h1 { font-size: 1.05rem; }
+  .sample-list { padding: 0 1.25rem; }
+  .sample-item, .sample-item:nth-child(even) { min-height: 0; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: .9rem; padding: 1.5rem 0; }
+  .sample-item img, .sample-item:nth-child(even) img { grid-column: 1; grid-row: 1; width: 100%; max-height: 34vh; }
+  .sample-item div, .sample-item:nth-child(even) div { grid-column: 2; grid-row: 1; align-self: center; }
+  .sample-item h2 { font-size: 1rem; line-height: 1.4; }
+  .sample-item p { font-size: .82rem; line-height: 1.5; }
+  .sample-contact { padding: 3rem 1.25rem; }
+}
