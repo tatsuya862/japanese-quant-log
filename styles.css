@@ -5126,7 +5126,7 @@ h3 {
 .service-details-intro,
 .service-details-contact { width: min(1180px, calc(100% - 3rem)); margin: 0 auto; }
 .service-details-intro { padding: clamp(5rem, 10vw, 9rem) 0 1.5rem; }
-.service-details-intro h1 { margin: 0.6rem 0 1rem; font-size: clamp(2.5rem, 6vw, 5rem); }
+.service-details-intro h1 { margin: 0 0 1rem; font-size: clamp(2.5rem, 6vw, 5rem); }
 .service-details-contact { padding: 1rem 0 4rem; }
 
 .service-fold { border-top: 1px solid var(--line-soft); }
@@ -5138,7 +5138,9 @@ h3 {
 }
 .service-fold summary:focus-visible { outline: 2px solid var(--gold-soft); outline-offset: 3px; }
 .service-fold > :last-child { margin-top: 1.5rem; }
-.service-page #pricing { padding-top: 1.5rem; }
+.service-page #pricing { padding-top: 1.5rem; padding-bottom: 2rem; }
+.service-page .service-first-plan,
+.service-page .service-payment { padding-top: 2.5rem; }
 
 .service-philosophy {
   width: min(1180px, calc(100% - 3rem));
