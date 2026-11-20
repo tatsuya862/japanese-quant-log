@@ -311,19 +311,13 @@
         if (stopped) return;
         const footer = document.querySelector(".site-footer");
         if (!footer) return;
-        scrollOverTime(footer.offsetTop, 9000, () => {
+        const footerTop = footer.getBoundingClientRect().top + window.scrollY;
+        scrollOverTime(footerTop, 9000, () => {
           if (stopped) return;
           setTimeout(playReturn, 1500);
         });
       };
-      let showcaseStarted = false;
-      const showcaseObserver = new IntersectionObserver(([entry]) => {
-        if (!entry.isIntersecting || showcaseStarted) return;
-        showcaseStarted = true;
-        showcaseObserver.disconnect();
-        startShowcase();
-      }, { threshold: 0.01 });
-      showcaseObserver.observe(wineFeature);
+      startShowcase();
       motionPreference.addEventListener?.("change", (event) => {
         if (event.matches) stopShowcase();
       });
