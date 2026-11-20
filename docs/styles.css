@@ -5110,7 +5110,7 @@ h3 {
   flex-direction: column;
   align-items: center;
   gap: 0.35rem;
-  padding: clamp(2rem, 5vw, 4rem) 1.25rem;
+  padding: clamp(1.25rem, 3vw, 2rem) 1.25rem;
   border-bottom: 1px solid var(--line-soft);
   text-align: center;
   font-family: var(--serif);
