@@ -240,13 +240,15 @@
       let stopped = false;
       let startTimer;
       let animationFrame;
+      let waitForVisible;
       const stopShowcase = () => {
         stopped = true;
         clearTimeout(startTimer);
         cancelAnimationFrame(animationFrame);
+        if (waitForVisible) document.removeEventListener("visibilitychange", waitForVisible);
         page.classList.remove("showcase-fade-out");
       };
-      ["wheel", "touchstart", "pointerdown", "keydown"].forEach((eventName) => {
+      ["wheel", "touchstart", "keydown"].forEach((eventName) => {
         window.addEventListener(eventName, stopShowcase, { once: true, passive: true });
       });
       const scrollOverTime = (target, duration, onComplete) => {
@@ -290,15 +292,29 @@
         }, 2000);
       };
       const startShowcase = () => {
-        if (stopped || document.hidden) return;
+        if (stopped) return;
         startTimer = setTimeout(() => {
-          const footer = document.querySelector(".site-footer");
-          if (!footer || stopped) return;
-          scrollOverTime(footer.offsetTop, 9000, () => {
-            if (stopped) return;
-            setTimeout(playReturn, 1500);
-          });
+          if (document.hidden) {
+            waitForVisible = () => {
+              if (document.hidden || stopped) return;
+              document.removeEventListener("visibilitychange", waitForVisible);
+              waitForVisible = null;
+              startShowcaseScroll();
+            };
+            document.addEventListener("visibilitychange", waitForVisible);
+            return;
+          }
+          startShowcaseScroll();
         }, 2000);
+      };
+      const startShowcaseScroll = () => {
+        if (stopped) return;
+        const footer = document.querySelector(".site-footer");
+        if (!footer) return;
+        scrollOverTime(footer.offsetTop, 9000, () => {
+          if (stopped) return;
+          setTimeout(playReturn, 1500);
+        });
       };
       let showcaseStarted = false;
       const showcaseObserver = new IntersectionObserver(([entry]) => {
@@ -306,7 +322,7 @@
         showcaseStarted = true;
         showcaseObserver.disconnect();
         startShowcase();
-      }, { threshold: 0.45 });
+      }, { threshold: 0.01 });
       showcaseObserver.observe(wineFeature);
       motionPreference.addEventListener?.("change", (event) => {
         if (event.matches) stopShowcase();
