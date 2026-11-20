@@ -5125,9 +5125,8 @@ h3 {
 
 .service-details-intro,
 .service-details-contact { width: min(1180px, calc(100% - 3rem)); margin: 0 auto; }
-.service-details-intro { padding: clamp(5rem, 10vw, 9rem) 0 clamp(3rem, 6vw, 5rem); }
+.service-details-intro { padding: clamp(5rem, 10vw, 9rem) 0 1.5rem; }
 .service-details-intro h1 { margin: 0.6rem 0 1rem; font-size: clamp(2.5rem, 6vw, 5rem); }
-.service-details-intro > p:last-child { color: var(--muted); line-height: 1.8; }
 .service-details-contact { padding: 1rem 0 4rem; }
 
 .service-fold { border-top: 1px solid var(--line-soft); }
@@ -5139,8 +5138,7 @@ h3 {
 }
 .service-fold summary:focus-visible { outline: 2px solid var(--gold-soft); outline-offset: 3px; }
 .service-fold > :last-child { margin-top: 1.5rem; }
-.service-first-plan .first-plan-price,
-.service-pricing .service-price-summary { color: var(--gold-soft) !important; font-family: var(--sans); }
+.service-page #pricing { padding-top: 1.5rem; }
 
 .service-philosophy {
   width: min(1180px, calc(100% - 3rem));
