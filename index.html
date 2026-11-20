@@ -14,7 +14,7 @@
     gtag('config', 'G-RB2ZGN11KY');
   </script>
   <link rel="icon" type="image/png" href="assets/favicon_16x16.png">
-  <link rel="stylesheet" href="styles.css?v=20261119-order-dashboard-height">
+  <link rel="stylesheet" href="styles.css?v=20261120-wine-hero-pricing">
 </head>
 <body class="membership-page service-page">
   <header class="site-header membership-header">
@@ -44,7 +44,26 @@
   </header>
 
   <main>
-    <section class="service-hero" id="hero">
+    <section class="wine-feature wine-feature-hero" id="hero" aria-label="HP制作サンプル">
+      <div class="wine-feature-stage">
+        <div class="wine-feature-media" aria-hidden="true">
+          <div class="wine-feature-frame is-current"><img src="assets/wine-site-screenshot.png" alt="" fetchpriority="high"></div>
+          <iframe class="wine-feature-frame" src="https://wine-with-tatsuya.quantlog.chatgpt.site/#find" title="ワインを探す画面" tabindex="-1" loading="eager" onload="this.dataset.ready='true'"></iframe>
+          <iframe class="wine-feature-frame" src="https://wine-with-tatsuya.quantlog.chatgpt.site/#results" title="テイスティング記録の画面" tabindex="-1" loading="eager" onload="this.dataset.ready='true'"></iframe>
+          <iframe class="wine-feature-frame" src="https://wine-with-tatsuya.quantlog.chatgpt.site/#story" title="ワイン体験の考え方の画面" tabindex="-1" loading="eager" onload="this.dataset.ready='true'"></iframe>
+        </div>
+        <a class="wine-feature-image-link" href="https://wine-with-tatsuya.quantlog.chatgpt.site" target="_blank" rel="noopener noreferrer" aria-label="HP制作サンプル Wine Log by Tatsuyaを開く"></a>
+        <div class="wine-feature-copy"><h2>Wine Log</h2><div class="wine-feature-actions"><a class="btn wine-service-btn" href="service.html">Learn More</a><a class="btn primary" href="https://wine-with-tatsuya.quantlog.chatgpt.site" target="_blank" rel="noopener noreferrer">Visit Site</a></div></div>
+      </div>
+    </section>
+
+    <section class="hp-sample-price" aria-label="HP制作サンプルの価格">
+      <p>HP制作サンプル</p>
+      <h2>HP・Webサイト制作 <span>100,000円から</span></h2>
+      <a href="service.html#pricing">制作内容を見る</a>
+    </section>
+
+    <section class="service-hero" id="apps">
       <div class="service-hero-gallery">
         <div class="service-hero-track" tabindex="0" aria-label="Webアプリ制作サンプル。横にスクロールして切り替え">
           <article class="service-hero-slide">
@@ -69,19 +88,6 @@
           </article>
         </div>
         <div class="service-hero-actions"><a class="btn primary" href="app-samples.html">View Sample</a></div>
-      </div>
-    </section>
-
-    <section class="wine-feature" id="apps" aria-label="HP制作サンプル">
-      <div class="wine-feature-stage">
-        <div class="wine-feature-media" aria-hidden="true">
-          <div class="wine-feature-frame is-current"><img src="assets/wine-site-screenshot.png" alt="" loading="lazy"></div>
-          <iframe class="wine-feature-frame" src="https://wine-with-tatsuya.quantlog.chatgpt.site/#find" title="ワインを探す画面" tabindex="-1" loading="eager" onload="this.dataset.ready='true'"></iframe>
-          <iframe class="wine-feature-frame" src="https://wine-with-tatsuya.quantlog.chatgpt.site/#results" title="テイスティング記録の画面" tabindex="-1" loading="eager" onload="this.dataset.ready='true'"></iframe>
-          <iframe class="wine-feature-frame" src="https://wine-with-tatsuya.quantlog.chatgpt.site/#story" title="ワイン体験の考え方の画面" tabindex="-1" loading="eager" onload="this.dataset.ready='true'"></iframe>
-        </div>
-        <a class="wine-feature-image-link" href="https://wine-with-tatsuya.quantlog.chatgpt.site" target="_blank" rel="noopener noreferrer" aria-label="HP制作サンプル Wine Log by Tatsuyaを開く"></a>
-        <div class="wine-feature-copy"><h2>Wine Log</h2><div class="wine-feature-actions"><a class="btn wine-service-btn" href="service.html">Learn More</a><a class="btn primary" href="https://wine-with-tatsuya.quantlog.chatgpt.site" target="_blank" rel="noopener noreferrer">Visit Site</a></div></div>
       </div>
     </section>
 
@@ -198,11 +204,20 @@
     }
 
     const wineFeature = document.querySelector(".wine-feature");
-    if (wineFeature) {
+    if (wineFeature && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       const frames = [...wineFeature.querySelectorAll(".wine-feature-frame")];
       let started = false;
+      const returnToTop = () => {
+        frames[3].classList.remove("is-current");
+        frames[3].classList.add("is-past");
+        frames[0].classList.remove("is-past");
+        frames[0].classList.add("is-current");
+      };
       const advance = (index) => {
-        if (index >= 3) return;
+        if (index >= 3) {
+          setTimeout(returnToTop, 4500);
+          return;
+        }
         if (frames[index + 1].dataset.ready !== "true") {
           frames[index + 1].addEventListener("load", () => advance(index), { once: true });
           return;
@@ -210,7 +225,7 @@
         frames[index].classList.remove("is-current");
         frames[index].classList.add("is-past");
         frames[index + 1].classList.add("is-current");
-        if (index < 2) setTimeout(() => advance(index + 1), 4500);
+        setTimeout(() => index < 2 ? advance(index + 1) : returnToTop(), 4500);
       };
       const observer = new IntersectionObserver(([entry]) => {
         if (!entry.isIntersecting || started) return;
@@ -219,6 +234,83 @@
         setTimeout(() => advance(0), 3000);
       }, { threshold: 0.45 });
       observer.observe(wineFeature);
+    }
+
+    const page = document.querySelector(".service-page");
+    const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (page && wineFeature && !motionPreference.matches) {
+      let stopped = false;
+      let startTimer;
+      let animationFrame;
+      const stopShowcase = () => {
+        stopped = true;
+        clearTimeout(startTimer);
+        cancelAnimationFrame(animationFrame);
+        page.classList.remove("showcase-fade-out");
+      };
+      ["wheel", "touchstart", "pointerdown", "keydown"].forEach((eventName) => {
+        window.addEventListener(eventName, stopShowcase, { once: true, passive: true });
+      });
+      const scrollOverTime = (target, duration, onComplete) => {
+        const from = window.scrollY;
+        const distance = target - from;
+        let started;
+        const previousBehavior = document.documentElement.style.scrollBehavior;
+        document.documentElement.style.scrollBehavior = "auto";
+        const step = (now) => {
+          if (stopped) {
+            document.documentElement.style.scrollBehavior = previousBehavior;
+            return;
+          }
+          started ??= now;
+          const progress = Math.min((now - started) / duration, 1);
+          const eased = (1 - Math.cos(Math.PI * progress)) / 2;
+          window.scrollTo(0, from + distance * eased);
+          if (progress < 1) animationFrame = requestAnimationFrame(step);
+          else {
+            document.documentElement.style.scrollBehavior = previousBehavior;
+            onComplete?.();
+          }
+        };
+        animationFrame = requestAnimationFrame(step);
+      };
+      const resetWineFrames = () => {
+        const frames = [...wineFeature.querySelectorAll(".wine-feature-frame")];
+        if (frames.length < 4) return;
+        frames.forEach((frame, index) => {
+          frame.classList.toggle("is-current", index === 0);
+          frame.classList.toggle("is-past", index > 0);
+        });
+      };
+      const playReturn = () => {
+        if (stopped) return;
+        page.classList.add("showcase-fade-out");
+        setTimeout(() => {
+          if (stopped) return;
+          resetWineFrames();
+          scrollOverTime(0, 2500, () => page.classList.remove("showcase-fade-out"));
+        }, 2000);
+      };
+      const startShowcase = () => {
+        if (stopped || document.hidden) return;
+        startTimer = setTimeout(() => {
+          const footer = document.querySelector(".site-footer");
+          if (!footer || stopped) return;
+          scrollOverTime(footer.offsetTop, 9000, () => {
+            if (stopped) return;
+            setTimeout(playReturn, 1500);
+          });
+        }, 2500);
+      };
+      const showcaseObserver = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) return;
+        showcaseObserver.disconnect();
+        startShowcase();
+      }, { threshold: 0.5 });
+      showcaseObserver.observe(wineFeature);
+      motionPreference.addEventListener?.("change", (event) => {
+        if (event.matches) stopShowcase();
+      });
     }
   </script>
 </body>

@@ -4948,6 +4948,9 @@ h3 {
 }
 
 /* Quant Log service showcase */
+.service-page { transition: opacity 2s ease; }
+.service-page.showcase-fade-out { opacity: 0; }
+
 .service-page .service-hero {
   display: block;
   min-height: min(760px, calc(100svh - 72px));
@@ -5034,6 +5037,7 @@ h3 {
   min-height: 100svh;
   border-bottom: 1px solid var(--line-soft);
 }
+.wine-feature-hero { min-height: min(100svh, 980px); }
 
 .wine-feature-stage {
   position: relative;
@@ -5059,7 +5063,7 @@ h3 {
   border: 0;
   background: #f4f1e9;
   transform: translateY(100%);
-  transition: transform 1.5s ease-in-out;
+  transition: transform 2s ease-in-out;
   pointer-events: none;
 }
 .wine-feature-frame.is-current { transform: translateY(0); }
@@ -5101,6 +5105,20 @@ h3 {
 .wine-feature-copy .btn { margin-top: 0.65rem; font-family: var(--serif); }
 .wine-feature-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 0.75rem; }
 .wine-feature-actions .btn { margin-top: 0; }
+.hp-sample-price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: clamp(2rem, 5vw, 4rem) 1.25rem;
+  border-bottom: 1px solid var(--line-soft);
+  text-align: center;
+  font-family: var(--serif);
+}
+.hp-sample-price p { margin: 0; color: var(--gold-soft); letter-spacing: 0.12em; }
+.hp-sample-price h2 { margin: 0.4rem 0; font-size: clamp(1.3rem, 3vw, 2rem); font-weight: 400; }
+.hp-sample-price h2 span { display: block; margin-top: 0.35rem; color: var(--gold-soft); }
+.hp-sample-price a { margin-top: 0.55rem; color: var(--text); text-underline-offset: 0.25em; }
 .wine-service-btn { background: var(--gold-soft); color: #171410; border-color: var(--gold-soft); }
 .wine-service-btn:hover { background: var(--gold); border-color: var(--gold); color: #171410; }
 
