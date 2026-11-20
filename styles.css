@@ -5178,8 +5178,10 @@ h3 {
 
 @media (max-width: 480px) {
   .service-hero-actions { align-items: flex-start; flex-direction: column; }
-  .wine-feature, .wine-feature-stage { min-height: 88svh; }
+  .wine-feature-hero, .wine-feature-hero .wine-feature-stage { min-height: 70svh; }
   .wine-feature-media { height: 49%; }
+  .wine-feature-copy { bottom: 1.5rem; }
+  .hp-sample-price { padding: 0.5rem 1.25rem 0.75rem; }
 }
 
 /* Web app samples detail page */
