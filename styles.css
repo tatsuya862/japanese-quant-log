@@ -5182,6 +5182,7 @@ h3 {
 }
 
 /* Web app samples detail page */
+.app-samples-page .sample-page-nav { display: flex; align-items: center; gap: clamp(0.9rem, 2vw, 1.5rem); }
 .app-samples-page .sample-contact-link { color: var(--text); text-decoration: none; letter-spacing: .08em; }
 .sample-page-intro { max-width: 1240px; margin: 0 auto; padding: clamp(3rem, 8vw, 6rem) 2rem 1rem; }
 .sample-page-intro .section-label { color: var(--gold-soft); letter-spacing: .2em; }
@@ -5193,7 +5194,7 @@ h3 {
 .sample-item img { display: block; width: min(100%, 360px); max-height: 420px; object-fit: contain; object-position: top center; justify-self: center; }
 .sample-item h2 { margin: 0 0 .5rem; font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 400; }
 .sample-item p { margin: 0; color: var(--muted); font-size: clamp(1rem, 1.5vw, 1.25rem); }
-.sample-contact { display: flex; justify-content: center; padding: 5rem 1.5rem; }
+.sample-contact { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; padding: 5rem 1.5rem; }
 .sample-contact a { display: inline-flex; min-width: 240px; justify-content: center; padding: 1rem 2.5rem; color: #080806; background: var(--gold-soft); border: 1px solid var(--gold-soft); text-decoration: none; letter-spacing: .12em; font-size: 1.1rem; transition: background .2s, color .2s; }
 .sample-contact a:hover { color: var(--gold-soft); background: transparent; }
 @media (max-width: 700px) {
