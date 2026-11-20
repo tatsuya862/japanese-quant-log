@@ -210,7 +210,6 @@
         frames[3].classList.add("is-past");
         frames[0].classList.remove("is-past");
         frames[0].classList.add("is-current");
-        setTimeout(() => window.dispatchEvent(new Event("wine-feature-returned-to-top")), 2000);
       };
       const advance = (index) => {
         if (index >= 3) {
@@ -299,9 +298,16 @@
             if (stopped) return;
             setTimeout(playReturn, 1500);
           });
-        }, 1500);
+        }, 2000);
       };
-      window.addEventListener("wine-feature-returned-to-top", startShowcase, { once: true });
+      let showcaseStarted = false;
+      const showcaseObserver = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting || showcaseStarted) return;
+        showcaseStarted = true;
+        showcaseObserver.disconnect();
+        startShowcase();
+      }, { threshold: 0.45 });
+      showcaseObserver.observe(wineFeature);
       motionPreference.addEventListener?.("change", (event) => {
         if (event.matches) stopShowcase();
       });
