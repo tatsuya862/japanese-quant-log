@@ -4948,9 +4948,6 @@ h3 {
 }
 
 /* Quant Log service showcase */
-.service-page { transition: opacity 2s ease; }
-.service-page.showcase-fade-out { opacity: 0; }
-
 .service-page .service-hero {
   display: block;
   min-height: min(760px, calc(100svh - 72px));
@@ -5070,7 +5067,8 @@ h3 {
 .wine-feature-frame.is-current { transform: translateY(0); }
 .wine-feature-frame.is-past { transform: translateY(-100%); }
 
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce) and (hover: none),
+       (prefers-reduced-motion: reduce) and (pointer: coarse) {
   .wine-feature-frame { transition: none; }
 }
 
