@@ -236,7 +236,7 @@
 
     const page = document.querySelector(".service-page");
     const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (page && wineFeature && !motionPreference.matches) {
+    if (page && wineFeature) {
       let stopped = false;
       let startTimer;
       let animationFrame;
