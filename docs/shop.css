@@ -84,7 +84,11 @@
   .sticker-section { grid-template-columns: 1fr; min-height: 30rem; padding: 2rem 1.5rem; gap: 1.25rem; align-content: center; }
   .sticker-space { min-height: 0; }
   .sticker-space img { width: min(100%, 18rem); }
-  .sticker-gallery { display: none; }
+  .sticker-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, clamp(4.5rem, 22vw, 5.5rem)));
+    justify-self: center;
+  }
   .wine-shop { background-attachment: scroll; }
   .wine-shop-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
   .wine-shop-card { padding: .65rem .65rem .8rem; }
