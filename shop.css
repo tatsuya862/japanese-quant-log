@@ -41,7 +41,7 @@
 }
 .shop-button:hover, .wine-shop-button:hover { background: transparent; color: var(--text); }
 .sticker-space { display: grid; align-self: stretch; place-items: center; }
-.sticker-space img { display: block; width: min(100%, 25rem); height: auto; }
+.sticker-space img { display: block; width: min(100%, 20rem); height: auto; }
 .wine-shop {
   padding: clamp(3rem, 6vw, 5.5rem) clamp(1rem, 5vw, 4rem);
   background: linear-gradient(rgba(17, 16, 13, .22), rgba(17, 16, 13, .38)), url("assets/wine-site-hero.png") center / cover fixed;
