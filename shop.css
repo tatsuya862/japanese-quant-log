@@ -1,0 +1,84 @@
+.shop-page { color-scheme: dark; }
+.shop-title {
+  display: flex;
+  min-height: 6.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 4vw, 3rem);
+  background: #f4f0e9;
+  color: #876a35;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+}
+.shop-title h1 { margin: 0; font-size: 1.25rem; font-weight: 400; }
+.shop-title span { width: clamp(3rem, 9vw, 7rem); height: 1px; background: #b8955b; }
+.shop-kicker { margin: 0 0 1.5rem; color: var(--gold-soft); font-size: 0.78rem; letter-spacing: 0.32em; }
+.sticker-section {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+  align-items: center;
+  min-height: 31rem;
+  padding: clamp(3rem, 7vw, 6rem);
+  background: radial-gradient(ellipse at 14% 50%, rgba(209,161,58,.1), transparent 38%), #090a09;
+  border-bottom: 1px solid var(--line-soft);
+}
+.sticker-copy { max-width: 28rem; }
+.sticker-copy h2 { margin: 0 0 2rem; font-size: clamp(1.6rem, 3.2vw, 2.6rem); font-weight: 300; }
+.sticker-price { margin: 0 0 1.5rem; color: var(--text); font-size: 1.1rem; letter-spacing: .06em; }
+.shop-button, .wine-shop-button {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  padding: .6rem 2rem;
+  border: 1px solid var(--gold-soft);
+  background: var(--gold-soft);
+  color: #171410;
+  font-size: 1rem;
+  letter-spacing: .04em;
+  text-decoration: none;
+  transition: background .2s ease, color .2s ease;
+}
+.shop-button:hover, .wine-shop-button:hover { background: transparent; color: var(--text); }
+.sticker-space { min-height: 17rem; }
+.wine-shop {
+  padding: clamp(3rem, 6vw, 5.5rem) clamp(1rem, 5vw, 4rem);
+  background: linear-gradient(rgba(17, 16, 13, .22), rgba(17, 16, 13, .38)), url("assets/wine-site-hero.png") center / cover fixed;
+}
+.wine-shop-inner { max-width: 1320px; margin: 0 auto; }
+.wine-shop h2 { margin: 0 0 2rem; font-size: clamp(1.8rem, 3vw, 2.7rem); font-weight: 300; }
+.wine-shop-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.15rem; }
+.wine-shop-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 1rem 1.2rem;
+  border: 1px solid rgba(184, 134, 24, .44);
+  background: rgba(6, 7, 7, .76);
+  text-align: center;
+}
+.wine-shop-image {
+  display: grid;
+  width: 100%;
+  height: clamp(13rem, 23vw, 18rem);
+  place-items: center;
+  overflow: hidden;
+  background: #f4f1e9;
+}
+.wine-shop-image img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.wine-shop-image span { color: #6d6558; font-size: .9rem; }
+.wine-shop-card h3 { display: flex; min-height: 4.5rem; align-items: center; justify-content: center; margin: .8rem 0 1rem; font-size: 1rem; font-weight: 300; line-height: 1.55; }
+.wine-shop-button { width: 100%; min-height: 2.7rem; padding: .4rem 1rem; font-size: .92rem; }
+.affiliate-disclosure { margin: 2rem 0 0; font-size: .85rem; color: rgba(244, 240, 233, .82); }
+@media (max-width: 760px) {
+  .sticker-section { grid-template-columns: 1fr; min-height: 25rem; padding: 3rem 1.5rem; }
+  .sticker-space { display: none; }
+  .wine-shop { background-attachment: scroll; }
+  .wine-shop-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+  .wine-shop-card { padding: .65rem .65rem .8rem; }
+  .wine-shop-image { height: clamp(11rem, 55vw, 16rem); }
+  .wine-shop-card h3 { min-height: 5rem; font-size: .88rem; }
+  .wine-shop-button { font-size: .82rem; }
+}
+@media (max-width: 380px) { .wine-shop-grid { grid-template-columns: 1fr; } }
