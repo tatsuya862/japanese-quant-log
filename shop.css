@@ -16,7 +16,7 @@
 .sticker-section {
   display: grid;
   grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1.15fr);
-  align-items: start;
+  align-items: center;
   min-height: 37.2rem;
   padding: clamp(2.25rem, 4vw, 3.5rem) clamp(1.5rem, 7vw, 6rem);
   background: radial-gradient(ellipse at 14% 50%, rgba(209,161,58,.1), transparent 38%), #090a09;
@@ -73,7 +73,7 @@
 .wine-shop-button { width: 100%; min-height: 2.7rem; padding: .4rem 1rem; font-size: .92rem; }
 .affiliate-disclosure { margin: 2rem 0 0; font-size: .85rem; color: rgba(244, 240, 233, .82); }
 @media (max-width: 760px) {
-  .sticker-section { grid-template-columns: 1fr; min-height: 30rem; padding: 2rem 1.5rem; gap: 1.25rem; }
+  .sticker-section { grid-template-columns: 1fr; min-height: 30rem; padding: 2rem 1.5rem; gap: 1.25rem; align-content: center; }
   .sticker-space { min-height: 0; }
   .sticker-space img { width: min(100%, 18rem); }
   .wine-shop { background-attachment: scroll; }
