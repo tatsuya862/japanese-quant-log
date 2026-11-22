@@ -15,7 +15,7 @@
 .shop-kicker { margin: 0 0 1.5rem; color: var(--gold-soft); font-size: 0.78rem; letter-spacing: 0.32em; }
 .sticker-section {
   display: grid;
-  grid-template-columns: minmax(180px, 0.9fr) minmax(210px, 1fr) minmax(280px, 1.35fr);
+  grid-template-columns: minmax(280px, 1.2fr) minmax(230px, 1fr) minmax(300px, 1.3fr);
   align-items: center;
   min-height: 37.2rem;
   padding: clamp(2.25rem, 4vw, 3.5rem) clamp(1.5rem, 7vw, 6rem);
