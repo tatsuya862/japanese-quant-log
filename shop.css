@@ -14,6 +14,7 @@
 .shop-title span { width: clamp(3rem, 9vw, 7rem); height: 1px; background: #b8955b; }
 .shop-kicker { margin: 0 0 1.5rem; color: var(--gold-soft); font-size: 0.78rem; letter-spacing: 0.32em; }
 .sticker-section {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(280px, 1.2fr) minmax(230px, 1fr) minmax(300px, 1.3fr);
   align-items: center;
@@ -22,8 +23,18 @@
   background: radial-gradient(ellipse at 14% 50%, rgba(209,161,58,.1), transparent 38%), #090a09;
   border-bottom: 1px solid var(--line-soft);
 }
+.sticker-kicker {
+  position: absolute;
+  top: clamp(2.25rem, 4vw, 3.5rem);
+  left: clamp(1.5rem, 7vw, 6rem);
+  margin: 0;
+  color: var(--gold-soft);
+  font-size: .85rem;
+  letter-spacing: .2em;
+}
 .sticker-copy { max-width: 28rem; }
-.sticker-copy h2 { margin: 0 0 2rem; font-size: clamp(1.6rem, 3.2vw, 2.6rem); font-weight: 300; }
+.sticker-copy h2 { margin: 0 0 2rem; font-size: clamp(1.6rem, 2.6vw, 2.3rem); font-weight: 300; line-height: 1.4; }
+.sticker-copy h2 span { display: block; white-space: nowrap; }
 .sticker-price { margin: 0 0 1.5rem; color: var(--text); font-size: 1.1rem; letter-spacing: .06em; }
 .shop-button, .wine-shop-button {
   display: inline-flex;
@@ -81,7 +92,8 @@
 .wine-shop-button { width: 100%; min-height: 2.7rem; padding: .4rem 1rem; font-size: .92rem; }
 .affiliate-disclosure { margin: 2rem 0 0; font-size: .85rem; color: rgba(244, 240, 233, .82); }
 @media (max-width: 760px) {
-  .sticker-section { grid-template-columns: 1fr; min-height: 30rem; padding: 2rem 1.5rem; gap: 1.25rem; align-content: center; }
+  .sticker-section { grid-template-columns: 1fr; min-height: 30rem; padding: 5rem 1.5rem 2rem; gap: 1.25rem; align-content: center; }
+  .sticker-kicker { top: 2rem; left: 1.5rem; }
   .sticker-space { min-height: 0; }
   .sticker-space img { width: min(100%, 18rem); }
   .sticker-gallery {
