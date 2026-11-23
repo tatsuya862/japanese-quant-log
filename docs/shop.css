@@ -29,7 +29,7 @@
   left: clamp(1.5rem, 7vw, 6rem);
   margin: 0;
   color: var(--gold-soft);
-  font-size: .85rem;
+  font-size: 1.7rem;
   letter-spacing: .2em;
 }
 .sticker-copy { max-width: 28rem; }
