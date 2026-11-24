@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#030404">
+  <meta name="description" content="週のはじめに、A4横一枚で月曜から日曜までの予定を組み、余白を確保する。Quant Logのタイムクラフティング。">
+  <title>タイムクラフティング | Quant Log</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./craft.js" defer></script>
+</head>
+<body>
+  <main class="planner" id="planner" aria-labelledby="sheet-title">
+    <h1 id="sheet-title">週間カレンダー</h1>
+    <div class="sheet" id="sheet">
+      <header class="sheet-head">
+        <p class="week-range" id="week-range" aria-live="polite"></p>
+        <p class="white-total">余白 <strong id="total">0</strong> 時間</p>
+      </header>
+      <div class="toolbar">
+        <div class="week-controls" aria-label="表示する週">
+          <button type="button" class="icon-button" id="previous" aria-label="前の週"><i aria-hidden="true"></i></button>
+          <button type="button" id="current">今週</button>
+          <button type="button" class="icon-button" id="next" aria-label="次の週"><i aria-hidden="true"></i></button>
+        </div>
+        <div class="sheet-controls">
+          <label for="early"><input id="early" type="checkbox"> 深夜・早朝も表示</label>
+          <button type="button" class="primary" id="print">A4横で印刷</button>
+        </div>
+      </div>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="月曜から日曜までの時間割">
+        <table id="schedule" aria-labelledby="sheet-title">
+          <colgroup><col class="time-col"><col span="7"></colgroup>
+          <thead><tr id="days"><th scope="col">時間</th></tr></thead>
+          <tbody id="slots"></tbody>
+        </table>
+      </div>
+    </div>
+    <p class="save-note" id="save-note" role="status"></p>
+    <noscript><p>カレンダーの編集にはJavaScriptが必要です。</p></noscript>
+  </main>
+
+  <dialog id="editor" aria-labelledby="edit-title">
+    <form id="edit-form">
+      <h2 id="edit-title">時間枠を編集</h2>
+      <p id="edit-when"></p>
+      <label for="type">種類<select id="type">
+        <option value="fixed">固定</option>
+        <option value="priority">優先</option>
+        <option value="life">楽しみ・暮らし</option>
+        <option value="space">余白</option>
+      </select></label>
+      <label for="entry">予定名<input id="entry" maxlength="26" required></label>
+      <div class="editor-actions">
+        <button type="button" id="clear" class="clear" hidden>空欄に戻す</button>
+        <button type="button" id="cancel">キャンセル</button>
+        <button type="submit" class="primary">保存</button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>

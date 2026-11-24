@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="510" viewBox="0 0 680 510">
+  <rect width="680" height="510" fill="#030404"/>
+  <g font-family="Times New Roman, Yu Mincho, serif">
+    <path d="M134 55h74m264 0h74" stroke="#8b713d"/>
+    <text x="340" y="64" fill="#e4c27c" text-anchor="middle" font-size="25" letter-spacing="2">週間カレンダー</text>
+    <rect x="31" y="101" width="618" height="376" fill="#0b0c0c" stroke="#61491f"/>
+    <text x="53" y="136" fill="#f4f0e9" font-size="20">月曜から日曜まで</text>
+    <text x="628" y="136" fill="#e4c27c" text-anchor="end" font-size="19">余白 4時間</text>
+    <rect x="523" y="151" width="105" height="29" fill="#d1a13a"/>
+    <text x="575.5" y="171" fill="#171410" text-anchor="middle" font-size="13">A4横で印刷</text>
+    <rect x="53" y="196" width="575" height="249" fill="#101110" stroke="#5d4b2a"/>
+    <rect x="54" y="197" width="573" height="41" fill="#171816"/>
+    <path d="M53 238h575m-575 41h575m-575 41h575m-575 41h575m-575 42h575M123 196v249m72-249v249m72-249v249m72-249v249m72-249v249m72-249v249m72-249v249" fill="none" stroke="#36332c"/>
+    <g text-anchor="middle" fill="#f4f0e9" font-size="16">
+      <text x="88" y="223">時間</text><text x="159" y="223">月</text><text x="231" y="223">火</text>
+      <text x="303" y="223">水</text><text x="375" y="223">木</text><text x="447" y="223">金</text>
+      <text x="519" y="223">土</text><text x="591" y="223">日</text>
+    </g>
+    <g text-anchor="middle" fill="#c8c0b1" font-size="13">
+      <text x="88" y="263">08–10</text><text x="88" y="304">10–12</text><text x="88" y="345">12–14</text>
+      <text x="88" y="386">14–16</text><text x="88" y="428">16–18</text>
+    </g>
+    <rect x="124" y="239" width="70" height="39" fill="#252521"/>
+    <rect x="268" y="280" width="70" height="39" fill="#2b2114"/>
+    <rect x="196" y="321" width="70" height="39" fill="#382a17"/>
+    <rect x="556" y="362" width="71" height="40" fill="#211c20"/>
+    <rect x="484" y="404" width="70" height="40" fill="#382a17"/>
+    <g text-anchor="middle" fill="#e4c27c" font-size="14">
+      <text x="159" y="264" fill="#eee8dc">固定</text><text x="303" y="305">優先</text>
+      <text x="231" y="346">余白</text><text x="591" y="386" fill="#eee8dc">暮らし</text><text x="519" y="428">余白</text>
+    </g>
+  </g>
+</svg>
