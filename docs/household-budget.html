@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; form-action 'none'; base-uri 'none'">
+  <meta name="description" content="収入と支出を記録し、帳簿残高と実際の残高を照合する家計簿です。">
+  <title>家計簿</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", "Noto Serif CJK JP", "Times New Roman", serif;
+      color: #292117;
+      background: #f8f5ed;
+      --ink: #292117;
+      --muted: #61584d;
+      --line: #ded5c4;
+      --accent: #795619;
+      --green: #285844;
+      --red: #963c2d;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; line-height: 1.6; }
+    main { width: min(48rem, 100% - 2rem); margin-inline: auto; padding-block: 1.8rem 3rem; }
+    h1, h2, p, dd { margin: 0; }
+    h1 { font-size: clamp(2.1rem, 7vw, 3.3rem); line-height: 1.25; }
+    h2 { font-size: 1.35rem; }
+    section { margin-top: 1.1rem; padding: clamp(0.85rem, 4vw, 1.35rem); border: 1px solid var(--line); border-radius: 0.45rem; background: #fff; }
+    button, input, select {
+      font: inherit;
+      min-height: 2.8rem;
+      padding: 0.45rem 0.65rem;
+      color: inherit;
+      border: 1px solid #988a76;
+      border-radius: 0.35rem;
+      background-color: #fff;
+    }
+    input, select { min-width: 0; width: 100%; max-width: 100%; }
+    select {
+      appearance: none;
+      padding-right: 1.6rem;
+      background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+      background-position: calc(100% - 0.85rem) 50%, calc(100% - 0.6rem) 50%;
+      background-size: 0.25rem 0.25rem;
+      background-repeat: no-repeat;
+    }
+    button, summary { cursor: pointer; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .primary { background: var(--ink); border-color: var(--ink); color: #fff; }
+    .toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.55rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.65rem; }
+    [hidden] { display: none !important; }
+    label { display: grid; gap: 0.25rem; min-width: 0; }
+    form { margin-top: 0.65rem; }
+    form .actions { margin-top: 0.65rem; }
+    details { padding: 0.65rem; margin-top: 0.65rem; border: 1px solid var(--line); border-radius: 0.35rem; background: #faf7f0; }
+    summary { font-weight: 700; }
+    .muted, .status { color: var(--muted); }
+    .muted { font-size: 0.93rem; }
+    .status:not(:empty), #starting-summary, #match-result { margin-top: 0.45rem; }
+    .amounts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.65rem; margin: 0.8rem 0; }
+    .amounts div { background: #faf7f0; border-radius: 0.35rem; padding: 0.55rem 0.65rem; }
+    .amounts dd { font-size: clamp(1.1rem, 4vw, 1.45rem); font-weight: 700; overflow-wrap: anywhere; }
+    .income, .match { color: var(--green); }
+    .expense, .mismatch, .delete { color: var(--red); }
+    #entries { list-style: none; margin: 0.5rem 0 0; padding: 0; }
+    #entries li { display: flex; align-items: center; justify-content: space-between; gap: 0.55rem; padding-block: 0.55rem; border-top: 1px solid var(--line); }
+    #entries li strong { display: block; overflow-wrap: anywhere; }
+    #entries li button { flex: none; }
+    dialog { width: min(100% - 1.5rem, 30rem); max-height: calc(100% - 1.5rem); color: inherit; border: 1px solid var(--line); border-radius: 0.45rem; padding: 1rem; }
+    dialog::backdrop { background: #29211770; }
+    #entry-form > label { margin-top: 0.55rem; }
+    @media (max-width: 360px) { .fields { grid-template-columns: 1fr; } }
+  </style>
+  <script src="household-budget.js" defer></script>
+</head>
+<body>
+  <main>
+    <header class="toolbar">
+      <h1>家計簿</h1>
+      <button id="add-entry" class="primary" type="button">収入・支出を記録</button>
+    </header>
+    <p class="status" role="status" id="status"></p>
+    <section aria-labelledby="balance-title">
+      <h2 id="balance-title">残高の照合</h2>
+      <details id="starting">
+        <summary>開始残高を設定</summary>
+        <p id="starting-summary" class="muted"></p>
+        <p class="muted">記録を始める日の朝の残高を入れてください。実際の残高も、同じ口座や現金の範囲で確認します。</p>
+        <form id="starting-form">
+          <div class="fields">
+            <label for="starting-date">記録を始める日<input id="starting-date" type="date" required></label>
+            <label for="starting-amount">開始残高（円）<input id="starting-amount" inputmode="decimal" maxlength="22" required></label>
+          </div>
+          <div class="actions"><button type="submit">開始残高を保存</button></div>
+          <p class="status" role="status" id="starting-status"></p>
+        </form>
+      </details>
+      <form id="match-form">
+        <div class="fields">
+          <label for="match-date">照合日<input id="match-date" type="date" required></label>
+          <label for="actual-amount">照合日の実際の残高（円）<input id="actual-amount" inputmode="decimal" maxlength="22" required></label>
+        </div>
+        <p class="muted">帳簿残高には、照合日当日の記録も含みます。</p>
+        <div class="actions"><button class="primary" type="submit">残高を照合</button></div>
+      </form>
+      <dl class="amounts">
+        <div><dt>帳簿残高</dt><dd id="book-balance">―</dd></div>
+        <div><dt>差額</dt><dd id="difference">―</dd></div>
+      </dl>
+      <p class="status" id="match-result" role="status"></p>
+    </section>
+    <section aria-labelledby="month-label">
+      <div class="toolbar">
+        <h2 id="month-label" aria-live="polite"></h2>
+        <div class="actions" role="group" aria-label="表示する月">
+          <button type="button" id="previous">前月</button>
+          <button type="button" id="current">今月</button>
+          <button type="button" id="next">翌月</button>
+        </div>
+      </div>
+      <dl class="amounts">
+        <div><dt>月の収入</dt><dd id="income-total" class="income">―</dd></div>
+        <div><dt>月の支出</dt><dd id="expense-total" class="expense">―</dd></div>
+      </dl>
+      <p id="empty" class="muted" hidden>この月の記録はありません。</p>
+      <ul id="entries" aria-label="月の記録"></ul>
+    </section>
+    <dialog id="entry-dialog" aria-labelledby="entry-title">
+      <div class="toolbar">
+        <h2 id="entry-title"></h2>
+        <button type="button" id="close-entry">閉じる</button>
+      </div>
+      <form id="entry-form">
+        <div class="fields">
+          <label for="entry-type">収入・支出<select id="entry-type"><option value="expense">支出</option><option value="income">収入</option></select></label>
+          <label for="entry-date">日付<input id="entry-date" type="date" required></label>
+        </div>
+        <label for="entry-amount">金額（円）<input id="entry-amount" inputmode="numeric" maxlength="22" required></label>
+        <label for="entry-category" id="category-field">支出カテゴリ<select id="entry-category"></select></label>
+        <label for="entry-note">内容（任意）<input id="entry-note" maxlength="100" placeholder="例　スーパーで買い物"></label>
+        <div class="actions">
+          <button class="primary" type="submit">記録を保存</button>
+          <button type="button" class="delete" id="delete-entry" hidden>削除</button>
+        </div>
+        <p class="status" id="entry-status" role="status"></p>
+      </form>
+    </dialog>
+    <noscript>このアプリを使うにはJavaScriptを有効にしてください。</noscript>
+  </main>
+</body>
+</html>
