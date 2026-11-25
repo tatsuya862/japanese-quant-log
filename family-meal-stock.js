@@ -79,7 +79,8 @@
   }
 
   function syncControl(input, item) {
-    input.value = item.value === null ? "" : String(item.value);
+    const value = item.value === null ? "" : String(item.value);
+    if (input.value !== value) input.value = value;
   }
 
   function updateItem(item, value, message) {
@@ -109,14 +110,12 @@
     syncControl(input, item);
     if (!controls.has(item)) controls.set(item, []);
     controls.get(item).push(input);
-    input.addEventListener("change", () => {
-      if (!input.checkValidity()) {
-        input.reportValidity();
-        return;
-      }
+    input.addEventListener(isSauce ? "input" : "change", () => {
+      if (!input.checkValidity()) return;
       const value = input.value === "" ? null : isSauce ? Number(input.value) : input.value === "true";
       updateItem(item, value, "在庫を更新しました。");
     });
+    if (isSauce) input.addEventListener("change", () => input.reportValidity());
     return wrapper;
   }
 
