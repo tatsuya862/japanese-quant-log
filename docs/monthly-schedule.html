@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="description" content="自分の予定や家族の用事を、ひと月のカレンダーで見渡せます。">
+  <title>ひと月の予定</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", "Noto Serif CJK JP", "Times New Roman", serif;
+      background: #f8f5ed;
+      color: #292117;
+      --ink: #292117;
+      --line: #e0d7c7;
+      --muted: #61584d;
+      --accent: #795619;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; line-height: 1.55; }
+    main { width: min(58rem, 100% - 2rem); margin-inline: auto; padding-block: 1.8rem 3rem; }
+    h1, h2, h3, p { margin: 0; }
+    h1 { font-size: clamp(2rem, 7vw, 3.2rem); line-height: 1.25; }
+    h2 { font-size: 1.35rem; }
+    h3 { font-size: 1.05rem; }
+    button, input, select {
+      font: inherit;
+      min-height: 2.75rem;
+      padding: 0.4rem 0.68rem;
+      border: 1px solid #988a76;
+      border-radius: 0.35rem;
+      background-color: #fff;
+      color: var(--ink);
+    }
+    button { cursor: pointer; }
+    input, select { min-width: 0; width: 100%; max-width: 100%; }
+    select {
+      appearance: none;
+      padding-right: 1.6rem;
+      background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+      background-position: calc(100% - 0.85rem) 50%, calc(100% - 0.6rem) 50%;
+      background-size: 0.25rem 0.25rem;
+      background-repeat: no-repeat;
+    }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .primary { background: var(--ink); border-color: var(--ink); color: #fff; }
+    .toolbar, .dialog-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.65rem; }
+    .month-head { margin-top: 1.15rem; }
+    .month-controls, .actions { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .legend { display: flex; flex-wrap: wrap; gap: 0.25rem 0.85rem; list-style: none; margin: 0.75rem 0; padding: 0; }
+    .legend li, .event-category { font-size: 0.9rem; }
+    .dot { display: inline-block; width: 0.52rem; height: 0.52rem; margin-right: 0.3rem; background: var(--category); border-radius: 50%; }
+    [data-category="self"] { --category: #743b68; --tint: #f8edf5; }
+    [data-category="home"] { --category: #795619; --tint: #fbf3dd; }
+    [data-category="family"] { --category: #a04432; --tint: #fbedE7; }
+    [data-category="meeting"] { --category: #28547e; --tint: #edf3fa; }
+    [data-category="volunteer"] { --category: #27624d; --tint: #ebf4ed; }
+    .weekdays, .calendar { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); }
+    .weekdays { text-align: center; color: var(--muted); padding-block: 0.25rem; }
+    .calendar { background: var(--line); gap: 1px; padding: 1px; }
+    .outside { background: #f0ebe0; }
+    .day {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.18rem;
+      text-align: left;
+      min-height: 5.9rem;
+      border: 0;
+      border-radius: 0;
+      padding: 0.34rem;
+    }
+    .day:hover, .day:focus-visible { background-color: #fff9e9; }
+    .day:focus-visible { outline-offset: -2px; }
+    .day-number { width: 1.65rem; height: 1.65rem; display: grid; place-items: center; }
+    .day[aria-current="date"] .day-number { border-radius: 50%; background: var(--ink); color: #fff; }
+    .event-preview {
+      display: block;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font-size: 0.875rem;
+      background: var(--tint);
+      border-inline-start: 3px solid var(--category);
+      padding-inline: 0.3rem;
+    }
+    .day-count { font-size: 0.875rem; color: var(--muted); }
+    .day-dots { display: none; }
+    .agenda { margin-top: 1.35rem; }
+    .agenda h3 { margin-top: 0.65rem; }
+    .event-list { list-style: none; margin: 0.3rem 0 0.75rem; padding: 0; }
+    .event-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.7rem;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-inline-start: 4px solid var(--category);
+      padding: 0.55rem 0.7rem;
+      margin-top: 0.35rem;
+    }
+    .event-row button { flex: none; }
+    .event-row strong { display: block; overflow-wrap: anywhere; }
+    .event-category, .empty, .status { color: var(--muted); }
+    .empty, .status:not(:empty) { margin-top: 0.45rem; }
+    dialog { width: min(100% - 1.5rem, 31rem); max-height: calc(100% - 1.5rem); color: inherit; border: 1px solid var(--line); border-radius: 0.45rem; padding: 1rem; }
+    dialog::backdrop { background: #29211770; }
+    form { margin-top: 0.85rem; }
+    label { display: grid; gap: 0.2rem; min-width: 0; margin-bottom: 0.6rem; }
+    .date-fields { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 0.55rem; }
+    .delete { color: #8b3525; }
+    @media (max-width: 560px) {
+      main { width: min(100% - 1.25rem, 58rem); }
+      .day { min-height: 3.35rem; align-items: center; padding: 0.23rem; }
+      .event-preview, .day-count { display: none; }
+      .day-dots { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.14rem; }
+      .day-dots .dot { margin: 0; width: 0.36rem; height: 0.36rem; }
+    }
+  </style>
+  <script src="monthly-schedule.js" defer></script>
+</head>
+<body>
+  <main>
+    <header class="toolbar">
+      <h1>ひと月の予定</h1>
+      <button type="button" id="add" class="primary">予定を追加</button>
+    </header>
+    <section aria-labelledby="month-label">
+      <div class="toolbar month-head">
+        <h2 id="month-label" aria-live="polite"></h2>
+        <div class="month-controls" aria-label="表示する月" role="group">
+          <button type="button" id="previous">前月</button>
+          <button type="button" id="current">今月</button>
+          <button type="button" id="next">翌月</button>
+        </div>
+      </div>
+      <ul class="legend" id="legend" aria-label="予定カテゴリ"></ul>
+      <div class="weekdays" aria-hidden="true">
+        <span>日</span><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span>
+      </div>
+      <div class="calendar" id="calendar"></div>
+    </section>
+    <p id="status" class="status" role="status"></p>
+    <section class="agenda" aria-labelledby="agenda-title">
+      <h2 id="agenda-title">月の予定一覧</h2>
+      <div id="agenda"></div>
+    </section>
+    <dialog id="day-dialog" aria-labelledby="dialog-title">
+      <div class="dialog-head">
+        <h2 id="dialog-title"></h2>
+        <button type="button" id="close-dialog">閉じる</button>
+      </div>
+      <div id="day-panel">
+        <div id="day-events"></div>
+        <button type="button" id="add-on-day" class="primary">この日に予定を追加</button>
+      </div>
+      <form id="event-form" hidden>
+        <label for="event-name">予定名<input id="event-name" maxlength="100" required placeholder="例　仕事、友人と食事、買い物"></label>
+        <div class="date-fields">
+          <label for="event-date">日付<input id="event-date" type="date" min="0001-01-01" max="9999-12-31" required></label>
+          <label for="event-time">開始時刻（任意）<input id="event-time" type="time"></label>
+        </div>
+        <label for="event-category">カテゴリ<select id="event-category"></select></label>
+        <div class="actions">
+          <button class="primary" type="submit">保存</button>
+          <button type="button" id="cancel-edit">戻る</button>
+          <button type="button" id="delete" class="delete" hidden>削除</button>
+        </div>
+        <p id="form-status" class="status" role="status"></p>
+      </form>
+    </dialog>
+    <noscript>このアプリを使うにはJavaScriptを有効にしてください。</noscript>
+  </main>
+</body>
+</html>
