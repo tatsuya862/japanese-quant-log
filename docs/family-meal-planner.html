@@ -3,23 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="家族一人の好みと毎日の反応に合わせて、一週間の献立を考えるための記録アプリです。">
-  <title>おばあちゃんの一週間献立</title>
-  <link rel="stylesheet" href="family-meal-planner.css?v=20261115-serif-only">
+  <meta name="description" content="家族の献立に必要な具材と味付けを確認し、家にあるものと買うものを整理できます。">
+  <title>家族の献立と買い物</title>
+  <link rel="stylesheet" href="family-meal-planner.css?v=20261125-stock">
 </head>
 <body>
   <header class="app-header">
     <p class="eyebrow">FAMILY MEAL NOTE</p>
-    <h1>おばあちゃんの<br>一週間献立</h1>
-    <p class="lead">食べた、残した、好評だった。毎日の反応を、次の一週間へ。</p>
+    <h1>家族の献立と買い物</h1>
+    <p class="lead">具材はまとめて。味付けはそれぞれに。</p>
   </header>
 
   <main>
+    <section class="meal-stock" aria-labelledby="prep-title">
+      <h2 id="prep-title">作る前に確認</h2>
+      <label class="meal-picker" for="prep-menu">献立<select id="prep-menu">
+        <option value="curry">カレー</option>
+        <option value="stew">クリームシチュー</option>
+        <option value="mapo">麻婆豆腐</option>
+        <option value="twice-cooked">回鍋肉</option>
+      </select></label>
+      <div class="shopping-panel">
+        <h3>買い物リスト</h3>
+        <p id="prep-status" aria-live="polite"></p>
+        <ul id="shopping-list" class="stock-list"></ul>
+      </div>
+      <div id="recipe-checklist"></div>
+      <details class="stock-details">
+        <summary>在庫一覧・食材の追加</summary>
+        <form id="stock-form" class="stack-form">
+          <div class="two-columns">
+            <label for="stock-category">分類<select id="stock-category"></select></label>
+            <label for="stock-name">食材名<input id="stock-name" maxlength="40" required></label>
+          </div>
+          <div class="button-row"><button type="submit">食材を追加</button></div>
+        </form>
+        <div id="stock-list"></div>
+      </details>
+      <p id="stock-status" class="status" role="status"></p>
+    </section>
     <section aria-labelledby="constraints-title">
       <div class="section-heading">
         <span>01</span>
         <div>
-          <h2 id="constraints-title">食べないものを登録</h2>
+          <h2 id="constraints-title">おばあちゃんの好み</h2>
           <p>改行または読点で区切って入力してください。</p>
         </div>
       </div>
@@ -41,7 +68,7 @@
       <div class="section-heading">
         <span>02</span>
         <div>
-          <h2 id="daily-title">今日の反応を記録</h2>
+          <h2 id="daily-title">おばあちゃんの反応を記録</h2>
           <p>一つの料理に複数の反応を付けられます。</p>
         </div>
       </div>
@@ -76,7 +103,7 @@
       <div class="section-heading">
         <span>03</span>
         <div>
-          <h2 id="week-title">次の一週間を提案</h2>
+          <h2 id="week-title">おばあちゃんの一週間献立</h2>
           <p>登録した制約を除外し、好評だった料理を優先します。</p>
         </div>
       </div>
@@ -92,5 +119,6 @@
   </footer>
 
   <script src="family-meal-planner.js?v=20261106-01"></script>
+  <script src="family-meal-stock.js?v=20261125-01"></script>
 </body>
 </html>
