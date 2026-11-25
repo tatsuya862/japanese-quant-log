@@ -50,16 +50,6 @@
       "published": "2026-11-24T19:43:49+00:00"
     },
     {
-      "title": "How freaked out should we be? After mass outages, experts tell us how close we are to ‘doomsday’",
-      "url": "https://www.theguardian.com/technology/2026/nov/23/tech-outages-security-experts",
-      "source": "The Guardian",
-      "major": false,
-      "official": false,
-      "topic": "AI規制・利用制限",
-      "reason": "AIを使える条件や、使い方にかかる制約を確認する材料。",
-      "published": "2026-11-23T16:58:17+00:00"
-    },
-    {
       "title": "Presentation: Inferencing for Enterprises",
       "url": "https://www.infoq.com/presentations/enterprise-ai-inference-architecture-costs/",
       "source": "InfoQ",
@@ -68,6 +58,16 @@
       "topic": "現場のAI導入",
       "reason": "AIを現場で使うときの手順や障害を考える材料。",
       "published": "2026-11-24T11:00:00+00:00"
+    },
+    {
+      "title": "Pinterest will now let parents limit the AI-generated content their teens see",
+      "url": "https://techcrunch.com/2026/11/24/pinterest-will-now-let-parents-limit-the-ai-generated-content-their-teens-see/",
+      "source": "TechCrunch",
+      "major": false,
+      "official": false,
+      "topic": "AI規制・利用制限",
+      "reason": "AIを使える条件や、使い方にかかる制約を確認する材料。",
+      "published": "2026-11-24T16:02:37+00:00"
     }
   ]
 }
