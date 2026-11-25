@@ -1,0 +1,49 @@
+name: Refresh AI news
+
+on:
+  schedule:
+    - cron: '17 22 * * *'
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - '.github/workflows/refresh-ai-news.yml'
+      - 'scripts/build_ai_news.py'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ai-news-edition
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Refresh the edition and publish its JSON
+        shell: bash
+        run: |
+          set -euo pipefail
+          edition_dir="$RUNNER_TEMP/quant-log-ai-news"
+          edition_ref="refs/heads/ai-news-data"
+          if git ls-remote --exit-code origin "$edition_ref" >/dev/null; then
+            git fetch --depth=1 origin "$edition_ref"
+            git worktree add --detach "$edition_dir" FETCH_HEAD
+          else
+            result=$?
+            if [ "$result" -ne 2 ]; then exit "$result"; fi
+            git worktree add --detach "$edition_dir" HEAD
+            git -C "$edition_dir" switch --orphan ai-news-data
+          fi
+          python3 scripts/build_ai_news.py "$edition_dir/latest.json" --fallback ai-news/edition.json
+          git -C "$edition_dir" add -- latest.json
+          if ! git -C "$edition_dir" diff --cached --quiet; then
+            git -C "$edition_dir" -c user.name="github-actions[bot]" \
+              -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+              commit -m "Update AI news edition"
+            git -C "$edition_dir" push origin "HEAD:$edition_ref"
+          fi

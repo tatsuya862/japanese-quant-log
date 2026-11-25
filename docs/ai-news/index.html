@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Quant Logのライブテーマを軸に、国内外のAIニュースを毎日最大5本に絞って紹介します。">
+  <title>AIニュース 厳選5本 | Quant Log</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      background: #030404;
+      color: #f3efe6;
+      font-family: "Times New Roman", "Yu Mincho", "Hiragino Mincho ProN", "YuMincho", serif;
+      --gold: #d1a13a;
+      --muted: #c3b9a8;
+      --line: #403627;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; line-height: 1.7; }
+    a { color: inherit; text-underline-offset: 0.24em; }
+    a:hover { color: var(--gold); }
+    :focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+    header { border-bottom: 1px solid var(--line); }
+    header div { width: min(70rem, 100% - 2rem); margin-inline: auto; padding-block: 0.75rem; }
+    .brand { font-size: clamp(1.4rem, 5vw, 2rem); letter-spacing: 0.04em; text-decoration: none; }
+    .byline { font-size: 0.95rem; margin-left: 0.4rem; }
+    main { width: min(100% - 2rem, 49rem); margin: auto; padding: clamp(1.8rem, 8vw, 4.3rem) 0 3rem; }
+    h1, h2, p { margin: 0; }
+    h1 { font-weight: 400; font-size: clamp(2rem, 8vw, 3.8rem); line-height: 1.22; }
+    .edition { margin-top: 0.45rem; color: var(--gold); }
+    .live { margin-block: 1.4rem 0.85rem; padding: 0.64rem 0.8rem; border-left: 2px solid var(--gold); background: #0e0d0a; }
+    .live summary { cursor: pointer; color: var(--muted); }
+    .live ul { margin: 0.45rem 0 0; padding-left: 1.15rem; overflow-wrap: anywhere; }
+    .status, .metadata { color: var(--muted); font-size: 0.95rem; }
+    .status:not(:empty) { margin-block: 0.6rem; }
+    .items { margin: 0; padding: 0; list-style: none; }
+    .item { display: grid; grid-template-columns: 1.6rem minmax(0, 1fr); gap: 0.55rem; padding-block: 1rem; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .rank { color: var(--gold); font-size: 1.06rem; }
+    .item h2 { font-size: clamp(1.12rem, 4.8vw, 1.6rem); line-height: 1.45; font-weight: 500; overflow-wrap: anywhere; }
+    .item h2 a { text-decoration: none; }
+    .item h2 a:hover, .item h2 a:focus-visible { text-decoration: underline; }
+    .meta-row { display: flex; gap: 0.25rem 0.6rem; align-items: baseline; flex-wrap: wrap; margin-bottom: 0.25rem; }
+    .major { color: var(--gold); font-size: 0.9rem; }
+    .reason { margin-top: 0.35rem; font-size: 0.95rem; color: var(--muted); }
+  </style>
+  <script src="edition.js" defer></script>
+</head>
+<body>
+  <header><div><a class="brand" href="../index.html">Quant Log<span class="byline">by Tatsuya</span></a></div></header>
+  <main>
+    <h1>AIニュース 厳選5本</h1>
+    <p class="edition" id="edition-date"></p>
+    <details class="live" id="live-themes" hidden>
+      <summary>選定の軸にしたライブ配信</summary>
+      <ul id="lives"></ul>
+    </details>
+    <p class="status" id="status" role="status">ニュースを取得しています…</p>
+    <ol class="items" id="articles" aria-label="厳選したAIニュース"></ol>
+    <noscript>ニュースの表示にはJavaScriptが必要です。</noscript>
+  </main>
+</body>
+</html>
