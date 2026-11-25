@@ -47,7 +47,6 @@ SOURCES = (
     Source("MIT Technology Review", "https://www.technologyreview.com/topic/artificial-intelligence/feed", "technologyreview.com", ai_feed=True, group="MITTR"),
     Source("MIT Technology Review 日本版", "https://www.technologyreview.jp/feed/", "technologyreview.jp", group="MITTR"),
     Source("TechCrunch", "https://techcrunch.com/category/artificial-intelligence/feed/", "techcrunch.com", ai_feed=True),
-    Source("The Guardian", "https://www.theguardian.com/technology/artificialintelligenceai/rss", "theguardian.com", ai_feed=True),
     Source("Ars Technica", "https://arstechnica.com/ai/feed/", "arstechnica.com", ai_feed=True),
     Source("Publickey", "https://www.publickey1.jp/atom.xml", "publickey1.jp"),
     Source("InfoQ", "https://www.infoq.com/feed/", "infoq.com"),
