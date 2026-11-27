@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "lives": [
     {
       "title": "【AI】普通の人と変わり者、個性が生む成功と失敗／標準的な回答の価値低下／雑談多め",
@@ -17,7 +17,7 @@
       "published": "2026-11-21T12:44:10+00:00"
     }
   ],
-  "reusedLives": false,
+  "reusedLives": true,
   "articles": [
     {
       "title": "AIに意識？ アンソロピックがIPOで投資家に示した奇妙なリスク",
@@ -48,16 +48,6 @@
       "topic": "AI規制・利用制限",
       "reason": "AIを使える条件や、使い方にかかる制約を確認する材料。",
       "published": "2026-11-24T19:43:49+00:00"
-    },
-    {
-      "title": "Presentation: Inferencing for Enterprises",
-      "url": "https://www.infoq.com/presentations/enterprise-ai-inference-architecture-costs/",
-      "source": "InfoQ",
-      "major": false,
-      "official": false,
-      "topic": "現場のAI導入",
-      "reason": "AIを現場で使うときの手順や障害を考える材料。",
-      "published": "2026-11-24T11:00:00+00:00"
     },
     {
       "title": "How foreign AI romance apps are reshaping youth intimacy in Africa",
