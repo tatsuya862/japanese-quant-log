@@ -36,5 +36,29 @@ contactForm?.addEventListener("submit", (event) => {
     `お名前：${name}\n返信先メールアドレス：${email}\n\nお問い合わせ内容：\n${message}`,
   );
 
-  window.location.href = `mailto:quantlog.tatsuya@gmail.com?subject=${subject}&body=${body}`;
+  const recipient = "quantlog.tatsuya@gmail.com";
+  const mailto = `mailto:${recipient}?subject=${subject}&body=${body}`;
+  const gmail = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${subject}&body=${body}`;
+  const status = contactForm.querySelector("#contact-status");
+
+  if (event.submitter?.value === "mail-app") {
+    window.location.href = mailto;
+    if (status) status.textContent = "メールアプリが開かない場合は、Gmailかコピーをお使いください。";
+    return;
+  }
+
+  window.location.href = gmail;
+});
+
+contactForm?.querySelector("#copy-contact")?.addEventListener("click", async () => {
+  if (!contactForm.reportValidity()) return;
+  const formData = new FormData(contactForm);
+  const text = `宛先：quantlog.tatsuya@gmail.com\n件名：Quant Logへのお問い合わせ\n\nお名前：${String(formData.get("name") || "").trim()}\n返信先メールアドレス：${String(formData.get("email") || "").trim()}\n\nお問い合わせ内容：\n${String(formData.get("message") || "").trim()}`;
+  const status = contactForm.querySelector("#contact-status");
+  try {
+    await navigator.clipboard.writeText(text);
+    if (status) status.textContent = "宛先と本文をコピーしました。普段お使いのメールから送信してください。";
+  } catch {
+    if (status) status.textContent = "コピーできませんでした。下のメールアドレスへ直接送信してください。";
+  }
 });

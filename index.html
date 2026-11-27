@@ -14,7 +14,7 @@
     gtag('config', 'G-RB2ZGN11KY');
   </script>
   <link rel="icon" type="image/png" href="assets/favicon_16x16.png">
-  <link rel="stylesheet" href="styles.css?v=20261121-wine-hero-scroll">
+  <link rel="stylesheet" href="styles.css?v=20261127-contact-options">
 </head>
 <body class="membership-page service-page">
   <header class="site-header membership-header">
@@ -91,7 +91,7 @@
     <section class="membership-section service-contact" id="contact">
       <div class="contact-intro">
         <p class="section-label">Contact</p>
-        <p>必要事項を入力すると、メールアプリにお問い合わせ内容を引き継ぎます。</p>
+        <p>必要事項を入力すると、Gmailまたはメールアプリにお問い合わせ内容を引き継ぎます。</p>
       </div>
       <form class="contact-form" id="contact-form" action="mailto:quantlog.tatsuya@gmail.com" method="post" enctype="text/plain">
         <label>
@@ -106,8 +106,14 @@
           問い合せ内容
           <textarea name="message" rows="6" required></textarea>
         </label>
-        <button type="submit">メール作成</button>
-        <p class="contact-note">メールアプリが開きます。内容を確認して送信してください。</p>
+        <div class="contact-actions">
+          <button type="submit" value="gmail">Gmailで作成</button>
+          <button type="submit" value="mail-app">メールアプリで作成</button>
+          <button type="button" id="copy-contact">宛先と本文をコピー</button>
+        </div>
+        <p class="contact-note">作成画面で内容を確認して送信してください。Gmailを使わない場合はコピーして普段お使いのメールから送れます。</p>
+        <p class="contact-note" id="contact-status" role="status" aria-live="polite"></p>
+        <p class="contact-note">宛先：<a href="mailto:quantlog.tatsuya@gmail.com">quantlog.tatsuya@gmail.com</a></p>
       </form>
     </section>
 
@@ -138,7 +144,7 @@
     </p>
     <p class="footer-copyright">©2026 Quant Log by Tatsuya</p>
   </footer>
-  <script src="membership.js?v=20261106-contact01"></script>
+  <script src="membership.js?v=20261127-contact-options"></script>
   <script>
     const track = document.querySelector(".service-hero-track");
     const slides = [...(track?.querySelectorAll(".service-hero-slide") || [])];
