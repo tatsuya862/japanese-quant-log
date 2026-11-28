@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-27",
+  "date": "2026-11-28",
   "lives": [
     {
       "title": "【AI】普通の人と変わり者、個性が生む成功と失敗／標準的な回答の価値低下／雑談多め",
@@ -17,7 +17,7 @@
       "published": "2026-11-21T12:44:10+00:00"
     }
   ],
-  "reusedLives": true,
+  "reusedLives": false,
   "articles": [
     {
       "title": "AIに意識？ アンソロピックがIPOで投資家に示した奇妙なリスク",
@@ -30,16 +30,6 @@
       "published": "2026-11-24T21:32:52+00:00"
     },
     {
-      "title": "A more tailored Google Search that’s uniquely yours",
-      "url": "https://blog.google/products-and-platforms/products/search/google-search-personal-intelligence-apps/",
-      "source": "Google",
-      "major": true,
-      "official": true,
-      "topic": "個性・判断力",
-      "reason": "AIに任せる判断と、人が手元に残す判断を考える材料。",
-      "published": "2026-11-23T17:00:00+00:00"
-    },
-    {
       "title": "Signal Moves to Block AI Agents",
       "url": "https://www.eff.org/deeplinks/2026/11/signal-now-blocks-ai-agents",
       "source": "EFF",
@@ -48,6 +38,26 @@
       "topic": "AI規制・利用制限",
       "reason": "AIを使える条件や、使い方にかかる制約を確認する材料。",
       "published": "2026-11-24T19:43:49+00:00"
+    },
+    {
+      "title": "Introducing the Amazon Bedrock Trusted Access API, with Enterprise Frontier Safeguards and Enterprise Data Controls for Claude models",
+      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-the-amazon-bedrock-trusted-access-api-with-anthropics-enterprise-frontier-safeguards-and-enterprise-data-controls/",
+      "source": "AWS",
+      "major": true,
+      "official": true,
+      "topic": "AI規制・利用制限",
+      "reason": "AIを使える条件や、使い方にかかる制約を確認する材料。",
+      "published": "2026-11-24T05:01:14+00:00"
+    },
+    {
+      "title": "全府省庁の約18万人の政府職員を対象としたガバメントAI 源内の大規模実証を開始します",
+      "url": "https://www.digital.go.jp/news/2d69c287-2897-46d8-a28f-ea5a1fc9bce9",
+      "source": "デジタル庁",
+      "major": false,
+      "official": false,
+      "topic": "現場のAI導入",
+      "reason": "AIを現場で使うときの手順や障害を考える材料。",
+      "published": "2026-11-27T06:00:00+00:00"
     },
     {
       "title": "How foreign AI romance apps are reshaping youth intimacy in Africa",
